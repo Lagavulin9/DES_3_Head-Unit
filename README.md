@@ -1,2 +1,2 @@
-# project template
-Template repository for a SEA:ME (OER) project.
+# DES-HUInfotainment
+A Distributed Embedded Systems Module Project: Head Unit Infotainment.
