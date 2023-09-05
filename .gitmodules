@@ -1,0 +1,3 @@
+[submodule "meta-piracer"]
+	path = meta-piracer
+	url = https://github.com/Lagavulin9/meta-piracer
