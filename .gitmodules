@@ -1,3 +1,6 @@
 [submodule "meta-piracer"]
 	path = meta-piracer
 	url = https://github.com/Lagavulin9/meta-piracer
+[submodule "Flutter_Head-Unit"]
+	path = Flutter_Head-Unit
+	url = https://github.com/Lagavulin9/Flutter_Head-Unit
