@@ -16,17 +16,17 @@ class ShanWanGamepadInput:
     def __init__(self) -> None:
         self.analog_stick_left = Vector3f()
         self.analog_stick_right = Vector3f()
-        self.button_l1: Optional[float]
-        self.button_l2: Optional[float]
-        self.button_r1: Optional[float]
-        self.button_r2: Optional[float]
-        self.button_x: Optional[bool]
-        self.button_a: Optional[bool]
-        self.button_b: Optional[bool]
-        self.button_y: Optional[bool]
-        self.button_select: Optional[bool]
-        self.button_start: Optional[bool]
-        self.button_home: Optional[bool]
+        self.button_l1 = None
+        self.button_l2 = None
+        self.button_r1= None
+        self.button_r2= None
+        self.button_x= None
+        self.button_a= None
+        self.button_b= None
+        self.button_y= None
+        self.button_select= None
+        self.button_start= None
+        self.button_home= None
 
 
 class Joystick(object):
@@ -169,46 +169,45 @@ class ShanWanGamepad(Joystick):
     def read_data(self) -> ShanWanGamepadInput:
         _, button_number, button_state, _, axis_number, axis_val = super(ShanWanGamepad, self).poll()
 
-        if axis_number == 0:
-            self.gamepad_input.analog_stick_left.x = axis_val
-        elif axis_number == 1:
-            self.gamepad_input.analog_stick_left.y = -axis_val
-        elif button_number == 10:
-            self.gamepad_input.analog_stick_left.z = button_state
-
-        elif axis_number == 2:
+        # Joysticks
+        if axis_number      == 0:
+            self.gamepad_input.analog_stick_left.x  = axis_val
+        elif axis_number    == 1:
+            self.gamepad_input.analog_stick_left.y  = -axis_val
+        elif axis_number    == 2:
             self.gamepad_input.analog_stick_right.x = axis_val
-        elif axis_number == 3:
+        elif axis_number    == 3:
             self.gamepad_input.analog_stick_right.y = -axis_val
-        elif button_number == 11:
-            self.gamepad_input.analog_stick_right.z = button_state
-
-        elif button_number == 4:
-            self.gamepad_input.button_l1 = button_state
-            
-        elif button_number == 6:
-            self.gamepad_input.button_l2 = button_state
-
-        elif button_number == 5:
-            self.gamepad_input.button_r1 = button_state
-        elif button_number == 7:
-            self.gamepad_input.button_r2 = button_state
-
-        elif button_number == 2:
+        # Buttons
+        elif button_number  == 0:
             self.gamepad_input.button_a = button_state
-        elif button_number == 1:
+        elif button_number  == 1:
             self.gamepad_input.button_b = button_state
-        elif button_number == 3:
+        elif button_number  == 2: 
+            pass
+        elif button_number  == 3:
             self.gamepad_input.button_x = button_state
-        elif button_number == 0:
+        elif button_number  == 4:
             self.gamepad_input.button_y = button_state
-        elif button_number == 1:
-            self.gamepad_input.button_b = button_state
-        elif button_number == 12:
-            self.gamepad_input.button_home = button_state
-        elif button_number == 8:
+        elif button_number  == 5:
+            pass        
+        elif button_number  == 6:
+            self.gamepad_input.button_l1 = button_state
+        elif button_number  == 7:
+            self.gamepad_input.button_r1 = button_state       
+        elif button_number  == 8:
+            self.gamepad_input.button_l2 = button_state
+        elif button_number  == 9:
+            self.gamepad_input.button_r2 = button_state       
+        elif button_number  == 10:
             self.gamepad_input.button_select = button_state
-        elif button_number == 9:
+        elif button_number  == 11:
             self.gamepad_input.button_start = button_state
+        elif button_number  == 12:
+            self.gamepad_input.button_home = button_state
+        elif button_number  == 13:
+            self.gamepad_input.analog_stick_left.z = button_state
+        elif button_number  == 14:
+            self.gamepad_input.analog_stick_right.z = button_state
 
         return self.gamepad_input
