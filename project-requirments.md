@@ -1,4 +1,4 @@
-# ** Project Requirements **
+# Project Requirements
 
 The following are the requirements for the project. <br>
 The lists will be used to test the project. <br>
