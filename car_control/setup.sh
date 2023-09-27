@@ -12,19 +12,14 @@ fi
 source "$SCRIPT_DIR/$VENV_NAME/bin/activate"
 
 # Install dependencies
-echo "Installing python dependencies." 
-REQUIREMENTS_FILE="$SCRIPT_DIR/requirements.txt"
-while read -r line; do
-    if pip show "$line" >/dev/null; then
-        echo "Package: '$line' is already installed. "
-    else
-        echo "Installing: '$line'."
-        pip install "$line" 	
-    fi
-done < "$REQUIREMENTS_FILE"
-echo "Done."
+echo "Installing piracer dependencies."
+pip install piracer-py
+
+# Set permissions
+chmod 755 "$SCRIPT_DIR/car_control.py"
+chmod 755 "$SCRIPT_DIR/piracer/"
 
 # Run the program
-python "$SCRIPT_DIR/car_control.py" "$@"
+# python "$SCRIPT_DIR/car_control.py" 
 
 

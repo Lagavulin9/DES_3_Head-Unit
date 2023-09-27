@@ -119,3 +119,4 @@ class PiRacerStandard(PiRacerBase):
         pwm_raw_value = int(self.PWM_MAX_RAW_VALUE * abs(value))
         self.throttle_pwm_controller.channels[self.PWM_THROTTLE_CHANNEL_LEFT_MOTOR_PWM].duty_cycle = pwm_raw_value
         self.throttle_pwm_controller.channels[self.PWM_THROTTLE_CHANNEL_RIGHT_MOTOR_PWM].duty_cycle = pwm_raw_value
+        
