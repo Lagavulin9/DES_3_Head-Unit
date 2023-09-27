@@ -19,7 +19,4 @@ pip install piracer-py
 chmod 755 "$SCRIPT_DIR/car_control.py"
 chmod 755 "$SCRIPT_DIR/piracer/"
 
-# Run the program
-# python "$SCRIPT_DIR/car_control.py" 
-
 

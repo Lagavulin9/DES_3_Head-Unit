@@ -185,6 +185,7 @@ class ShanWanGamepad(Joystick):
 
         elif button_number == 4:
             self.gamepad_input.button_l1 = button_state
+            
         elif button_number == 6:
             self.gamepad_input.button_l2 = button_state
 
