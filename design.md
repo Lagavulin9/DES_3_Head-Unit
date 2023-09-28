@@ -26,9 +26,9 @@ It is split into **three** parts. <br>
 ## Head Unit 
 **Left:**  Gear Selection (selected by touch input) <br>
 **Right:** The user can swipe through **three** features. 
-- First:  Media Player <br>
-- Second: Car Info
-- Third:  Ambiente lights
+- First:  Media Player -> The User can listen & whatch to various media sources streamed from a mobile device that is connected via bluetooth. <br>
+- Second: Car Info -> The user can see all dashboard informations at a glace. 
+- Third:  Ambiente lights -> The color scheme of the headunit & dashboard can be selected by the user's preferences. 
 
 <br>
 <img src="./images/design-headunit.png">
