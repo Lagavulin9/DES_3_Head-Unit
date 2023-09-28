@@ -31,7 +31,7 @@ It is split into **three** parts. <br>
 - Third:  Ambiente lights
 
 <br>
-<img src="./images/design-headunit.png>
+<img src="./images/design-headunit.png">
 
 
 
