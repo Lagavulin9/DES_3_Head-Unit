@@ -25,3 +25,4 @@ venv.bak/
 
 # Python Temporary Files
 __pycache__/
+.fake
