@@ -1,0 +1,28 @@
+# Project Setting
+.vscode/
+sample
+.DS_Store
+
+# QT temporary files
+build*/
+*.o
+*.stash
+.qtc_clangd/
+qrc*.cpp
+app/dashboard/dashboard
+dashboard.app/
+Makefile
+*.pro.user
+
+# Python Virtual Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Python Temporary Files
+__pycache__/
+.fake
