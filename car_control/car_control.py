@@ -9,8 +9,9 @@ class Car:
         self.throttle          = None
         self.max_throttle      = 0.3
         self.steering          = None
+        self.max_steering      = 1.0
         self.indicator         = None
-        self.gear              = None
+        self.gear              = "P"
 
     def read_gamepad(self):
         self._gamepad_input = self._shanwan_gamepad.read_data()
@@ -43,7 +44,7 @@ class Car:
         self._piracer.set_throttle_percent(self.throttle)
 
     def _set_steering(self):
-        self.steering = self._gamepad_input.analog_stick_left.x
+        self.steering = self._gamepad_input.analog_stick_left.x * self.max_steering
         self._piracer.set_steering_percent(self.steering)
     
     def _set_indicator(self):
