@@ -1,7 +1,11 @@
 #include "Can_Receiver.hpp"
 
+#include "CAN_Moving_Average_Filter.hpp"
+
 const char* CAN_INTERFACE = "can0";
 int soc;
+
+Moving_Average_Filter rpmFilter(10);
 
 int open_port(const char* iface){
     struct sockaddr_can addr;
@@ -47,14 +51,15 @@ void read_port(){
             continue;
         }
 
-        int rpm;
-        std::memcpy(&rpm, frame.data, sizeof(int));
+        int raw_sensor_rpm;
+        std::memcpy(&raw_sensor_rpm, frame.data, sizeof(int));
 
-        rpm = (rpm * 0.025) / 0.065;
+        double f_sensor_rpm = rpmFilter.filter(raw_sensor_rpm);
+        double w_rpm = (f_sensor_rpm * 0.025) / 0.065;
 
-        double speed = (rpm * M_PI * 0.065);
+        double w_speed = (w_rpm * M_PI * 0.065);
 
-        std::cout << "RPM : " << rpm << ", Speed : " << speed << std::endl;
+        std::cout << "RPM : " << w_rpm << ", Speed : " << w_speed << std::endl;
 
         usleep(100000);
 
