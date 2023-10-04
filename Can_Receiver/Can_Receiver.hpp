@@ -15,7 +15,6 @@
 #include <cmath>
 
 
-
 extern int soc;
 
 
