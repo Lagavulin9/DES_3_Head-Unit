@@ -64,9 +64,10 @@ void processAndFilterData() {
     while(true){
         dataMutex.lock();
         double filtered_rpm = rpmFilter.filter(raw_rpm);
+        dataMutex.unlock();
         filtered_rpm = (filtered_rpm * 0.025) / 0.065;
         speed = filtered_rpm * M_PI * 0.065;
-        dataMutex.unlock();
+       
 
         std::cout << "Filtered RPM : " << filtered_rpm << ", Filtered Speed : " << speed << std::endl;
 
