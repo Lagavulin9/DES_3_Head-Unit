@@ -64,6 +64,7 @@ void processAndFilterData() {
     while(true){
         dataMutex.lock();
         double filtered_rpm = rpmFilter.filter(raw_rpm);
+        filtered_rpm = (filtered_rpm * 0.025) / 0.065;
         speed = filtered_rpm * M_PI * 0.065;
         dataMutex.unlock();
 
