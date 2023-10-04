@@ -1,4 +1,4 @@
-#include "CAN_Moving_Average_Filter.hpp"
+#include "Can_Moving_Average_Filter.hpp"
 
 
 Moving_Average_Filter::Moving_Average_Filter(size_t size) : size_(size), sum_(0) {}
