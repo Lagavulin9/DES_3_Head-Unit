@@ -1,0 +1,21 @@
+import "platform:/plugin/org.genivi.commonapi.someip/deployment/CommonAPI-4-SOMEIP_deployment_spec.fdepl"
+import "CAN.fidl" 
+
+define org.genivi.commonapi.someip.deployment for interface commonapi.SpeedRpm {
+    SomeIpServiceID = 5000 
+
+    method setRpm {
+        SomeIpMethodID = 100
+    }
+
+    method setSpeed {
+        SomeIpMethodID = 200
+    }
+}
+
+define org.genivi.commonapi.someip.deployment for provider as MyService {
+    instance commonapi.SpeedRpm {
+        InstanceId = "seame02"  
+        SomeIpInstanceID = 20000  
+    }
+}
