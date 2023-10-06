@@ -1,0 +1,9 @@
+package commonapi
+
+interface Car_Control{
+    version { major 0 minor 1 }
+    
+    attribute String indicator readonly
+    attribute UInt8 gear readonly
+
+}

@@ -18,6 +18,8 @@
 #define HAS_DEFINED_COMMONAPI_INTERNAL_COMPILATION_HERE
 #endif
 
+#include <CommonAPI/AttributeExtension.hpp>
+#include <CommonAPI/Factory.hpp>
 
 #if defined (HAS_DEFINED_COMMONAPI_INTERNAL_COMPILATION_HERE)
 #undef COMMONAPI_INTERNAL_COMPILATION
@@ -69,26 +71,17 @@ public:
     virtual std::future<void> getCompletionFuture();
 
     /**
-     * Calls post_gear with synchronous semantics.
-     *
-     * All const parameters are input parameters to this method.
-     * All non-const parameters will be filled with the returned values.
-     * The CallStatus will be filled when the method returns and indicate either
-     * "SUCCESS" or which type of error has occurred. In case of an error, ONLY the CallStatus
-     * will be set.
+     * Returns the wrapper class that provides access to the attribute indicator.
      */
-    virtual void post_gear(std::string _gear, CommonAPI::CallStatus &_internalCallStatus, std::string &_ack, const CommonAPI::CallInfo *_info = nullptr);
+    virtual IndicatorAttribute& getIndicatorAttribute() {
+        return delegate_->getIndicatorAttribute();
+    }
     /**
-     * Calls post_gear with asynchronous semantics.
-     *
-     * The provided callback will be called when the reply to this call arrives or
-     * an error occurs during the call. The CallStatus will indicate either "SUCCESS"
-     * or which type of error has occurred. In case of any error, ONLY the CallStatus
-     * will have a defined value.
-     * The std::future returned by this method will be fulfilled at arrival of the reply.
-     * It will provide the same value for CallStatus as will be handed to the callback.
+     * Returns the wrapper class that provides access to the attribute gear.
      */
-    virtual std::future<CommonAPI::CallStatus> post_gearAsync(const std::string &_gear, Post_gearAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr);
+    virtual GearAttribute& getGearAttribute() {
+        return delegate_->getGearAttribute();
+    }
 
 
 
@@ -98,6 +91,46 @@ public:
 
 typedef Car_ControlProxy<> Car_ControlProxyDefault;
 
+namespace Car_ControlExtensions {
+    template <template <typename > class _ExtensionType>
+    class IndicatorAttributeExtension {
+     public:
+        typedef _ExtensionType< Car_ControlProxyBase::IndicatorAttribute> extension_type;
+    
+        static_assert(std::is_base_of<typename CommonAPI::AttributeExtension< Car_ControlProxyBase::IndicatorAttribute>, extension_type>::value,
+                      "Not CommonAPI Attribute Extension!");
+    
+        IndicatorAttributeExtension(Car_ControlProxyBase& proxy): attributeExtension_(proxy.getIndicatorAttribute()) {
+        }
+    
+        inline extension_type& getIndicatorAttributeExtension() {
+            return attributeExtension_;
+        }
+    
+     private:
+        extension_type attributeExtension_;
+    };
+
+    template <template <typename > class _ExtensionType>
+    class GearAttributeExtension {
+     public:
+        typedef _ExtensionType< Car_ControlProxyBase::GearAttribute> extension_type;
+    
+        static_assert(std::is_base_of<typename CommonAPI::AttributeExtension< Car_ControlProxyBase::GearAttribute>, extension_type>::value,
+                      "Not CommonAPI Attribute Extension!");
+    
+        GearAttributeExtension(Car_ControlProxyBase& proxy): attributeExtension_(proxy.getGearAttribute()) {
+        }
+    
+        inline extension_type& getGearAttributeExtension() {
+            return attributeExtension_;
+        }
+    
+     private:
+        extension_type attributeExtension_;
+    };
+
+} // namespace Car_ControlExtensions
 
 //
 // Car_ControlProxy Implementation
@@ -112,15 +145,6 @@ template <typename ... _AttributeExtensions>
 Car_ControlProxy<_AttributeExtensions...>::~Car_ControlProxy() {
 }
 
-template <typename ... _AttributeExtensions>
-void Car_ControlProxy<_AttributeExtensions...>::post_gear(std::string _gear, CommonAPI::CallStatus &_internalCallStatus, std::string &_ack, const CommonAPI::CallInfo *_info) {
-    delegate_->post_gear(_gear, _internalCallStatus, _ack, _info);
-}
-
-template <typename ... _AttributeExtensions>
-std::future<CommonAPI::CallStatus> Car_ControlProxy<_AttributeExtensions...>::post_gearAsync(const std::string &_gear, Post_gearAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
-    return delegate_->post_gearAsync(_gear, _callback, _info);
-}
 
 template <typename ... _AttributeExtensions>
 const CommonAPI::Address &Car_ControlProxy<_AttributeExtensions...>::getAddress() const {
@@ -156,6 +180,16 @@ std::future<void> Car_ControlProxy<_AttributeExtensions...>::getCompletionFuture
 } // namespace commonapi
 } // namespace v0
 
+namespace CommonAPI {
+template<template<typename > class _AttributeExtension>
+struct DefaultAttributeProxyHelper< ::v0::commonapi::Car_ControlProxy,
+    _AttributeExtension> {
+    typedef typename ::v0::commonapi::Car_ControlProxy<
+            ::v0::commonapi::Car_ControlExtensions::IndicatorAttributeExtension<_AttributeExtension>, 
+            ::v0::commonapi::Car_ControlExtensions::GearAttributeExtension<_AttributeExtension>
+    > class_t;
+};
+}
 
 
 // Compatibility

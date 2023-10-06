@@ -33,9 +33,6 @@ std::shared_ptr<CommonAPI::SomeIP::StubAdapter> createCar_ControlSomeIPStubAdapt
 }
 
 void initializeCar_ControlSomeIPStubAdapter() {
-    CommonAPI::SomeIP::AddressTranslator::get()->insert(
-        "local:commonapi.Car_Control:v0_1:Car_Control",
-         0x3e8, 0x2710, 0, 1);
     CommonAPI::SomeIP::Factory::get()->registerStubAdapterCreateMethod(
         "commonapi.Car_Control:v0_1",
         &createCar_ControlSomeIPStubAdapter);

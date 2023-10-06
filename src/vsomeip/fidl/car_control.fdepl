@@ -1,0 +1,19 @@
+import "platform:/plugin/org.genivi.commonapi.someip/deployment/CommonAPI-4-SOMEIP_deployment_spec.fdepl"
+import "car_control.fidl"
+
+define org.genivi.commonapi.someip.deployment for interface commonapi.Car_Control {
+    SomeIpServiceID = 3000
+    
+    attribute indicator {
+        SomeIpGetterID = 3001
+        SomeIpNotifierID = 32769
+        SomeIpNotifierEventGroups = { 30001 }
+        SomeIpAttributeReliable = true
+    }
+    attribute gear {
+        SomeIpGetterID = 3002
+        SomeIpNotifierID = 32770
+        SomeIpNotifierEventGroups = { 30001 }
+        SomeIpAttributeReliable = true
+    }
+}

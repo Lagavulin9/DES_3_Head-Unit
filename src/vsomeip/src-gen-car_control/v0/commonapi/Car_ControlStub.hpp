@@ -23,8 +23,8 @@
 #define HAS_DEFINED_COMMONAPI_INTERNAL_COMPILATION_HERE
 #endif
 
-#include <vector>
 
+#include <mutex>
 
 #include <CommonAPI/Stub.hpp>
 
@@ -46,16 +46,36 @@ class Car_ControlStubAdapter
     : public virtual CommonAPI::StubAdapter,
       public virtual Car_Control {
  public:
+    ///Notifies all remote listeners about a change of value of the attribute indicator.
+    virtual void fireIndicatorAttributeChanged(const std::string &indicator) = 0;
+    ///Notifies all remote listeners about a change of value of the attribute gear.
+    virtual void fireGearAttributeChanged(const uint8_t &gear) = 0;
 
 
     virtual void deactivateManagedInstances() = 0;
 
+    void lockIndicatorAttribute(bool _lockAccess) {
+        if (_lockAccess) {
+            indicatorMutex_.lock();
+        } else {
+            indicatorMutex_.unlock();
+        }
+    }
+    void lockGearAttribute(bool _lockAccess) {
+        if (_lockAccess) {
+            gearMutex_.lock();
+        } else {
+            gearMutex_.unlock();
+        }
+    }
 
 protected:
     /**
      * Defines properties for storing the ClientIds of clients / proxies that have
      * subscribed to the selective broadcasts
      */
+    std::recursive_mutex indicatorMutex_;
+    std::recursive_mutex gearMutex_;
 
 };
 
@@ -88,17 +108,40 @@ class Car_ControlStub
     : public virtual CommonAPI::Stub<Car_ControlStubAdapter, Car_ControlStubRemoteEvent>
 {
 public:
-    typedef std::function<void (std::string _ack)> post_gearReply_t;
 
     virtual ~Car_ControlStub() {}
     void lockInterfaceVersionAttribute(bool _lockAccess) { static_cast<void>(_lockAccess); }
     bool hasElement(const uint32_t _id) const {
-        return (_id < 1);
+        return (_id < 2);
     }
     virtual const CommonAPI::Version& getInterfaceVersion(std::shared_ptr<CommonAPI::ClientId> _client) = 0;
 
-    /// This is the method that will be called on remote calls on the method post_gear.
-    virtual void post_gear(const std::shared_ptr<CommonAPI::ClientId> _client, std::string _gear, post_gearReply_t _reply) = 0;
+    /// Provides getter access to the attribute indicator
+    virtual const std::string &getIndicatorAttribute(const std::shared_ptr<CommonAPI::ClientId> _client) = 0;
+    /// sets attribute with the given value and propagates it to the adapter
+    virtual void fireIndicatorAttributeChanged(std::string _value) {
+    auto stubAdapter = CommonAPI::Stub<Car_ControlStubAdapter, Car_ControlStubRemoteEvent>::stubAdapter_.lock();
+    if (stubAdapter)
+        stubAdapter->fireIndicatorAttributeChanged(_value);
+    }
+    void lockIndicatorAttribute(bool _lockAccess) {
+        auto stubAdapter = CommonAPI::Stub<Car_ControlStubAdapter, Car_ControlStubRemoteEvent>::stubAdapter_.lock();
+        if (stubAdapter)
+            stubAdapter->lockIndicatorAttribute(_lockAccess);
+    }
+    /// Provides getter access to the attribute gear
+    virtual const uint8_t &getGearAttribute(const std::shared_ptr<CommonAPI::ClientId> _client) = 0;
+    /// sets attribute with the given value and propagates it to the adapter
+    virtual void fireGearAttributeChanged(uint8_t _value) {
+    auto stubAdapter = CommonAPI::Stub<Car_ControlStubAdapter, Car_ControlStubRemoteEvent>::stubAdapter_.lock();
+    if (stubAdapter)
+        stubAdapter->fireGearAttributeChanged(_value);
+    }
+    void lockGearAttribute(bool _lockAccess) {
+        auto stubAdapter = CommonAPI::Stub<Car_ControlStubAdapter, Car_ControlStubRemoteEvent>::stubAdapter_.lock();
+        if (stubAdapter)
+            stubAdapter->lockGearAttribute(_lockAccess);
+    }
 
 
     using CommonAPI::Stub<Car_ControlStubAdapter, Car_ControlStubRemoteEvent>::initStubAdapter;
