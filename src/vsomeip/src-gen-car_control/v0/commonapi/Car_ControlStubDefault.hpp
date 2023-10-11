@@ -60,79 +60,15 @@ public:
         return &remoteEventHandler_;
     }
 
-    COMMONAPI_EXPORT virtual const std::string &getIndicatorAttribute() {
-        return indicatorAttributeValue_;
-    }
-    COMMONAPI_EXPORT virtual const std::string &getIndicatorAttribute(const std::shared_ptr<CommonAPI::ClientId> _client) {
+    COMMONAPI_EXPORT virtual void setGear(const std::shared_ptr<CommonAPI::ClientId> _client, std::string _gear, setGearReply_t _reply) {
         (void)_client;
-        return getIndicatorAttribute();
-    }
-    COMMONAPI_EXPORT virtual void setIndicatorAttribute(std::string _value) {
-        const bool valueChanged = trySetIndicatorAttribute(std::move(_value));
-        if (valueChanged) {
-            fireIndicatorAttributeChanged(indicatorAttributeValue_);
-        }
-    }
-    COMMONAPI_EXPORT virtual const uint8_t &getGearAttribute() {
-        return gearAttributeValue_;
-    }
-    COMMONAPI_EXPORT virtual const uint8_t &getGearAttribute(const std::shared_ptr<CommonAPI::ClientId> _client) {
-        (void)_client;
-        return getGearAttribute();
-    }
-    COMMONAPI_EXPORT virtual void setGearAttribute(uint8_t _value) {
-        const bool valueChanged = trySetGearAttribute(std::move(_value));
-        if (valueChanged) {
-            fireGearAttributeChanged(gearAttributeValue_);
-        }
+        (void)_gear;
+        std::string message = "";
+        _reply(message);
     }
 
 
 protected:
-    COMMONAPI_EXPORT virtual bool trySetIndicatorAttribute(std::string _value) {
-        if (!validateIndicatorAttributeRequestedValue(_value))
-            return false;
-
-        bool valueChanged;
-        std::shared_ptr<Car_ControlStubAdapter> stubAdapter = CommonAPI::Stub<Car_ControlStubAdapter, Car_ControlStubRemoteEvent>::stubAdapter_.lock();
-        if(stubAdapter) {
-            stubAdapter->lockIndicatorAttribute(true);
-            valueChanged = (indicatorAttributeValue_ != _value);
-            indicatorAttributeValue_ = std::move(_value);
-            stubAdapter->lockIndicatorAttribute(false);
-        } else {
-            valueChanged = (indicatorAttributeValue_ != _value);
-            indicatorAttributeValue_ = std::move(_value);
-        }
-
-       return valueChanged;
-    }
-    COMMONAPI_EXPORT virtual bool validateIndicatorAttributeRequestedValue(const std::string &_value) {
-        (void)_value;
-        return true;
-    }
-    COMMONAPI_EXPORT virtual bool trySetGearAttribute(uint8_t _value) {
-        if (!validateGearAttributeRequestedValue(_value))
-            return false;
-
-        bool valueChanged;
-        std::shared_ptr<Car_ControlStubAdapter> stubAdapter = CommonAPI::Stub<Car_ControlStubAdapter, Car_ControlStubRemoteEvent>::stubAdapter_.lock();
-        if(stubAdapter) {
-            stubAdapter->lockGearAttribute(true);
-            valueChanged = (gearAttributeValue_ != _value);
-            gearAttributeValue_ = std::move(_value);
-            stubAdapter->lockGearAttribute(false);
-        } else {
-            valueChanged = (gearAttributeValue_ != _value);
-            gearAttributeValue_ = std::move(_value);
-        }
-
-       return valueChanged;
-    }
-    COMMONAPI_EXPORT virtual bool validateGearAttributeRequestedValue(const uint8_t &_value) {
-        (void)_value;
-        return true;
-    }
     class COMMONAPI_EXPORT_CLASS_EXPLICIT RemoteEventHandler: public virtual Car_ControlStubRemoteEvent {
     public:
         COMMONAPI_EXPORT RemoteEventHandler(Car_ControlStubDefault *_defaultStub)
@@ -149,8 +85,6 @@ protected:
 
 private:
 
-    std::string indicatorAttributeValue_ {};
-    uint8_t gearAttributeValue_ {};
 
     CommonAPI::Version interfaceVersion_;
 };

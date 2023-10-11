@@ -11,6 +11,7 @@
 #define V0_COMMONAPI_CAR__CONTROL_SOMEIP_PROXY_HPP_
 
 #include <v0/commonapi/Car_ControlProxyBase.hpp>
+#include <v0/commonapi/Car_ControlSomeIPDeployment.hpp>
 
 #if !defined (COMMONAPI_INTERNAL_COMPILATION)
 #define COMMONAPI_INTERNAL_COMPILATION
@@ -20,7 +21,6 @@
 #include <CommonAPI/SomeIP/Factory.hpp>
 #include <CommonAPI/SomeIP/Proxy.hpp>
 #include <CommonAPI/SomeIP/Types.hpp>
-#include <CommonAPI/SomeIP/Attribute.hpp>
 
 #if defined (HAS_DEFINED_COMMONAPI_INTERNAL_COMPILATION_HERE)
 #undef COMMONAPI_INTERNAL_COMPILATION
@@ -54,17 +54,15 @@ public:
 
     virtual ~Car_ControlSomeIPProxy();
 
-    virtual IndicatorAttribute& getIndicatorAttribute();
+    virtual void setGear(std::string _gear, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info);
 
-    virtual GearAttribute& getGearAttribute();
+    virtual std::future<CommonAPI::CallStatus> setGearAsync(const std::string &_gear, SetGearAsyncCallback _callback, const CommonAPI::CallInfo *_info);
 
     virtual void getOwnVersion(uint16_t &_major, uint16_t &_minor) const;
 
     virtual std::future<void> getCompletionFuture();
 
 private:
-    CommonAPI::SomeIP::ObservableAttribute<CommonAPI::SomeIP::ReadonlyAttribute<IndicatorAttribute, CommonAPI::SomeIP::StringDeployment>> indicator_;
-    CommonAPI::SomeIP::ObservableAttribute<CommonAPI::SomeIP::ReadonlyAttribute<GearAttribute, CommonAPI::SomeIP::IntegerDeployment<uint8_t>>> gear_;
 
     std::promise<void> completed_;
 };

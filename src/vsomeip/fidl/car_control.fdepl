@@ -2,18 +2,28 @@ import "platform:/plugin/org.genivi.commonapi.someip/deployment/CommonAPI-4-SOME
 import "car_control.fidl"
 
 define org.genivi.commonapi.someip.deployment for interface commonapi.Car_Control {
-    SomeIpServiceID = 3000
-    
-    attribute indicator {
-        SomeIpGetterID = 3001
-        SomeIpNotifierID = 32769
-        SomeIpNotifierEventGroups = { 30001 }
-        SomeIpAttributeReliable = true
+    SomeIpServiceID = 4660
+
+    method setGear {
+        SomeIpMethodID = 30000
+        SomeIpReliable = true
+        
+        in {
+            gear {
+                SomeIpStringEncoding = utf16le
+            }
+        }
     }
-    attribute gear {
-        SomeIpGetterID = 3002
-        SomeIpNotifierID = 32770
-        SomeIpNotifierEventGroups = { 30001 }
-        SomeIpAttributeReliable = true
+}
+
+define org.genivi.commonapi.someip.deployment for provider as Service {
+    instance commonapi.Car_Control{
+        InstanceId = "commonapi.Car_Control"
+        
+        SomeIpInstanceID = 22136
+    
+        SomeIpUnicastAddress = "192.168.0.2"
+        SomeIpReliableUnicastPort = 30499
+        SomeIpUnreliableUnicastPort = 30499
     }
 }

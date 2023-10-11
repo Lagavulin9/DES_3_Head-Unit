@@ -18,6 +18,7 @@ namespace Car_Control_ {
 // Attribute-specific deployments
 
 // Argument-specific deployment
+CommonAPI::SomeIP::StringDeployment setGear_gearDeployment(0, 4, CommonAPI::SomeIP::StringEncoding::UTF16LE);
 
 // Broadcast-specific deployments
 

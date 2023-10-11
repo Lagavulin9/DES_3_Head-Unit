@@ -19,9 +19,11 @@
 #define HAS_DEFINED_COMMONAPI_INTERNAL_COMPILATION_HERE
 #endif
 
+#include <vector>
 
-#include <CommonAPI/Attribute.hpp>
 #include <CommonAPI/Proxy.hpp>
+#include <functional>
+#include <future>
 
 #if defined (HAS_DEFINED_COMMONAPI_INTERNAL_COMPILATION_HERE)
 #undef COMMONAPI_INTERNAL_COMPILATION
@@ -34,12 +36,11 @@ namespace commonapi {
 class Car_ControlProxyBase
     : virtual public CommonAPI::Proxy {
 public:
-    typedef CommonAPI::ObservableReadonlyAttribute<std::string> IndicatorAttribute;
-    typedef CommonAPI::ObservableReadonlyAttribute<uint8_t> GearAttribute;
 
+    typedef std::function<void(const CommonAPI::CallStatus&, const std::string&)> SetGearAsyncCallback;
 
-    virtual IndicatorAttribute& getIndicatorAttribute() = 0;
-    virtual GearAttribute& getGearAttribute() = 0;
+    virtual void setGear(std::string _gear, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info = nullptr) = 0;
+    virtual std::future<CommonAPI::CallStatus> setGearAsync(const std::string &_gear, SetGearAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr) = 0;
 
     virtual std::future<void> getCompletionFuture() = 0;
 };

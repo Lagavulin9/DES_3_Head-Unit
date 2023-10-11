@@ -11,6 +11,7 @@
 #define V0_COMMONAPI_CAR__CONTROL_SOMEIP_STUB_ADAPTER_HPP_
 
 #include <v0/commonapi/Car_ControlStub.hpp>
+#include <v0/commonapi/Car_ControlSomeIPDeployment.hpp>
 
 #if !defined (COMMONAPI_INTERNAL_COMPILATION)
 #define COMMONAPI_INTERNAL_COMPILATION
@@ -46,10 +47,6 @@ public:
         Car_ControlSomeIPStubAdapterHelper::deinit();
     }
 
-    void fireIndicatorAttributeChanged(const std::string &_value);
-    
-    void fireGearAttributeChanged(const uint8_t &_value);
-    
     void deactivateManagedInstances() {}
     
     CommonAPI::SomeIP::GetAttributeStubDispatcher<
@@ -57,17 +54,13 @@ public:
         CommonAPI::Version
     > getCar_ControlInterfaceVersionStubDispatcher;
 
-    CommonAPI::SomeIP::GetAttributeStubDispatcher<
+    CommonAPI::SomeIP::MethodWithReplyStubDispatcher<
         ::v0::commonapi::Car_ControlStub,
-        std::string,
-        CommonAPI::SomeIP::StringDeployment
-    > getIndicatorAttributeStubDispatcher;
-    
-    CommonAPI::SomeIP::GetAttributeStubDispatcher<
-        ::v0::commonapi::Car_ControlStub,
-        uint8_t,
-        CommonAPI::SomeIP::IntegerDeployment<uint8_t>
-    > getGearAttributeStubDispatcher;
+        std::tuple< std::string>,
+        std::tuple< std::string>,
+        std::tuple< CommonAPI::SomeIP::StringDeployment>,
+        std::tuple< CommonAPI::SomeIP::StringDeployment>
+    > setGearStubDispatcher;
     
     Car_ControlSomeIPStubAdapterInternal(
         const CommonAPI::SomeIP::Address &_address,
@@ -79,37 +72,16 @@ public:
             _connection,
             std::dynamic_pointer_cast< Car_ControlStub>(_stub)),
         getCar_ControlInterfaceVersionStubDispatcher(&Car_ControlStub::lockInterfaceVersionAttribute, &Car_ControlStub::getInterfaceVersion, false, true),
-        getIndicatorAttributeStubDispatcher(
-            &::v0::commonapi::Car_ControlStub::lockIndicatorAttribute,
-            &::v0::commonapi::Car_ControlStub::getIndicatorAttribute,
+        setGearStubDispatcher(
+            &Car_ControlStub::setGear,
             false,
-            _stub->hasElement(0))
-        ,
-        getGearAttributeStubDispatcher(
-            &::v0::commonapi::Car_ControlStub::lockGearAttribute,
-            &::v0::commonapi::Car_ControlStub::getGearAttribute,
-            false,
-            _stub->hasElement(1))
+            _stub->hasElement(0),
+            std::make_tuple(&::v0::commonapi::Car_Control_::setGear_gearDeployment),
+            std::make_tuple(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr)))
+        
     {
-        Car_ControlSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0xbb9) }, &getIndicatorAttributeStubDispatcher );
-        Car_ControlSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0xbba) }, &getGearAttributeStubDispatcher );
-        std::shared_ptr<CommonAPI::SomeIP::ClientId> itsClient = std::make_shared<CommonAPI::SomeIP::ClientId>(0xFFFF, 0xFFFFFFFF, 0xFFFFFFFF);
-
+        Car_ControlSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x7530) }, &setGearStubDispatcher );
         // Provided events/fields
-        if (_stub->hasElement(0)) {
-            std::set<CommonAPI::SomeIP::eventgroup_id_t> itsEventGroups;
-            itsEventGroups.insert(CommonAPI::SomeIP::eventgroup_id_t(CommonAPI::SomeIP::eventgroup_id_t(0x7531)));
-            CommonAPI::SomeIP::StubAdapter::registerEvent(CommonAPI::SomeIP::event_id_t(0x8001), itsEventGroups, CommonAPI::SomeIP::event_type_e::ET_FIELD, CommonAPI::SomeIP::reliability_type_e::RT_RELIABLE);
-            fireIndicatorAttributeChanged(std::dynamic_pointer_cast< ::v0::commonapi::Car_ControlStub>(_stub)->getIndicatorAttribute(itsClient));
-        }
-
-        if (_stub->hasElement(1)) {
-            std::set<CommonAPI::SomeIP::eventgroup_id_t> itsEventGroups;
-            itsEventGroups.insert(CommonAPI::SomeIP::eventgroup_id_t(CommonAPI::SomeIP::eventgroup_id_t(0x7531)));
-            CommonAPI::SomeIP::StubAdapter::registerEvent(CommonAPI::SomeIP::event_id_t(0x8002), itsEventGroups, CommonAPI::SomeIP::event_type_e::ET_FIELD, CommonAPI::SomeIP::reliability_type_e::RT_RELIABLE);
-            fireGearAttributeChanged(std::dynamic_pointer_cast< ::v0::commonapi::Car_ControlStub>(_stub)->getGearAttribute(itsClient));
-        }
-
     }
 
     // Register/Unregister event handlers for selective broadcasts
@@ -117,42 +89,6 @@ public:
     void unregisterSelectiveEventHandlers();
 
 };
-
-template <typename _Stub, typename... _Stubs>
-void Car_ControlSomeIPStubAdapterInternal<_Stub, _Stubs...>::fireIndicatorAttributeChanged(const std::string &_value) {
-    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deployedValue(_value, static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
-    CommonAPI::SomeIP::StubEventHelper<
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                std::string,
-                CommonAPI::SomeIP::StringDeployment
-            >
-            >
-    >::sendEvent(
-        *this,
-        CommonAPI::SomeIP::event_id_t(0x8001),
-        false,
-        deployedValue
-    );
-}
-
-template <typename _Stub, typename... _Stubs>
-void Car_ControlSomeIPStubAdapterInternal<_Stub, _Stubs...>::fireGearAttributeChanged(const uint8_t &_value) {
-    CommonAPI::Deployable< uint8_t, CommonAPI::SomeIP::IntegerDeployment<uint8_t>> deployedValue(_value, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr));
-    CommonAPI::SomeIP::StubEventHelper<
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                uint8_t,
-                CommonAPI::SomeIP::IntegerDeployment<uint8_t>
-            >
-            >
-    >::sendEvent(
-        *this,
-        CommonAPI::SomeIP::event_id_t(0x8002),
-        false,
-        deployedValue
-    );
-}
 
 
 template <typename _Stub, typename... _Stubs>

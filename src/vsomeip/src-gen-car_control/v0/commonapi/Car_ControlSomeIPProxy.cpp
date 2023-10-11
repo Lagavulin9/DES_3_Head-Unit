@@ -31,6 +31,9 @@ std::shared_ptr<CommonAPI::SomeIP::Proxy> createCar_ControlSomeIPProxy(
 }
 
 void initializeCar_ControlSomeIPProxy() {
+    CommonAPI::SomeIP::AddressTranslator::get()->insert(
+        "local:commonapi.Car_Control:v0_1:commonapi.Car_Control",
+        0x1234, 0x5678, 0, 1);
     CommonAPI::SomeIP::Factory::get()->registerProxyCreateMethod(
         "commonapi.Car_Control:v0_1",
         &createCar_ControlSomeIPProxy);
@@ -43,9 +46,7 @@ INITIALIZER(registerCar_ControlSomeIPProxy) {
 Car_ControlSomeIPProxy::Car_ControlSomeIPProxy(
     const CommonAPI::SomeIP::Address &_address,
     const std::shared_ptr<CommonAPI::SomeIP::ProxyConnection> &_connection)
-        : CommonAPI::SomeIP::Proxy(_address, _connection),
-          indicator_(*this, CommonAPI::SomeIP::eventgroup_id_t(0x7531), CommonAPI::SomeIP::event_id_t(0x8001), CommonAPI::SomeIP::method_id_t(0xbb9), true, CommonAPI::SomeIP::reliability_type_e::RT_RELIABLE, false, static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr)),
-          gear_(*this, CommonAPI::SomeIP::eventgroup_id_t(0x7531), CommonAPI::SomeIP::event_id_t(0x8002), CommonAPI::SomeIP::method_id_t(0xbba), true, CommonAPI::SomeIP::reliability_type_e::RT_RELIABLE, false, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr))
+        : CommonAPI::SomeIP::Proxy(_address, _connection)
 {
 }
 
@@ -53,13 +54,65 @@ Car_ControlSomeIPProxy::~Car_ControlSomeIPProxy() {
     completed_.set_value();
 }
 
-Car_ControlSomeIPProxy::IndicatorAttribute& Car_ControlSomeIPProxy::getIndicatorAttribute() {
-    return indicator_;
-}
-Car_ControlSomeIPProxy::GearAttribute& Car_ControlSomeIPProxy::getGearAttribute() {
-    return gear_;
+
+
+void Car_ControlSomeIPProxy::setGear(std::string _gear, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info) {
+    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deploy_gear(_gear, &::v0::commonapi::Car_Control_::setGear_gearDeployment);
+    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deploy_message(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
+    CommonAPI::SomeIP::ProxyHelper<
+        CommonAPI::SomeIP::SerializableArguments<
+            CommonAPI::Deployable<
+                std::string,
+                CommonAPI::SomeIP::StringDeployment
+            >
+        >,
+        CommonAPI::SomeIP::SerializableArguments<
+            CommonAPI::Deployable<
+                std::string,
+                CommonAPI::SomeIP::StringDeployment
+            >
+        >
+    >::callMethodWithReply(
+        *this,
+        CommonAPI::SomeIP::method_id_t(0x7530),
+        true,
+        false,
+        (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
+        deploy_gear,
+        _internalCallStatus,
+        deploy_message);
+    _message = deploy_message.getValue();
 }
 
+std::future<CommonAPI::CallStatus> Car_ControlSomeIPProxy::setGearAsync(const std::string &_gear, SetGearAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
+    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deploy_gear(_gear, &::v0::commonapi::Car_Control_::setGear_gearDeployment);
+    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deploy_message(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
+    return CommonAPI::SomeIP::ProxyHelper<
+        CommonAPI::SomeIP::SerializableArguments<
+            CommonAPI::Deployable<
+                std::string,
+                CommonAPI::SomeIP::StringDeployment
+            >
+        >,
+        CommonAPI::SomeIP::SerializableArguments<
+            CommonAPI::Deployable<
+                std::string,
+                CommonAPI::SomeIP::StringDeployment
+            >
+        >
+    >::callMethodAsync(
+        *this,
+        CommonAPI::SomeIP::method_id_t(0x7530),
+        true,
+        false,
+        (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
+        deploy_gear,
+        [_callback] (CommonAPI::CallStatus _internalCallStatus, CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment > _message) {
+            if (_callback)
+                _callback(_internalCallStatus, _message.getValue());
+        },
+        std::make_tuple(deploy_message));
+}
 
 void Car_ControlSomeIPProxy::getOwnVersion(uint16_t& ownVersionMajor, uint16_t& ownVersionMinor) const {
     ownVersionMajor = 0;
