@@ -3,18 +3,19 @@
 
 #include <iostream>
 #include <CommonAPI/CommonAPI.hpp>
-#include <v1/commonapi/SpeedRpmStubDefault.hpp>
-#include <v1/commonapi/SpeedRpmProxy.hpp>
+#include <v1/commonapi/ServiceManagerProxy.hpp>
 
 class CanDataRegister {
 public:
     CanDataRegister();
     virtual ~CanDataRegister();
-    void sendDataToVSomeIP(double rpm, double speed);
+
+    void sendDataToVSomeIP(uint32_t rpm, uint32_t speed);
 
 private:
-    std::shared_ptr<CommonAPI::Runtime> runtime_;
-    std::shared_ptr<v1_0::commonapi::SpeedRpmProxy<>> proxy_;
+    std::shared_ptr<CommonAPI::Runtime> runtime;
+    std::shared_ptr<v1_0::commonapi::ServiceManagerProxy<>> SpeedRpmProxy;
+   
 };
 
 #endif //CAN_DATA_REGISTER_HPP

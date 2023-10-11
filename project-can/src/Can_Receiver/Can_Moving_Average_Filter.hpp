@@ -3,20 +3,22 @@
 
 #include <vector>
 #include <queue>
-#include <stdlib.h>
+#include <cstdlib>
 
 
-class Moving_Average_Filter{
+class MovingAverageFilter{
 public:
-    Moving_Average_Filter(size_t size);
+    MovingAverageFilter(size_t size, size_t discardSize);
     double filter(double new_value);
 
 
 private:
     size_t size_;
+    size_t discardSize_;
     std::queue<double> values_;
     double sum_;
 };
 
 
 #endif   //  CAN_MOVING_AVERAGE_FILTER_HPP
+

@@ -4,8 +4,8 @@
 
 #include <thread>
 #include <mutex>
-#include <csignal>
 #include <atomic>
+#include <chrono>
 
 
 const char* CAN_INTERFACE = "can0";
@@ -13,39 +13,31 @@ int soc;
 
 const double FACTOR = 0.025;
 const double WHEEL_RADIUS = 0.065;
-const int SLEEP_DURATION_US = 100000;
 
 std::mutex dataMutex;
 int raw_rpm = 0;
-double speed = 0.0;
-
 std::atomic<bool> running;
+std::chrono::steady_clock::time_point last_received_time;
+MovingAverageFilter rpmFilter(10 , 5);
 
-Moving_Average_Filter rpmFilter(5);
-
-void signalHandler(int signum){
-    running = false;
-}
-
-int open_port(const char* iface){
+int openPort(const char* iface) {
     struct sockaddr_can addr;
     struct ifreq ifr;
 
-    // create socket
     if((soc = socket(PF_CAN, SOCK_RAW, CAN_RAW)) < 0 ) {
         perror("Socket creation error");
         return -1;
     }
 
-    // Set CAN Interface Name
     std::strcpy(ifr.ifr_name , iface);
-    ioctl(soc, SIOCGIFINDEX, &ifr);
+    // if(ioctl(soc, SIOCGIFINDEX, &ifr) < 0){
+    //     perror("ioctl error");
+    //     return -1;
+    // }
 
-    // Set Socket Address
     addr.can_family = AF_CAN;
     addr.can_ifindex = ifr.ifr_ifindex;
 
-    // Bind Socket with CAN Interface
     if(bind(soc, (struct sockaddr *)&addr, sizeof(addr)) < 0 ) {
         perror("Bind error");
         return -1;
@@ -54,23 +46,21 @@ int open_port(const char* iface){
     return 0;
 }
 
-void read_Data(){
+void readData() {
     struct can_frame frame;
 
-    while(running){
-       
-        ssize_t nbytes = recvfrom(soc, &frame, sizeof(struct can_frame), 0, NULL, NULL);
-            
-        if(nbytes < 0){
-            perror("Read error");
-            break;
+    while(running) {
+        ssize_t nbytes = read(soc, &frame, sizeof(struct can_frame));
+
+        if(nbytes == sizeof(struct can_frame)) {
+            last_received_time = std::chrono::steady_clock::now();
         }
 
-        if(nbytes < sizeof(struct can_frame)){
+        if(nbytes < sizeof(struct can_frame)) {
             perror("Incomplete CAN frame");
             continue;
         }
-       
+
         {
             std::lock_guard<std::mutex> lock(dataMutex);
             std::memcpy(&raw_rpm, frame.data, sizeof(int));
@@ -79,55 +69,65 @@ void read_Data(){
 }
 
 void processAndFilterData() {
-
     CanDataRegister dataRegister;
+    double PI = M_PI;
 
-    while(running){
+    while(running) {
         double filtered_rpm;
-        
+        double filtered_speed;
+
         {
             std::lock_guard<std::mutex> lock(dataMutex);
             filtered_rpm = rpmFilter.filter(raw_rpm);
         }
 
-        filtered_rpm = (filtered_rpm * FACTOR) / WHEEL_RADIUS;
-        speed = filtered_rpm * M_PI * WHEEL_RADIUS;
+        filtered_speed = (((filtered_rpm * FACTOR) / WHEEL_RADIUS) * PI) * WHEEL_RADIUS;
 
-        std::cout << "Filtered RPM : " << filtered_rpm << ", Filtered Speed : " << speed << std::endl;
+        std::cout << "Filtered RPM : " << filtered_rpm << ", Filtered Speed : " << filtered_speed << std::endl;
 
-        
-        dataRegister.sendDataToVSomeIP(filtered_rpm, speed);
+        dataRegister.sendDataToVSomeIP(filtered_rpm, filtered_speed);
 
-        usleep(SLEEP_DURATION_US);
+        usleep(100000); // 0.1sec
     }
 }
 
-void close_port(){
+void checkTimeout() {
+    while(running) {
+        auto now = std::chrono::steady_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::seconds>(now - last_received_time).count();
+
+        if(duration > 10) {
+            std::cout << "No data for 10 seconds. Setting running to false..." << std::endl;
+            running = false;
+            break;
+        }
+
+        usleep(5000000); // 5secs
+    }
+}
+
+void closePort() {
     close(soc);
 }
 
 int main() {
-    //Set signal Handler for SIGINT(Ctrl + C)
-    struct sigaction act;
-    act.sa_handler = signalHandler;
-    sigemptyset(&act.sa_mask);
-    act.sa_flags = 0;
-    sigaction(SIGINT, &act, NULL);
- 
-    
-    if (open_port(CAN_INTERFACE) < 0) {
+    if (openPort(CAN_INTERFACE) < 0) {
         return -1;
     }
 
     running = true;
+    last_received_time = std::chrono::steady_clock::now();
 
-    std::thread readerThread(read_Data);  // Modified the function name here
+    std::thread readerThread(readData);
     std::thread processorThread(processAndFilterData);
+    std::thread timeoutCheckerThread(checkTimeout);
 
     readerThread.join();
     processorThread.join();
+    timeoutCheckerThread.join();
 
-    close_port();
+    closePort();
 
     return 0;
 }
+

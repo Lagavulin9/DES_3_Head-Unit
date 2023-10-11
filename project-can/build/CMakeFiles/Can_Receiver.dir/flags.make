@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/lee/project-can/src-gen-can -I/home/lee/build-commonapi/capicxx-core-runtime/include -I/home/lee/build-commonapi/capicxx-someip-runtime/include -I/home/lee/build-commonapi/vsomeip/interface
+CXX_INCLUDES = -I/home/lee/DES_Head-Unit/project-can/src-gen-manager -I/home/lee/DES_Head-Unit/project-can/src/ServiceManager -I/home/lee/DES_Head-Unit/project-can/src/Can_Receiver -I/home/lee/build-commonapi/capicxx-core-runtime/include -I/home/lee/build-commonapi/capicxx-someip-runtime/include -I/home/lee/build-commonapi/vsomeip/interface
 
 CXX_FLAGS =  -pthread -std=c++0x
 

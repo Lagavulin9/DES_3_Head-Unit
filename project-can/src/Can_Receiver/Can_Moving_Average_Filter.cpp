@@ -1,13 +1,16 @@
 #include "Can_Moving_Average_Filter.hpp"
 
 
-Moving_Average_Filter::Moving_Average_Filter(size_t size) : size_(size), sum_(0) {}
+MovingAverageFilter::MovingAverageFilter(size_t size, size_t discardSize)
+    : size_(size), discardSize_(discardSize), sum_(0) {}
 
 
-double Moving_Average_Filter::filter(double new_value){
+double MovingAverageFilter::filter(double new_value){
     if(values_.size() == size_){
-        sum_ -= values_.front();
-        values_.pop();
+        for(size_t i = 0 ; i < discardSize_; ++i){
+            sum_ -= values_.front();
+            values_.pop();
+        }      
     }
 
     values_.push(new_value);
@@ -16,3 +19,4 @@ double Moving_Average_Filter::filter(double new_value){
 
     return sum_ / values_.size();
 }
+

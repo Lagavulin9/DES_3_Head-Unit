@@ -1,26 +1,20 @@
-#include <iostream>
-#include <thread>
 #include <CommonAPI/CommonAPI.hpp>
-
 #include "ServiceManagerStubImpl.hpp"
 
 
+using namespace v1_0::commonapi;
+
 int main() {
-    std::shared_ptr<CommonAPI::Runtime> runtime = CommonAPI::Runtime::get();
-    std::shared_ptr<ServiceManagerStubImpl> myService = std::make_shared<ServiceManagerStubImpl>();
-    if(runtime -> registerService("local", "seame02", myService)){
-        std::cout << "Service registered." << std::endl;
-    }else{
-        std::cout<<"Service not registered." << std::endl;
-    }
-    std::cout << "Successfully Registered Service!" << std::endl;
+    std::shared_ptr<CommonAPI::Runtime> runtime;
+    std::shared_ptr<ServiceManagerStubImpl> ServiceManager;
 
-   // runtime->registerService("local", "seame02", myService);
+    runtime = CommonAPI::Runtime::get();
+    ServiceManager = std::make_shared<ServiceManagerStubImpl>();
+    runtime -> registerService ("local", "ServiceManager", ServiceManager);
 
-    while (true) {
-        std::cout << "Waiting for calls...(Abort with CTRL+C)" <<std::endl;
-        std::this_thread::sleep_for(std::chrono::seconds(30));
-    }
+    while(1) { }
 
-    return 0;
+    return 0;  
 }
+
+ 

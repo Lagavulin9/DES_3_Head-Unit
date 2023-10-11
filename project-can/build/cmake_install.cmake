@@ -1,4 +1,4 @@
-# Install script for directory: /home/lee/project-can
+# Install script for directory: /home/lee/DES_Head-Unit/project-can
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/lee/project-can/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/lee/DES_Head-Unit/project-can/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

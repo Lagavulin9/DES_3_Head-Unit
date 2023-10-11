@@ -3,8 +3,6 @@
 
 #include <iostream>
 #include <cstring>
-#include <cstdio>
-#include <cstdlib>
 #include <unistd.h>
 #include <net/if.h>
 #include <sys/types.h>
@@ -15,11 +13,15 @@
 #include <cmath>
 
 
+
 extern int soc;
 
 
-int open_port(const char* iface);
-void read_port();
-void close_port();
+int openPort(const char* iface);
+void readData();
+void processAndFilterData();
+void checkTimeout();
+void closePort();
 
-#endif
+
+#endif  //  CAN_RECEIVER_HPP

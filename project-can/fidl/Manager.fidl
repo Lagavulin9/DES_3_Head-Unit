@@ -1,0 +1,22 @@
+package commonapi
+
+interface ServiceManager{
+  version{major 1 minor 0}
+  method setRpm{
+    in {
+      UInt32 filteredRpm
+    }
+    out{
+      String message
+    }
+  }
+  method setSpeed{
+    in{
+      UInt32 filteredSpeed
+    }
+    out{
+      String message
+    }
+  }
+}
+
