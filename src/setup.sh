@@ -3,6 +3,7 @@
 /home/seame02/Desktop/commonapi_someip_generator/commonapi-someip-generator-linux-x86_64  ./fidl/car_control.fdepl -d ./src-gen-car_control
 
 # build 
+mkdir build
 cd build
 cmake -DUSE_INSTALLED_COMMONAPI=OFF .. 
 make 

@@ -20,20 +20,14 @@ int main()
         std::cout << "Available..." << std::endl;
     }
 
-    //const std::string gear = "D";
-    const char gear[] = {'D','N','P','R'};
-    int arraySize = sizeof(gear)/sizeof(gear[0]);
+    const std::string gear = "D";
 
     CommonAPI::CallStatus callStatus;
     std::string returnMessage;
     CommonAPI::CallInfo info(1000);
     info.sender_ = 1234;
 
-
-    std::string gear = std::string(1, gear[0]);
     while (true) {
-        gear = std::string(1, charArray[rand() % arraySize]);
-
         myProxy->setGear(gear,callStatus,returnMessage);
         if (callStatus != CommonAPI::CallStatus::SUCCESS) {
             std::cerr << "Remote call failed!\n";
