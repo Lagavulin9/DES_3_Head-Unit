@@ -1,15 +1,16 @@
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -std=c++0x")
+
 cmake_minimum_required(VERSION 2.8)
 
-project(PiRacer)
+# Find the Python library
+find_package(PythonLibs REQUIRED)
+include_directories(${PYTHON_INCLUDE_DIRS})
 
-# Externals
-add_subdirectory(external/googletest/)
+project(PiRacer_Embedded_Python)
 
-# Libs
-add_subdirectory(libs/example_lib/)
-
-# Apos
-add_subdirectory(apps/example_app)
-
-# Unit-Test
-add_subdirectory(unit_tests/)
+add_executable(PiRacer_Embedded_Python
+        src/PiracerSender/main.cpp
+        src/PiracerSender/PiracerClass.cpp
+)
+target_link_libraries(PiRacer_Embedded_Python ${PYTHON_LIBRARIES})
