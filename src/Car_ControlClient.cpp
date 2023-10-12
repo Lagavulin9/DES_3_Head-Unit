@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <unistd.h>
+#include <cstdlib>
 #include <CommonAPI/CommonAPI.hpp>
 #include "src-gen-car_control/v0/commonapi/Car_ControlProxy.hpp"
 
@@ -20,14 +21,17 @@ int main()
         std::cout << "Available..." << std::endl;
     }
 
-    const std::string gear = "D";
-
     CommonAPI::CallStatus callStatus;
     std::string returnMessage;
     CommonAPI::CallInfo info(1000);
     info.sender_ = 1234;
 
+    const char gears[] = {'P','R','N','D'};
+    int arraySize = sizeof(gears) / sizeof(char);
+    std::string gear;
+
     while (true) {
+        gear = gears[rand() % arraySize];
         myProxy->setGear(gear,callStatus,returnMessage);
         if (callStatus != CommonAPI::CallStatus::SUCCESS) {
             std::cerr << "Remote call failed!\n";
