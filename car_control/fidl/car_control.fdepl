@@ -14,14 +14,6 @@ define org.genivi.commonapi.someip.deployment for interface commonapi.Car_Contro
             }
         }
     }
-
-    attribute hum {
-        SomeIpGetterID = 3000
-        SomeIpNotifierID = 33010
-        SomeIpNotifierEventGroups = { 33010 }
-        SomeIpAttributeReliable = true
-  }
-
 }
 
 define org.genivi.commonapi.someip.deployment for provider as Service {
