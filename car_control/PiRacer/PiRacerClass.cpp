@@ -1,51 +1,41 @@
-// Include header
+#include 
 #include "PiRacerClass.hpp"
 
-// Constructor
 PiracerClass::PiRacerClass()
 {
     Py_Initialize();
-    pModule = PyImport_ImportModule("piracer.vehicles");
+    pModule = PyImport_ImportModule("PiRacer");
     pClass = PyObject_GetAttrString(pModule, "PiRacer");
     pInstance = PyObject_CallObject(pClass, NULL);
-    gearMode = 0;
+    //shared_ptr<char> gear_ = make_shared<char>('N');
+    //shared_ptr<char> indicator_ = make_shared<char>('');
+    //char gear_ = 'N';
+    //char indicator_ = '';
 }
 
-// setter
-void PiracerClass::setGear(uint16_t _gearMode)
+void PiracerClass::set_gear(char gear)
 {
-    gearMode = _gearMode;
-    return;
+    //*gear_ = gear;
+    PyObject_CallMethod(pInstance, "set_gear", "c", gear);
 }
 
-// void PiracerClass::applyThrottle(double throttle)
-// {
-//     pArgs = PyTuple_Pack(1, PyFloat_FromDouble(throttle));
-//     PyObject_CallMethod(pInstance, "set_throttle_percent", "O", pArgs);
-//     return;
-// }
-
-// void PiracerClass::applySteering(double steering)
-// {
-//     pArgs = PyTuple_Pack(1, PyFloat_FromDouble(steering * -1.0));
-//     PyObject_CallMethod(pInstance, "set_steering_percent", "O", pArgs);
-//     return;
-// }
-
-// getter
-uint16_t PiracerClass::getGearMode()
+char PiracerClass::get_indicator()
 {
-    return gearMode;
+    //*indicator_ = PyObject_CallMethod(pInstance, "get_indicator", NULL);
+    //return *indicator_;
+    return PyObject_CallMethod(pInstance, "get_indicator", NULL);
 }
 
-// Destructor
+char PiracerClass::get_gear()
+{   
+    return PyObject_CallMethod(pInstance, "get_gear", NULL);
+}
+
 PiracerClass::~PiracerClass()
 {
     Py_DECREF(pArgs);
+    Py_DECREF(pModule);
     Py_DECREF(pInstance);
     Py_DECREF(pClass);
-    Py_DECREF(pModule);
     Py_Finalize();
 }
-
-PiracerClass piracer;

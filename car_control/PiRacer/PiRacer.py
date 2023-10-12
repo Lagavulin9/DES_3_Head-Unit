@@ -20,6 +20,18 @@ class PiRacer:
         self._set_steering()
         self._set_indicator()
 
+    def get_indicator(self):
+        return self.indicator
+    
+    def get_gear(self):
+        return self.gear
+    
+    def get_throttle(self):
+        return self.throttle
+    
+    def get_steering(self):
+        return self.steering
+
     def _set_gear_selection(self):
         drive      = self._gamepad_input.button_a
         park       = self._gamepad_input.button_b
@@ -57,11 +69,11 @@ class PiRacer:
         else:
             self.indicator = None
 
-def main(): 
-    car = PiRacer()
-    while True:
-        car.read_gamepad()
-        print("Throttle: {0:.2f}, Steering: {1:.2f}, Indicator: {2}, Gear: {3}".format(car.throttle, car.steering, car.indicator, car.gear))
+# def main(): 
+#     car = PiRacer()
+#     while True:
+#         car.read_gamepad()
+#         print("Throttle: {0:.2f}, Steering: {1:.2f}, Indicator: {2}, Gear: {3}".format(car.throttle, car.steering, car.indicator, car.gear))
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()

@@ -1,7 +1,6 @@
 #ifndef PIRACERCLASS_HPP
 #define PIRACERCLASS_HPP
 
-// Include necessary header
 #include <stdint.h>
 #include <Python.h>
 
@@ -9,15 +8,20 @@ class PiRacerClass
 {
     private:
         PyObject *pModule, *pClass, *pInstance, *pArgs;
-        char gear;
-        char indicator;
-        
+        // shared_ptr<char> gear_; 
+        // shared_ptr<char> indicator_;
+        //char indicator;
+        //char gear;
     public:
+        // Default constructor
         PiRacerClass();
+        //setter
+        void set_gear(char g);
+        //getter
+        char get_gear() const;
+        char get_indicator() const;
+        // Destructor
         ~PiRacerClass();
-        void setGear(char _gear);
-        char getGear();
-        char getIndicator();
 };
 
 extern PiRacerClass piracer;
