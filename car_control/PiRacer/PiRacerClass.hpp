@@ -7,13 +7,17 @@
 class PiRacerClass
 {
     private:
-        PyObject *pModule, *pClass, *pInstance, *pArgs;
+        PyObject *pModule;
+        PyObject *pClass;
+        PyObject *pInstance;
+        PyObject *pArgs;
         PyObject *pgear;
         PyObject *pindicator;
     public:
         // Default constructor
         PiRacerClass();
         // Connecotor methods to Python
+        void pyconnector_read_gamepad();
         void pyconnector_set_gear(char gear);
         const char* pyconnector_get_gear();
         const char* pyconnector_get_indicator();
@@ -21,6 +25,6 @@ class PiRacerClass
         ~PiRacerClass();
 };
 
-extern PiRacerClass piracer;
+//extern PiRacerClass piracer;
 
 #endif

@@ -1,7 +1,7 @@
-from piracer.vehicles import PiRacerStandard
-from piracer.gamepads import ShanWanGamepad
+from vehicles import PiRacerStandard
+from gamepads import ShanWanGamepad
 
-class PiRacer:
+class Car:
     def __init__(self) -> None:
         self._shanwan_gamepad  = ShanWanGamepad()
         self._piracer          = PiRacerStandard()
@@ -76,7 +76,7 @@ class PiRacer:
             self.indicator = None
 
 # def main(): 
-#     car = PiRacer()
+#     car = Car()
 #     while True:
 #         car.read_gamepad()
 #         print("Throttle: {0:.2f}, Steering: {1:.2f}, Indicator: {2}, Gear: {3}".format(car.throttle, car.steering, car.indicator, car.gear))

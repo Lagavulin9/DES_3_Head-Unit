@@ -1,6 +1,6 @@
 ################# Pythononly #################
 # # Get path of this directory
-# SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # # Check if the virtual environment exists
 # VENV_NAME="venv"
@@ -19,6 +19,10 @@
 # # Set permissions
 # chmod 755 "$SCRIPT_DIR/car_control.py"
 # chmod 755 "$SCRIPT_DIR/piracer/"
+
+
+#############################################
+# export PYTHONPATH="$PWD":"$PWD"/piracer
 
 ################## C++only ##################
 # Get path of this directory

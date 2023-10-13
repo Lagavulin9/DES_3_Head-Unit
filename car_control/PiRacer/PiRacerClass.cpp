@@ -1,12 +1,17 @@
 #include "PiRacerClass.hpp"
+#include <iostream>
 
 // Default constructor
 PiRacerClass::PiRacerClass()
 {
-    Py_Initialize();
-    pModule = PyImport_ImportModule("PiRacer");
-    pClass = PyObject_GetAttrString(pModule, "PiRacer");
-    pInstance = PyObject_CallObject(pClass, NULL);
+    Py_Initialize();                                 // Initialize Python interpreter
+    pModule = PyImport_ImportModule("car");          // Import Python module
+    pClass = PyObject_GetAttrString(pModule, "Car"); // Get Python class
+    pInstance = PyObject_CallObject(pClass, NULL);   // Create Python instance
+}
+void PiRacerClass::pyconnector_read_gamepad()
+{
+    PyObject_CallMethod(pInstance, "read_gamepad", NULL);
 }
 // Connecotor methods to Python
 void PiRacerClass::pyconnector_set_gear(char gear)
@@ -34,3 +39,5 @@ PiRacerClass::~PiRacerClass()
     Py_DECREF(pClass);
     Py_Finalize();
 }
+
+//PiRacerClass piracer;
