@@ -20,18 +20,24 @@ class PiRacer:
         self._set_steering()
         self._set_indicator()
 
+    # Public methods (getting & setting car status - connectors to c++)
     def get_indicator(self):
-        return self.indicator
+        return str(self.indicator)
     
     def get_gear(self):
-        return self.gear
+        return str(self.gear)
     
     def get_throttle(self):
-        return self.throttle
+        return str(self.throttle)
     
     def get_steering(self):
-        return self.steering
+        return str(self.steering)
 
+    def set_gear(self, gear):
+        self.gear = gear
+        self._piracer.set_gear(gear)
+
+    # Private methods (reading gamepad inputs)
     def _set_gear_selection(self):
         drive      = self._gamepad_input.button_a
         park       = self._gamepad_input.button_b

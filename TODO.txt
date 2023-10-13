@@ -1,5 +1,0 @@
-- pybind (https://github.com/SEA-ME-COSS/DES-Head-Unit/blob/%2311_piracer_client/piracer_sender_operator/src/PiracerOperator/PiracerClass.hpp)
-- add attribute indicator readonly
-- change to attribute gear instead of method?!
-- reorganize structure
-

@@ -8,10 +8,9 @@ int main ()
     PiRacerClass piracer;
     while (1)
     {
-        char blinker = piracer.getIndicator();
-        char gear = piracer.getGear();
-        std::cout << "blinker: " << blinker << std::endl;
-        std::cout << "gear: " << gear << std::endl;
+        std::cout << "blinker: " << piracer.pyconnector_get_indicator() << std::endl;
+        std::cout << "gear: " <<  piracer.pyconnector_get_gear() << std::endl;
     }
+
     return 0;
 }

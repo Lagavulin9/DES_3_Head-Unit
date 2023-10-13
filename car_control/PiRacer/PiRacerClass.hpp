@@ -8,18 +8,15 @@ class PiRacerClass
 {
     private:
         PyObject *pModule, *pClass, *pInstance, *pArgs;
-        // shared_ptr<char> gear_; 
-        // shared_ptr<char> indicator_;
-        //char indicator;
-        //char gear;
+        PyObject *pgear;
+        PyObject *pindicator;
     public:
         // Default constructor
         PiRacerClass();
-        //setter
-        void set_gear(char g);
-        //getter
-        char get_gear() const;
-        char get_indicator() const;
+        // Connecotor methods to Python
+        void pyconnector_set_gear(char gear);
+        const char* pyconnector_get_gear();
+        const char* pyconnector_get_indicator();
         // Destructor
         ~PiRacerClass();
 };
