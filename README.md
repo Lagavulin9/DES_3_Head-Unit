@@ -14,3 +14,7 @@
 - add attribute indicator readonly
 - change to attribute gear instead of method?!
 - reorganize structure
+
+https://docs.python.org/3/c-api/import.html
+https://docs.python.org/3/library/sys_path_init.html
+http://books.gigatux.nl/mirror/pythonprogramming/0596000855_python2-CHP-20-SECT-5.html
