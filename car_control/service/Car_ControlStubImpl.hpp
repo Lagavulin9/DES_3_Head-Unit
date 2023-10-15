@@ -2,8 +2,7 @@
 #define Car_ControlStubImpl_H_
 
 #include <CommonAPI/CommonAPI.hpp>
-//#include <v0/commonapi/Car_ControlStubDefault.hpp>
-#include "src-gen-car_control/v0/commonapi/Car_ControlStubDefault.hpp"
+#include "../src-gen-car_control/v0/commonapi/Car_ControlStubDefault.hpp"
 
 class Car_ControlStubImpl: public v0_1::commonapi::Car_ControlStubDefault {
 
