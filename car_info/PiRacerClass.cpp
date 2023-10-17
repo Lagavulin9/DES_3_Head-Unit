@@ -1,11 +1,24 @@
 #include "PiRacerClass.hpp"
 
+Singleton* PiRacerClass::pinstance_{nullptr};
+std::mutex PiRacerClass::mutex_;
+
 PiRacerClass::PiRacerClass()
 {
     Py_Initialize();                                 
     pModule = PyImport_ImportModule("car");          
     pClass = PyObject_GetAttrString(pModule, "Car"); 
     pInstance = PyObject_CallObject(pClass, NULL);  
+}
+
+PiRacerClass *PiRacerClass::getInstance()
+{
+    std::lock_guard<std::mutex> lock(mutex_);
+    if (pinstance_ == nullptr)
+    {
+        pinstance_ = new PiRacerClass();
+    }
+    return pinstance_;
 }
 
 void PiRacerClass::pyconnector_update_battery_info()

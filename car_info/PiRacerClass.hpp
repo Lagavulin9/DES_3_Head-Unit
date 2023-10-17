@@ -3,6 +3,9 @@
 
 #include <stdint.h>
 #include <Python.h>
+#include <iostream>
+#include <mutex>
+#include <thread>
 
 class PiRacerClass
 {
@@ -15,16 +18,26 @@ class PiRacerClass
         PyObject *pCurrent;
         PyObject *pPowerConsumption;
         PyObject *pBatteryLevel;
-    public:
-        // Default constructor
+        static PiRacerClass *pInstance_;
+        static std::mutex mutex_;
+    protected:
         PiRacerClass();
-        // Connecotor methods to Python
+        ~PiRacerClass();
+    public:
+        PiRacerClass(PiRacerClass &other) = delete;
+        void operator=(const PiRacerClass &) = delete;
+        static PiRacerClass *getInstance();
         void pyconnector_update_battery_info();
         const double &pyconnector_get_voltage();
         const double &pyconnector_get_current();
         const double &pyconnector_get_power_consumption();
         const int    &pyconnector_get_battery_level();
-        // Destructors
-        ~PiRacerClass();
 };
 #endif
+
+
+
+
+
+
+
