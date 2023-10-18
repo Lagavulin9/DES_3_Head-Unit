@@ -1,0 +1,4 @@
+/home/lee/project-can/project-can/build/CMakeFiles/DES_Project3_IC.dir
+/home/lee/project-can/project-can/build/CMakeFiles/edit_cache.dir
+/home/lee/project-can/project-can/build/CMakeFiles/rebuild_cache.dir
+/home/lee/project-can/project-can/build/CMakeFiles/DES_Project3_IC_autogen.dir

@@ -1,0 +1,82 @@
+import "platform:/plugin/org.genivi.commonapi.someip/deployment/CommonAPI-4-SOMEIP_deployment_spec.fdepl"
+import "Manager.fidl" 
+
+define org.genivi.commonapi.someip.deployment for interface DES_Project3.ServiceManager {
+    SomeIpServiceID = 1000
+
+    method setRpm {
+        SomeIpMethodID = 100
+    }
+
+    method setSpeed {
+        SomeIpMethodID = 101
+    }
+
+    method setGear {
+        SomeIpMethodID = 102
+    }
+
+    method setIndicator {
+        SomeIpMethodID = 103
+    }
+
+    method setCurrent {
+        SomeIpMethodID = 104
+    }
+
+    method setPowerConsumption {
+        SomeIpMethodID = 105
+    }
+
+    method setVoltage {
+        SomeIpMethodID = 106
+    }
+
+    method setBatteryLevel {
+        SomeIpMethodID = 107
+    }
+}
+
+define org.genivi.commonapi.someip.deployment for interface DES_Project3.IC {
+    SomeIpServiceID = 2000
+
+    method setRpm {
+        SomeIpMethodID = 200
+    }
+
+    method setSpeed {
+        SomeIpMethodID = 201
+    }
+
+    method setGear {
+        SomeIpMethodID = 202
+    }
+
+    method setCurrent {
+        SomeIpMethodID = 203
+    }
+
+    method setPowerConsumption {
+        SomeIpMethodID = 204
+    }
+
+    method setVoltage {
+        SomeIpMethodID = 205
+    }
+
+    method setBatteryLevel {
+        SomeIpMethodID = 206
+    }
+}
+
+define org.genivi.commonapi.someip.deployment for provider as Service {
+    instance DES_Project3.ServiceManager {
+        InstanceId = "ServiceManager"
+        SomeIpInstanceID = 10000
+    }
+
+    instance DES_Project3.IC {
+        InstanceId = "IC"
+        SomeIpInstanceID = 20000
+    }
+}

@@ -1,0 +1,134 @@
+package DES_Project3
+
+interface ServiceManager{
+  version{major 1 minor 0}
+
+  method setRpm{
+    in {
+      UInt32 filteredRpm
+    }
+    out{
+      String message
+    }
+  }
+  method setSpeed{
+    in{
+      UInt32 filteredSpeed
+    }
+    out{
+      String message
+    }
+  }
+  method setGear{
+    in{
+      String currentGear
+    }
+    out{
+      String message
+    }
+  }
+
+  method setIndicator{
+    in{
+      String indicator
+    }
+    out{
+      String message
+    }
+  }
+
+  method setCurrent{
+    in{
+      Float current
+    }
+    out{
+      String message
+
+    }
+  }
+
+  method setPowerConsumption{
+    in{
+      UInt8 powerconsumption
+    }
+    out{
+      String message
+    }
+  }
+
+  method setVoltage{
+    in{
+      Float voltage
+    }
+    out{
+      String message
+    }
+  }
+
+  method setBatteryLevel{
+    in{
+      UInt8 batterylevel
+    }
+  }
+}
+
+
+interface IC{
+  version {major 1 minor 0}
+  method setRpm{
+    in{
+      UInt32 filteredRpm
+    }
+    out{
+      String message
+    }
+  }
+  method setSpeed{
+    in{
+      UInt32 filteredSpeed
+    }
+    out{
+      String message
+    }
+  }
+  method setGear{
+    in{
+      String currentGear
+    }
+    out{
+      String message
+    }
+  }
+  method setCurrent{
+    in{
+      Float current
+    }
+    out{
+      String message
+    }
+  }
+  method setPowerConsumption{
+    in{
+      UInt8 powerconsumption
+    }
+    out{
+      String message
+    }
+  }
+  method setVoltage{
+    in{
+      Float voltage
+    }
+    out{
+      String message
+    }
+  }
+  method setBatteryLevel{
+    in{
+      UInt8 batterylevel
+    }
+    out{
+      String message
+    }
+  }
+}
