@@ -1,56 +1,57 @@
-#include "PiRacerClass.hpp"
+#include "PiRacerInfoClass.hpp"
 
-Singleton* PiRacerClass::pinstance_{nullptr};
-std::mutex PiRacerClass::mutex_;
+PiRacerInfoClass* PiRacerInfoClass::pInstance_{nullptr};
+std::mutex PiRacerInfoClass::mutex_;
 
-PiRacerClass::PiRacerClass()
+PiRacerInfoClass::PiRacerInfoClass()
 {
     Py_Initialize();                                 
-    pModule = PyImport_ImportModule("car");          
+    pModule = PyImport_ImportModule("car");         
+    std::cout << pModule << std::endl; 
     pClass = PyObject_GetAttrString(pModule, "Car"); 
     pInstance = PyObject_CallObject(pClass, NULL);  
 }
 
-PiRacerClass *PiRacerClass::getInstance()
+PiRacerInfoClass *PiRacerInfoClass::getInstance()
 {
     std::lock_guard<std::mutex> lock(mutex_);
-    if (pinstance_ == nullptr)
+    if (pInstance_ == nullptr)
     {
-        pinstance_ = new PiRacerClass();
+        pInstance_ = new PiRacerInfoClass();
     }
-    return pinstance_;
+    return pInstance_;
 }
 
-void PiRacerClass::pyconnector_update_battery_info()
+void PiRacerInfoClass::pyconnector_update_battery_info()
 {
     PyObject_CallMethod(pInstance, "update_battery_info", NULL);
 }
 
-const double *PiRacerClass::pyconnector_get_voltage()
+const double &PiRacerInfoClass::pyconnector_get_voltage()
 {
     pVoltage = PyObject_CallMethod(pInstance, "get_voltage", NULL);
     return PyFloat_AsDouble(pVoltage);
 }
 
-const double *PiRacerClass::pyconnector_get_current()
+const double &PiRacerInfoClass::pyconnector_get_current()
 {
     pCurrent = PyObject_CallMethod(pInstance, "get_current", NULL);
     return PyFloat_AsDouble(pCurrent);
 }
 
-const double *PiRacerClass::pyconnector_get_power_consumption()
+const double &PiRacerInfoClass::pyconnector_get_power_consumption()
 {
     pPowerConsumption = PyObject_CallMethod(pInstance, "get_power_consumtion", NULL);
     return PyFloat_AsDouble(pPowerConsumption);
 }
 
-const int *PiRacerClass::pyconnector_get_battery_level()
+const int &PiRacerInfoClass::pyconnector_get_battery_level()
 {
     pBatteryLevel = PyObject_CallMethod(pInstance, "get_battery_level", NULL);
-    return PyLong_AsInt(pBatteryLevel);
+    return (int) PyLong_AsLong(pBatteryLevel);
 }
 
-PiRacerClass::~PiRacerClass()
+PiRacerInfoClass::~PiRacerInfoClass()
 {
     Py_DECREF(pModule);
     Py_DECREF(pArgs);

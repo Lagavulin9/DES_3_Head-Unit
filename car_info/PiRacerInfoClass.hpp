@@ -1,5 +1,5 @@
-#ifndef PIRACERCLASS_HPP
-#define PIRACERCLASS_HPP
+#ifndef PIRACERINFOCLASS_HPP
+#define PIRACERINFOCLASS_HPP
 
 #include <stdint.h>
 #include <Python.h>
@@ -7,7 +7,7 @@
 #include <mutex>
 #include <thread>
 
-class PiRacerClass
+class PiRacerInfoClass
 {
     private:
         PyObject *pModule;
@@ -18,15 +18,15 @@ class PiRacerClass
         PyObject *pCurrent;
         PyObject *pPowerConsumption;
         PyObject *pBatteryLevel;
-        static PiRacerClass *pInstance_;
+        static PiRacerInfoClass *pInstance_;
         static std::mutex mutex_;
     protected:
-        PiRacerClass();
-        ~PiRacerClass();
+        PiRacerInfoClass();
+        ~PiRacerInfoClass();
     public:
-        PiRacerClass(PiRacerClass &other) = delete;
-        void operator=(const PiRacerClass &) = delete;
-        static PiRacerClass *getInstance();
+        PiRacerInfoClass(PiRacerInfoClass &other) = delete;
+        void operator=(const PiRacerInfoClass &) = delete;
+        static PiRacerInfoClass *getInstance();
         void pyconnector_update_battery_info();
         const double &pyconnector_get_voltage();
         const double &pyconnector_get_current();
