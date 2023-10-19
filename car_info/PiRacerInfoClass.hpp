@@ -28,10 +28,10 @@ class PiRacerInfoClass
         void operator=(const PiRacerInfoClass &) = delete;
         static PiRacerInfoClass *getInstance();
         void pyconnector_update_battery_info();
-        const double &pyconnector_get_voltage();
-        const double &pyconnector_get_current();
-        const double &pyconnector_get_power_consumption();
-        const int    &pyconnector_get_battery_level();
+        double pyconnector_get_voltage();
+        double pyconnector_get_current();
+        double pyconnector_get_power_consumption();
+        int    pyconnector_get_battery_level();
 };
 #endif
 

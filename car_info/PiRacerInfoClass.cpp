@@ -27,25 +27,26 @@ void PiRacerInfoClass::pyconnector_update_battery_info()
     PyObject_CallMethod(pInstance, "update_battery_info", NULL);
 }
 
-const double &PiRacerInfoClass::pyconnector_get_voltage()
+double PiRacerInfoClass::pyconnector_get_voltage()
 {
     pVoltage = PyObject_CallMethod(pInstance, "get_voltage", NULL);
+    std::cout << PyFloat_AsDouble(pVoltage) << std::endl;
     return PyFloat_AsDouble(pVoltage);
 }
 
-const double &PiRacerInfoClass::pyconnector_get_current()
+double PiRacerInfoClass::pyconnector_get_current()
 {
     pCurrent = PyObject_CallMethod(pInstance, "get_current", NULL);
     return PyFloat_AsDouble(pCurrent);
 }
 
-const double &PiRacerInfoClass::pyconnector_get_power_consumption()
+double PiRacerInfoClass::pyconnector_get_power_consumption()
 {
     pPowerConsumption = PyObject_CallMethod(pInstance, "get_power_consumtion", NULL);
     return PyFloat_AsDouble(pPowerConsumption);
 }
 
-const int &PiRacerInfoClass::pyconnector_get_battery_level()
+int PiRacerInfoClass::pyconnector_get_battery_level()
 {
     pBatteryLevel = PyObject_CallMethod(pInstance, "get_battery_level", NULL);
     return (int) PyLong_AsLong(pBatteryLevel);

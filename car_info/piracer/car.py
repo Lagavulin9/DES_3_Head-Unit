@@ -30,15 +30,15 @@ class Car:
         y = -691.919 * x**3 + 7991.667 * x**2 - 30541.295 * x + 38661.5          # approximation of battery level in % (third degree, approximation)
         self.battery_level = min(max(round(y, 3), 0), 100) # in % (make sure that battery level is between 0 and 100)
 
-def main(): 
-    car = Car()
-    while True:
-        car.update_battery_info()
-        print("Voltage: ", car.get_voltage())
-        print("Current: ", car.get_current())
-        print("Battery level: ", car.get_battery_level())
-        print("Power consumption: ", car.get_power_consumtion())
-        sleep(1)
+# def main(): 
+#     car = Car()
+#     while True:
+#         car.update_battery_info()
+#         print("Voltage: ", car.get_voltage())
+#         print("Current: ", car.get_current())
+#         print("Battery level: ", car.get_battery_level())
+#         print("Power consumption: ", car.get_power_consumtion())
+#         sleep(1)
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
