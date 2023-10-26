@@ -3,18 +3,24 @@
 
 #include <iostream>
 #include <CommonAPI/CommonAPI.hpp>
-#include <v1/DES_Project3/ServiceManagerProxy.hpp>
+#include "Speed_SensorStubImpl.hpp" 
+
+
+using namespace v1_0::DES_Project3;
 
 class CanDataRegister {
 public:
     CanDataRegister();
     virtual ~CanDataRegister();
 
-    void sendDataToVSomeIP(uint32_t rpm, uint32_t speed);
+    void sendDataToVSomeIP(uint32_t rpm, uint32_t speed); // Sends the data using Some/IP
 
 private:
     std::shared_ptr<CommonAPI::Runtime> runtime;
-    std::shared_ptr<v1::DES_Project3::ServiceManagerProxy<>> SpeedRpmProxy;
+    std::shared_ptr<Speed_SensorStubImpl> SpeedRpmService;
+
+    void Speed_Sensor_Init();
+    
 };
 
 #endif //CAN_DATA_REGISTER_HPP

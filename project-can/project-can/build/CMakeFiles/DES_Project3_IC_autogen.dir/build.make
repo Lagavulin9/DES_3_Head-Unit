@@ -53,10 +53,10 @@ RM = /opt/cmake-3.27.1-linux-x86_64/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lee/project-can/project-can
+CMAKE_SOURCE_DIR = /home/lee/project-can
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lee/project-can/project-can/build
+CMAKE_BINARY_DIR = /home/lee/project-can/build
 
 # Utility rule file for DES_Project3_IC_autogen.
 
@@ -67,8 +67,8 @@ include CMakeFiles/DES_Project3_IC_autogen.dir/compiler_depend.make
 include CMakeFiles/DES_Project3_IC_autogen.dir/progress.make
 
 CMakeFiles/DES_Project3_IC_autogen:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/lee/project-can/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target DES_Project3_IC"
-	/opt/cmake-3.27.1-linux-x86_64/bin/cmake -E cmake_autogen /home/lee/project-can/project-can/build/CMakeFiles/DES_Project3_IC_autogen.dir/AutogenInfo.json ""
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/lee/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target DES_Project3_IC"
+	/opt/cmake-3.27.1-linux-x86_64/bin/cmake -E cmake_autogen /home/lee/project-can/build/CMakeFiles/DES_Project3_IC_autogen.dir/AutogenInfo.json ""
 
 DES_Project3_IC_autogen: CMakeFiles/DES_Project3_IC_autogen
 DES_Project3_IC_autogen: CMakeFiles/DES_Project3_IC_autogen.dir/build.make
@@ -83,6 +83,6 @@ CMakeFiles/DES_Project3_IC_autogen.dir/clean:
 .PHONY : CMakeFiles/DES_Project3_IC_autogen.dir/clean
 
 CMakeFiles/DES_Project3_IC_autogen.dir/depend:
-	cd /home/lee/project-can/project-can/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lee/project-can/project-can /home/lee/project-can/project-can /home/lee/project-can/project-can/build /home/lee/project-can/project-can/build /home/lee/project-can/project-can/build/CMakeFiles/DES_Project3_IC_autogen.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/lee/project-can/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lee/project-can /home/lee/project-can /home/lee/project-can/build /home/lee/project-can/build /home/lee/project-can/build/CMakeFiles/DES_Project3_IC_autogen.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/DES_Project3_IC_autogen.dir/depend
 

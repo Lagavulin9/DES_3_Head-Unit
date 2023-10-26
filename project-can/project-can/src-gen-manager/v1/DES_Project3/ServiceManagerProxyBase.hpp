@@ -19,11 +19,9 @@
 #define HAS_DEFINED_COMMONAPI_INTERNAL_COMPILATION_HERE
 #endif
 
-#include <vector>
 
+#include <CommonAPI/Attribute.hpp>
 #include <CommonAPI/Proxy.hpp>
-#include <functional>
-#include <future>
 
 #if defined (HAS_DEFINED_COMMONAPI_INTERNAL_COMPILATION_HERE)
 #undef COMMONAPI_INTERNAL_COMPILATION
@@ -36,32 +34,26 @@ namespace DES_Project3 {
 class ServiceManagerProxyBase
     : virtual public CommonAPI::Proxy {
 public:
+    typedef CommonAPI::ObservableAttribute<uint32_t> SpeedAttribute;
+    typedef CommonAPI::ObservableAttribute<uint32_t> RpmAttribute;
+    typedef CommonAPI::ObservableAttribute<std::string> IndicatorAttribute;
+    typedef CommonAPI::ObservableAttribute<std::string> GearAttribute;
+    typedef CommonAPI::ObservableAttribute<uint8_t> BatteryAttribute;
+    typedef CommonAPI::ObservableAttribute<float> VoltageAttribute;
+    typedef CommonAPI::ObservableAttribute<float> CurrentAttribute;
+    typedef CommonAPI::ObservableAttribute<uint8_t> PowerConsumptionAttribute;
+    typedef CommonAPI::ObservableAttribute<std::string> GearSelectionAttribute;
 
-    typedef std::function<void(const CommonAPI::CallStatus&, const std::string&)> SetRpmAsyncCallback;
-    typedef std::function<void(const CommonAPI::CallStatus&, const std::string&)> SetSpeedAsyncCallback;
-    typedef std::function<void(const CommonAPI::CallStatus&, const std::string&)> SetGearAsyncCallback;
-    typedef std::function<void(const CommonAPI::CallStatus&, const std::string&)> SetIndicatorAsyncCallback;
-    typedef std::function<void(const CommonAPI::CallStatus&, const std::string&)> SetCurrentAsyncCallback;
-    typedef std::function<void(const CommonAPI::CallStatus&, const std::string&)> SetPowerConsumptionAsyncCallback;
-    typedef std::function<void(const CommonAPI::CallStatus&, const std::string&)> SetVoltageAsyncCallback;
-    typedef std::function<void(const CommonAPI::CallStatus&)> SetBatteryLevelAsyncCallback;
 
-    virtual void setRpm(uint32_t _filteredRpm, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info = nullptr) = 0;
-    virtual std::future<CommonAPI::CallStatus> setRpmAsync(const uint32_t &_filteredRpm, SetRpmAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr) = 0;
-    virtual void setSpeed(uint32_t _filteredSpeed, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info = nullptr) = 0;
-    virtual std::future<CommonAPI::CallStatus> setSpeedAsync(const uint32_t &_filteredSpeed, SetSpeedAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr) = 0;
-    virtual void setGear(std::string _currentGear, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info = nullptr) = 0;
-    virtual std::future<CommonAPI::CallStatus> setGearAsync(const std::string &_currentGear, SetGearAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr) = 0;
-    virtual void setIndicator(std::string _indicator, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info = nullptr) = 0;
-    virtual std::future<CommonAPI::CallStatus> setIndicatorAsync(const std::string &_indicator, SetIndicatorAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr) = 0;
-    virtual void setCurrent(float _current, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info = nullptr) = 0;
-    virtual std::future<CommonAPI::CallStatus> setCurrentAsync(const float &_current, SetCurrentAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr) = 0;
-    virtual void setPowerConsumption(uint8_t _powerconsumption, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info = nullptr) = 0;
-    virtual std::future<CommonAPI::CallStatus> setPowerConsumptionAsync(const uint8_t &_powerconsumption, SetPowerConsumptionAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr) = 0;
-    virtual void setVoltage(float _voltage, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info = nullptr) = 0;
-    virtual std::future<CommonAPI::CallStatus> setVoltageAsync(const float &_voltage, SetVoltageAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr) = 0;
-    virtual void setBatteryLevel(uint8_t _batterylevel, CommonAPI::CallStatus &_internalCallStatus, const CommonAPI::CallInfo *_info = nullptr) = 0;
-    virtual std::future<CommonAPI::CallStatus> setBatteryLevelAsync(const uint8_t &_batterylevel, SetBatteryLevelAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr) = 0;
+    virtual SpeedAttribute& getSpeedAttribute() = 0;
+    virtual RpmAttribute& getRpmAttribute() = 0;
+    virtual IndicatorAttribute& getIndicatorAttribute() = 0;
+    virtual GearAttribute& getGearAttribute() = 0;
+    virtual BatteryAttribute& getBatteryAttribute() = 0;
+    virtual VoltageAttribute& getVoltageAttribute() = 0;
+    virtual CurrentAttribute& getCurrentAttribute() = 0;
+    virtual PowerConsumptionAttribute& getPowerConsumptionAttribute() = 0;
+    virtual GearSelectionAttribute& getGearSelectionAttribute() = 0;
 
     virtual std::future<void> getCompletionFuture() = 0;
 };

@@ -53,10 +53,10 @@ RM = /opt/cmake-3.27.1-linux-x86_64/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lee/project-can/project-can
+CMAKE_SOURCE_DIR = /home/lee/project-can
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lee/project-can/project-can/build
+CMAKE_BINARY_DIR = /home/lee/project-can/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/DES_Project3_IC.dir/depend.make
@@ -69,226 +69,129 @@ include CMakeFiles/DES_Project3_IC.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/DES_Project3_IC.dir/flags.make
 
-DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/project-can/src/DES_Project3_IC/qml.qrc
+DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/src/DES_Project3_IC/qml.qrc
 DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: CMakeFiles/DES_Project3_IC_autogen.dir/AutoRcc_qml_FHKJJSX2OI_Info.json
-DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/project-can/src/DES_Project3_IC/main.cpp
-DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/project-can/src/DES_Project3_IC/qml.qrc
-DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/project-can/src/DES_Project3_IC/qml/MediaLyrics.qml
-DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/project-can/src/DES_Project3_IC/qml/CentralCar.qml
-DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/project-can/src/DES_Project3_IC/qml/Speed.qml
-DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/project-can/src/DES_Project3_IC/qml/Time.qml
-DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/project-can/src/DES_Project3_IC/qml/BatteryValue.qml
-DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/project-can/src/DES_Project3_IC/qml/Gear.qml
-DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/project-can/src/DES_Project3_IC/qml/MediaAlbum.qml
-DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/project-can/src/DES_Project3_IC/qml/BatteryBar.qml
-DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/project-can/src/DES_Project3_IC/qml/Background.qml
-DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/project-can/src/DES_Project3_IC/qml/main.qml
-DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/project-can/src/DES_Project3_IC/images/elec_car.png
-DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/project-can/src/DES_Project3_IC/images/LPHalf.png
-DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/project-can/src/DES_Project3_IC/images/CharliePuth.png
-DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/project-can/src/DES_Project3_IC/images/bg-mask.png
-DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/project-can/src/DES_Project3_IC/images/car-highlights.png
+DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/src/DES_Project3_IC/qml.qrc
+DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/src/DES_Project3_IC/qml/MediaLyrics.qml
+DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/src/DES_Project3_IC/qml/CentralCar.qml
+DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/src/DES_Project3_IC/qml/Speed.qml
+DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/src/DES_Project3_IC/qml/Time.qml
+DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/src/DES_Project3_IC/qml/BatteryValue.qml
+DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/src/DES_Project3_IC/qml/Gear.qml
+DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/src/DES_Project3_IC/qml/MediaAlbum.qml
+DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/src/DES_Project3_IC/qml/BatteryBar.qml
+DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/src/DES_Project3_IC/qml/Background.qml
+DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/src/DES_Project3_IC/qml/main.qml
+DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/src/DES_Project3_IC/images/elec_car.png
+DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/src/DES_Project3_IC/images/LPHalf.png
+DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/src/DES_Project3_IC/images/CharliePuth.png
+DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/src/DES_Project3_IC/images/bg-mask.png
+DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/project-can/src/DES_Project3_IC/images/car-highlights.png
 DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp: /home/lee/Qt/5.15.15/gcc_64/bin/rcc
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/lee/project-can/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic RCC for src/DES_Project3_IC/qml.qrc"
-	/opt/cmake-3.27.1-linux-x86_64/bin/cmake -E cmake_autorcc /home/lee/project-can/project-can/build/CMakeFiles/DES_Project3_IC_autogen.dir/AutoRcc_qml_FHKJJSX2OI_Info.json 
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/lee/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic RCC for src/DES_Project3_IC/qml.qrc"
+	/opt/cmake-3.27.1-linux-x86_64/bin/cmake -E cmake_autorcc /home/lee/project-can/build/CMakeFiles/DES_Project3_IC_autogen.dir/AutoRcc_qml_FHKJJSX2OI_Info.json 
 
 CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/mocs_compilation.cpp.o: CMakeFiles/DES_Project3_IC.dir/flags.make
 CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/mocs_compilation.cpp.o: DES_Project3_IC_autogen/mocs_compilation.cpp
 CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/mocs_compilation.cpp.o: CMakeFiles/DES_Project3_IC.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lee/project-can/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/mocs_compilation.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/mocs_compilation.cpp.o -MF CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/mocs_compilation.cpp.o -c /home/lee/project-can/project-can/build/DES_Project3_IC_autogen/mocs_compilation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lee/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/mocs_compilation.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/mocs_compilation.cpp.o -MF CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/mocs_compilation.cpp.o -c /home/lee/project-can/build/DES_Project3_IC_autogen/mocs_compilation.cpp
 
 CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/mocs_compilation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/mocs_compilation.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/project-can/project-can/build/DES_Project3_IC_autogen/mocs_compilation.cpp > CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/mocs_compilation.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/project-can/build/DES_Project3_IC_autogen/mocs_compilation.cpp > CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/mocs_compilation.cpp.i
 
 CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/mocs_compilation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/mocs_compilation.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/project-can/project-can/build/DES_Project3_IC_autogen/mocs_compilation.cpp -o CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/mocs_compilation.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/project-can/build/DES_Project3_IC_autogen/mocs_compilation.cpp -o CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/mocs_compilation.cpp.s
 
-CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/main.cpp.o: CMakeFiles/DES_Project3_IC.dir/flags.make
-CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/main.cpp.o: /home/lee/project-can/project-can/src/DES_Project3_IC/main.cpp
-CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/main.cpp.o: CMakeFiles/DES_Project3_IC.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lee/project-can/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/main.cpp.o -MF CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/main.cpp.o.d -o CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/main.cpp.o -c /home/lee/project-can/project-can/src/DES_Project3_IC/main.cpp
+CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/IC_main.cpp.o: CMakeFiles/DES_Project3_IC.dir/flags.make
+CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/IC_main.cpp.o: /home/lee/project-can/src/DES_Project3_IC/IC_main.cpp
+CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/IC_main.cpp.o: CMakeFiles/DES_Project3_IC.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lee/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/IC_main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/IC_main.cpp.o -MF CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/IC_main.cpp.o.d -o CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/IC_main.cpp.o -c /home/lee/project-can/src/DES_Project3_IC/IC_main.cpp
 
-CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/project-can/project-can/src/DES_Project3_IC/main.cpp > CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/main.cpp.i
+CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/IC_main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/IC_main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/project-can/src/DES_Project3_IC/IC_main.cpp > CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/IC_main.cpp.i
 
-CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/project-can/project-can/src/DES_Project3_IC/main.cpp -o CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/main.cpp.s
+CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/IC_main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/IC_main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/project-can/src/DES_Project3_IC/IC_main.cpp -o CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/IC_main.cpp.s
 
 CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdatamanager.cpp.o: CMakeFiles/DES_Project3_IC.dir/flags.make
-CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdatamanager.cpp.o: /home/lee/project-can/project-can/src/DES_Project3_IC/ICdatamanager.cpp
+CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdatamanager.cpp.o: /home/lee/project-can/src/DES_Project3_IC/ICdatamanager.cpp
 CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdatamanager.cpp.o: CMakeFiles/DES_Project3_IC.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lee/project-can/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdatamanager.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdatamanager.cpp.o -MF CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdatamanager.cpp.o.d -o CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdatamanager.cpp.o -c /home/lee/project-can/project-can/src/DES_Project3_IC/ICdatamanager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lee/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdatamanager.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdatamanager.cpp.o -MF CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdatamanager.cpp.o.d -o CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdatamanager.cpp.o -c /home/lee/project-can/src/DES_Project3_IC/ICdatamanager.cpp
 
 CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdatamanager.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdatamanager.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/project-can/project-can/src/DES_Project3_IC/ICdatamanager.cpp > CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdatamanager.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/project-can/src/DES_Project3_IC/ICdatamanager.cpp > CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdatamanager.cpp.i
 
 CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdatamanager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdatamanager.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/project-can/project-can/src/DES_Project3_IC/ICdatamanager.cpp -o CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdatamanager.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/project-can/src/DES_Project3_IC/ICdatamanager.cpp -o CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdatamanager.cpp.s
 
-CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdataStubImpl.cpp.o: CMakeFiles/DES_Project3_IC.dir/flags.make
-CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdataStubImpl.cpp.o: /home/lee/project-can/project-can/src/DES_Project3_IC/ICdataStubImpl.cpp
-CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdataStubImpl.cpp.o: CMakeFiles/DES_Project3_IC.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lee/project-can/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdataStubImpl.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdataStubImpl.cpp.o -MF CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdataStubImpl.cpp.o.d -o CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdataStubImpl.cpp.o -c /home/lee/project-can/project-can/src/DES_Project3_IC/ICdataStubImpl.cpp
+CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPProxy.cpp.o: CMakeFiles/DES_Project3_IC.dir/flags.make
+CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPProxy.cpp.o: /home/lee/project-can/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPProxy.cpp
+CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPProxy.cpp.o: CMakeFiles/DES_Project3_IC.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lee/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPProxy.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPProxy.cpp.o -MF CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPProxy.cpp.o.d -o CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPProxy.cpp.o -c /home/lee/project-can/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPProxy.cpp
 
-CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdataStubImpl.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdataStubImpl.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/project-can/project-can/src/DES_Project3_IC/ICdataStubImpl.cpp > CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdataStubImpl.cpp.i
+CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPProxy.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPProxy.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/project-can/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPProxy.cpp > CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPProxy.cpp.i
 
-CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdataStubImpl.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdataStubImpl.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/project-can/project-can/src/DES_Project3_IC/ICdataStubImpl.cpp -o CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdataStubImpl.cpp.s
+CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPProxy.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPProxy.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/project-can/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPProxy.cpp -o CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPProxy.cpp.s
 
-CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Data_Register.cpp.o: CMakeFiles/DES_Project3_IC.dir/flags.make
-CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Data_Register.cpp.o: /home/lee/project-can/project-can/src/Can_Receiver/Can_Data_Register.cpp
-CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Data_Register.cpp.o: CMakeFiles/DES_Project3_IC.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lee/project-can/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Data_Register.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Data_Register.cpp.o -MF CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Data_Register.cpp.o.d -o CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Data_Register.cpp.o -c /home/lee/project-can/project-can/src/Can_Receiver/Can_Data_Register.cpp
+CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPDeployment.cpp.o: CMakeFiles/DES_Project3_IC.dir/flags.make
+CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPDeployment.cpp.o: /home/lee/project-can/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPDeployment.cpp
+CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPDeployment.cpp.o: CMakeFiles/DES_Project3_IC.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lee/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPDeployment.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPDeployment.cpp.o -MF CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPDeployment.cpp.o.d -o CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPDeployment.cpp.o -c /home/lee/project-can/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPDeployment.cpp
 
-CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Data_Register.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Data_Register.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/project-can/project-can/src/Can_Receiver/Can_Data_Register.cpp > CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Data_Register.cpp.i
+CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPDeployment.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPDeployment.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/project-can/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPDeployment.cpp > CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPDeployment.cpp.i
 
-CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Data_Register.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Data_Register.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/project-can/project-can/src/Can_Receiver/Can_Data_Register.cpp -o CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Data_Register.cpp.s
-
-CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Moving_Average_Filter.cpp.o: CMakeFiles/DES_Project3_IC.dir/flags.make
-CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Moving_Average_Filter.cpp.o: /home/lee/project-can/project-can/src/Can_Receiver/Can_Moving_Average_Filter.cpp
-CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Moving_Average_Filter.cpp.o: CMakeFiles/DES_Project3_IC.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lee/project-can/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Moving_Average_Filter.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Moving_Average_Filter.cpp.o -MF CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Moving_Average_Filter.cpp.o.d -o CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Moving_Average_Filter.cpp.o -c /home/lee/project-can/project-can/src/Can_Receiver/Can_Moving_Average_Filter.cpp
-
-CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Moving_Average_Filter.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Moving_Average_Filter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/project-can/project-can/src/Can_Receiver/Can_Moving_Average_Filter.cpp > CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Moving_Average_Filter.cpp.i
-
-CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Moving_Average_Filter.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Moving_Average_Filter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/project-can/project-can/src/Can_Receiver/Can_Moving_Average_Filter.cpp -o CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Moving_Average_Filter.cpp.s
-
-CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Receiver.cpp.o: CMakeFiles/DES_Project3_IC.dir/flags.make
-CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Receiver.cpp.o: /home/lee/project-can/project-can/src/Can_Receiver/Can_Receiver.cpp
-CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Receiver.cpp.o: CMakeFiles/DES_Project3_IC.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lee/project-can/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Receiver.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Receiver.cpp.o -MF CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Receiver.cpp.o.d -o CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Receiver.cpp.o -c /home/lee/project-can/project-can/src/Can_Receiver/Can_Receiver.cpp
-
-CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Receiver.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Receiver.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/project-can/project-can/src/Can_Receiver/Can_Receiver.cpp > CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Receiver.cpp.i
-
-CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Receiver.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Receiver.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/project-can/project-can/src/Can_Receiver/Can_Receiver.cpp -o CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Receiver.cpp.s
-
-CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManager.cpp.o: CMakeFiles/DES_Project3_IC.dir/flags.make
-CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManager.cpp.o: /home/lee/project-can/project-can/src/ServiceManager/ServiceManager.cpp
-CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManager.cpp.o: CMakeFiles/DES_Project3_IC.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lee/project-can/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManager.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManager.cpp.o -MF CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManager.cpp.o.d -o CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManager.cpp.o -c /home/lee/project-can/project-can/src/ServiceManager/ServiceManager.cpp
-
-CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManager.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManager.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/project-can/project-can/src/ServiceManager/ServiceManager.cpp > CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManager.cpp.i
-
-CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManager.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManager.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/project-can/project-can/src/ServiceManager/ServiceManager.cpp -o CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManager.cpp.s
-
-CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerSender.cpp.o: CMakeFiles/DES_Project3_IC.dir/flags.make
-CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerSender.cpp.o: /home/lee/project-can/project-can/src/ServiceManager/ServiceManagerSender.cpp
-CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerSender.cpp.o: CMakeFiles/DES_Project3_IC.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lee/project-can/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerSender.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerSender.cpp.o -MF CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerSender.cpp.o.d -o CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerSender.cpp.o -c /home/lee/project-can/project-can/src/ServiceManager/ServiceManagerSender.cpp
-
-CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerSender.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerSender.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/project-can/project-can/src/ServiceManager/ServiceManagerSender.cpp > CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerSender.cpp.i
-
-CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerSender.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerSender.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/project-can/project-can/src/ServiceManager/ServiceManagerSender.cpp -o CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerSender.cpp.s
-
-CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerStubImpl.cpp.o: CMakeFiles/DES_Project3_IC.dir/flags.make
-CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerStubImpl.cpp.o: /home/lee/project-can/project-can/src/ServiceManager/ServiceManagerStubImpl.cpp
-CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerStubImpl.cpp.o: CMakeFiles/DES_Project3_IC.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lee/project-can/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerStubImpl.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerStubImpl.cpp.o -MF CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerStubImpl.cpp.o.d -o CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerStubImpl.cpp.o -c /home/lee/project-can/project-can/src/ServiceManager/ServiceManagerStubImpl.cpp
-
-CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerStubImpl.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerStubImpl.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/project-can/project-can/src/ServiceManager/ServiceManagerStubImpl.cpp > CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerStubImpl.cpp.i
-
-CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerStubImpl.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerStubImpl.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/project-can/project-can/src/ServiceManager/ServiceManagerStubImpl.cpp -o CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerStubImpl.cpp.s
-
-CMakeFiles/DES_Project3_IC.dir/qrc_qml.cpp.o: CMakeFiles/DES_Project3_IC.dir/flags.make
-CMakeFiles/DES_Project3_IC.dir/qrc_qml.cpp.o: qrc_qml.cpp
-CMakeFiles/DES_Project3_IC.dir/qrc_qml.cpp.o: CMakeFiles/DES_Project3_IC.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lee/project-can/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/DES_Project3_IC.dir/qrc_qml.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DES_Project3_IC.dir/qrc_qml.cpp.o -MF CMakeFiles/DES_Project3_IC.dir/qrc_qml.cpp.o.d -o CMakeFiles/DES_Project3_IC.dir/qrc_qml.cpp.o -c /home/lee/project-can/project-can/build/qrc_qml.cpp
-
-CMakeFiles/DES_Project3_IC.dir/qrc_qml.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DES_Project3_IC.dir/qrc_qml.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/project-can/project-can/build/qrc_qml.cpp > CMakeFiles/DES_Project3_IC.dir/qrc_qml.cpp.i
-
-CMakeFiles/DES_Project3_IC.dir/qrc_qml.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DES_Project3_IC.dir/qrc_qml.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/project-can/project-can/build/qrc_qml.cpp -o CMakeFiles/DES_Project3_IC.dir/qrc_qml.cpp.s
+CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPDeployment.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPDeployment.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/project-can/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPDeployment.cpp -o CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPDeployment.cpp.s
 
 CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp.o: CMakeFiles/DES_Project3_IC.dir/flags.make
 CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp.o: DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp
 CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp.o: CMakeFiles/DES_Project3_IC.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lee/project-can/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp.o -MF CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp.o.d -o CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp.o -c /home/lee/project-can/project-can/build/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lee/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp.o -MF CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp.o.d -o CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp.o -c /home/lee/project-can/build/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp
 
 CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/project-can/project-can/build/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp > CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/project-can/build/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp > CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp.i
 
 CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/project-can/project-can/build/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp -o CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/project-can/build/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp -o CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp.s
 
 # Object files for target DES_Project3_IC
 DES_Project3_IC_OBJECTS = \
 "CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/mocs_compilation.cpp.o" \
-"CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/main.cpp.o" \
+"CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/IC_main.cpp.o" \
 "CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdatamanager.cpp.o" \
-"CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdataStubImpl.cpp.o" \
-"CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Data_Register.cpp.o" \
-"CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Moving_Average_Filter.cpp.o" \
-"CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Receiver.cpp.o" \
-"CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManager.cpp.o" \
-"CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerSender.cpp.o" \
-"CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerStubImpl.cpp.o" \
-"CMakeFiles/DES_Project3_IC.dir/qrc_qml.cpp.o" \
+"CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPProxy.cpp.o" \
+"CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPDeployment.cpp.o" \
 "CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp.o"
 
 # External object files for target DES_Project3_IC
 DES_Project3_IC_EXTERNAL_OBJECTS =
 
 DES_Project3_IC: CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/mocs_compilation.cpp.o
-DES_Project3_IC: CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/main.cpp.o
+DES_Project3_IC: CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/IC_main.cpp.o
 DES_Project3_IC: CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdatamanager.cpp.o
-DES_Project3_IC: CMakeFiles/DES_Project3_IC.dir/src/DES_Project3_IC/ICdataStubImpl.cpp.o
-DES_Project3_IC: CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Data_Register.cpp.o
-DES_Project3_IC: CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Moving_Average_Filter.cpp.o
-DES_Project3_IC: CMakeFiles/DES_Project3_IC.dir/src/Can_Receiver/Can_Receiver.cpp.o
-DES_Project3_IC: CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManager.cpp.o
-DES_Project3_IC: CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerSender.cpp.o
-DES_Project3_IC: CMakeFiles/DES_Project3_IC.dir/src/ServiceManager/ServiceManagerStubImpl.cpp.o
-DES_Project3_IC: CMakeFiles/DES_Project3_IC.dir/qrc_qml.cpp.o
+DES_Project3_IC: CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPProxy.cpp.o
+DES_Project3_IC: CMakeFiles/DES_Project3_IC.dir/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPDeployment.cpp.o
 DES_Project3_IC: CMakeFiles/DES_Project3_IC.dir/DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp.o
 DES_Project3_IC: CMakeFiles/DES_Project3_IC.dir/build.make
 DES_Project3_IC: /home/lee/Qt/5.15.15/gcc_64/lib/libQt5Quick.so.5.15.15
@@ -298,7 +201,7 @@ DES_Project3_IC: /home/lee/Qt/5.15.15/gcc_64/lib/libQt5Network.so.5.15.15
 DES_Project3_IC: /home/lee/Qt/5.15.15/gcc_64/lib/libQt5Gui.so.5.15.15
 DES_Project3_IC: /home/lee/Qt/5.15.15/gcc_64/lib/libQt5Core.so.5.15.15
 DES_Project3_IC: CMakeFiles/DES_Project3_IC.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/lee/project-can/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable DES_Project3_IC"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/lee/project-can/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable DES_Project3_IC"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/DES_Project3_IC.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -310,6 +213,6 @@ CMakeFiles/DES_Project3_IC.dir/clean:
 .PHONY : CMakeFiles/DES_Project3_IC.dir/clean
 
 CMakeFiles/DES_Project3_IC.dir/depend: DES_Project3_IC_autogen/FHKJJSX2OI/qrc_qml.cpp
-	cd /home/lee/project-can/project-can/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lee/project-can/project-can /home/lee/project-can/project-can /home/lee/project-can/project-can/build /home/lee/project-can/project-can/build /home/lee/project-can/project-can/build/CMakeFiles/DES_Project3_IC.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/lee/project-can/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lee/project-can /home/lee/project-can /home/lee/project-can/build /home/lee/project-can/build /home/lee/project-can/build/CMakeFiles/DES_Project3_IC.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/DES_Project3_IC.dir/depend
 

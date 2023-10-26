@@ -4,23 +4,53 @@ Item {
     width: parent.width
     height: parent.height * 2 / 3
 
-    property real speedValue: 60  // Example speed value
+    property int rpm : 0
+    property int speed : 0
+    property int displayValue : instrumentCluster.speed  
+    property string displayUnit: "speed"  // Starts with speed
 
-    Text {
-        id: speedText
-        anchors.centerIn: parent
-        font { family: "Kanit"; pixelSize: 96; bold: true }
-        text: speedValue
-        color: "black"
+    function toggleDisplay() {
+        if (displayUnit === "speed") {
+            displayUnit = "rpm";
+            displayValue = instrumentCluster.rpm;
+        } else {
+            displayUnit = "speed";
+            displayValue = instrumentCluster.speed;
+        }
+    }
+
+    Connections {
+        target: instrumentCluster
+        onSpeedChanged: {
+            if (displayUnit === "speed") {
+                displayValue = instrumentCluster.speed;
+            }
+        }
+        onRpmChanged: {
+            if (displayUnit === "rpm") {
+                displayValue = instrumentCluster.rpm;
+            }
+        }
     }
 
     Text {
-        id: speedUnit
-        anchors { top: speedText.bottom; horizontalCenter: speedText.horizontalCenter }
+        id: mainValueText
+        anchors.centerIn: parent
+        font { family: "Kanit"; pixelSize: 96; bold: true }
+        text: displayValue
+        color: "black"
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: toggleDisplay()
+        }
+    }
+
+    Text {
+        id: unitText
+        anchors { top: mainValueText.bottom; horizontalCenter: mainValueText.horizontalCenter }
         font { family: "Kanit"; pixelSize: 24; bold: true }
-        text: "km/h"
+        text: displayUnit
         color: "black"
     }
 }
-
-

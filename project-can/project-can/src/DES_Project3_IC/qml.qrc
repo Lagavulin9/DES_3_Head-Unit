@@ -5,7 +5,6 @@
         <file>images/car-highlights.png</file>
         <file>images/CharliePuth.png</file>
         <file>images/LPHalf.png</file>
-        <file>main.cpp</file>
         <file>qml.qrc</file>
         <file>qml/MediaLyrics.qml</file>
         <file>qml/Background.qml</file>

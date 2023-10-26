@@ -23,8 +23,8 @@
 #define HAS_DEFINED_COMMONAPI_INTERNAL_COMPILATION_HERE
 #endif
 
-#include <vector>
 
+#include <mutex>
 
 #include <CommonAPI/Stub.hpp>
 
@@ -46,16 +46,106 @@ class ServiceManagerStubAdapter
     : public virtual CommonAPI::StubAdapter,
       public virtual ServiceManager {
  public:
+    ///Notifies all remote listeners about a change of value of the attribute speed.
+    virtual void fireSpeedAttributeChanged(const uint32_t &speed) = 0;
+    ///Notifies all remote listeners about a change of value of the attribute rpm.
+    virtual void fireRpmAttributeChanged(const uint32_t &rpm) = 0;
+    ///Notifies all remote listeners about a change of value of the attribute indicator.
+    virtual void fireIndicatorAttributeChanged(const std::string &indicator) = 0;
+    ///Notifies all remote listeners about a change of value of the attribute gear.
+    virtual void fireGearAttributeChanged(const std::string &gear) = 0;
+    ///Notifies all remote listeners about a change of value of the attribute battery.
+    virtual void fireBatteryAttributeChanged(const uint8_t &battery) = 0;
+    ///Notifies all remote listeners about a change of value of the attribute voltage.
+    virtual void fireVoltageAttributeChanged(const float &voltage) = 0;
+    ///Notifies all remote listeners about a change of value of the attribute current.
+    virtual void fireCurrentAttributeChanged(const float &current) = 0;
+    ///Notifies all remote listeners about a change of value of the attribute powerConsumption.
+    virtual void firePowerConsumptionAttributeChanged(const uint8_t &powerConsumption) = 0;
+    ///Notifies all remote listeners about a change of value of the attribute gearSelection.
+    virtual void fireGearSelectionAttributeChanged(const std::string &gearSelection) = 0;
 
 
     virtual void deactivateManagedInstances() = 0;
 
+    void lockSpeedAttribute(bool _lockAccess) {
+        if (_lockAccess) {
+            speedMutex_.lock();
+        } else {
+            speedMutex_.unlock();
+        }
+    }
+    void lockRpmAttribute(bool _lockAccess) {
+        if (_lockAccess) {
+            rpmMutex_.lock();
+        } else {
+            rpmMutex_.unlock();
+        }
+    }
+    void lockIndicatorAttribute(bool _lockAccess) {
+        if (_lockAccess) {
+            indicatorMutex_.lock();
+        } else {
+            indicatorMutex_.unlock();
+        }
+    }
+    void lockGearAttribute(bool _lockAccess) {
+        if (_lockAccess) {
+            gearMutex_.lock();
+        } else {
+            gearMutex_.unlock();
+        }
+    }
+    void lockBatteryAttribute(bool _lockAccess) {
+        if (_lockAccess) {
+            batteryMutex_.lock();
+        } else {
+            batteryMutex_.unlock();
+        }
+    }
+    void lockVoltageAttribute(bool _lockAccess) {
+        if (_lockAccess) {
+            voltageMutex_.lock();
+        } else {
+            voltageMutex_.unlock();
+        }
+    }
+    void lockCurrentAttribute(bool _lockAccess) {
+        if (_lockAccess) {
+            currentMutex_.lock();
+        } else {
+            currentMutex_.unlock();
+        }
+    }
+    void lockPowerConsumptionAttribute(bool _lockAccess) {
+        if (_lockAccess) {
+            powerConsumptionMutex_.lock();
+        } else {
+            powerConsumptionMutex_.unlock();
+        }
+    }
+    void lockGearSelectionAttribute(bool _lockAccess) {
+        if (_lockAccess) {
+            gearSelectionMutex_.lock();
+        } else {
+            gearSelectionMutex_.unlock();
+        }
+    }
 
 protected:
     /**
      * Defines properties for storing the ClientIds of clients / proxies that have
      * subscribed to the selective broadcasts
      */
+    std::recursive_mutex speedMutex_;
+    std::recursive_mutex rpmMutex_;
+    std::recursive_mutex indicatorMutex_;
+    std::recursive_mutex gearMutex_;
+    std::recursive_mutex batteryMutex_;
+    std::recursive_mutex voltageMutex_;
+    std::recursive_mutex currentMutex_;
+    std::recursive_mutex powerConsumptionMutex_;
+    std::recursive_mutex gearSelectionMutex_;
 
 };
 
@@ -76,6 +166,42 @@ class ServiceManagerStubRemoteEvent
 public:
     virtual ~ServiceManagerStubRemoteEvent() { }
 
+    /// Verification callback for remote set requests on the attribute speed
+    virtual bool onRemoteSetSpeedAttribute(const std::shared_ptr<CommonAPI::ClientId> _client, uint32_t _value) = 0;
+    /// Action callback for remote set requests on the attribute speed
+    virtual void onRemoteSpeedAttributeChanged() = 0;
+    /// Verification callback for remote set requests on the attribute rpm
+    virtual bool onRemoteSetRpmAttribute(const std::shared_ptr<CommonAPI::ClientId> _client, uint32_t _value) = 0;
+    /// Action callback for remote set requests on the attribute rpm
+    virtual void onRemoteRpmAttributeChanged() = 0;
+    /// Verification callback for remote set requests on the attribute indicator
+    virtual bool onRemoteSetIndicatorAttribute(const std::shared_ptr<CommonAPI::ClientId> _client, std::string _value) = 0;
+    /// Action callback for remote set requests on the attribute indicator
+    virtual void onRemoteIndicatorAttributeChanged() = 0;
+    /// Verification callback for remote set requests on the attribute gear
+    virtual bool onRemoteSetGearAttribute(const std::shared_ptr<CommonAPI::ClientId> _client, std::string _value) = 0;
+    /// Action callback for remote set requests on the attribute gear
+    virtual void onRemoteGearAttributeChanged() = 0;
+    /// Verification callback for remote set requests on the attribute battery
+    virtual bool onRemoteSetBatteryAttribute(const std::shared_ptr<CommonAPI::ClientId> _client, uint8_t _value) = 0;
+    /// Action callback for remote set requests on the attribute battery
+    virtual void onRemoteBatteryAttributeChanged() = 0;
+    /// Verification callback for remote set requests on the attribute voltage
+    virtual bool onRemoteSetVoltageAttribute(const std::shared_ptr<CommonAPI::ClientId> _client, float _value) = 0;
+    /// Action callback for remote set requests on the attribute voltage
+    virtual void onRemoteVoltageAttributeChanged() = 0;
+    /// Verification callback for remote set requests on the attribute current
+    virtual bool onRemoteSetCurrentAttribute(const std::shared_ptr<CommonAPI::ClientId> _client, float _value) = 0;
+    /// Action callback for remote set requests on the attribute current
+    virtual void onRemoteCurrentAttributeChanged() = 0;
+    /// Verification callback for remote set requests on the attribute powerConsumption
+    virtual bool onRemoteSetPowerConsumptionAttribute(const std::shared_ptr<CommonAPI::ClientId> _client, uint8_t _value) = 0;
+    /// Action callback for remote set requests on the attribute powerConsumption
+    virtual void onRemotePowerConsumptionAttributeChanged() = 0;
+    /// Verification callback for remote set requests on the attribute gearSelection
+    virtual bool onRemoteSetGearSelectionAttribute(const std::shared_ptr<CommonAPI::ClientId> _client, std::string _value) = 0;
+    /// Action callback for remote set requests on the attribute gearSelection
+    virtual void onRemoteGearSelectionAttributeChanged() = 0;
 };
 
 /**
@@ -88,38 +214,131 @@ class ServiceManagerStub
     : public virtual CommonAPI::Stub<ServiceManagerStubAdapter, ServiceManagerStubRemoteEvent>
 {
 public:
-    typedef std::function<void (std::string _message)> setRpmReply_t;
-    typedef std::function<void (std::string _message)> setSpeedReply_t;
-    typedef std::function<void (std::string _message)> setGearReply_t;
-    typedef std::function<void (std::string _message)> setIndicatorReply_t;
-    typedef std::function<void (std::string _message)> setCurrentReply_t;
-    typedef std::function<void (std::string _message)> setPowerConsumptionReply_t;
-    typedef std::function<void (std::string _message)> setVoltageReply_t;
-    typedef std::function<void ()> setBatteryLevelReply_t;
 
     virtual ~ServiceManagerStub() {}
     void lockInterfaceVersionAttribute(bool _lockAccess) { static_cast<void>(_lockAccess); }
     bool hasElement(const uint32_t _id) const {
-        return (_id < 8);
+        return (_id < 9);
     }
     virtual const CommonAPI::Version& getInterfaceVersion(std::shared_ptr<CommonAPI::ClientId> _client) = 0;
 
-    /// This is the method that will be called on remote calls on the method setRpm.
-    virtual void setRpm(const std::shared_ptr<CommonAPI::ClientId> _client, uint32_t _filteredRpm, setRpmReply_t _reply) = 0;
-    /// This is the method that will be called on remote calls on the method setSpeed.
-    virtual void setSpeed(const std::shared_ptr<CommonAPI::ClientId> _client, uint32_t _filteredSpeed, setSpeedReply_t _reply) = 0;
-    /// This is the method that will be called on remote calls on the method setGear.
-    virtual void setGear(const std::shared_ptr<CommonAPI::ClientId> _client, std::string _currentGear, setGearReply_t _reply) = 0;
-    /// This is the method that will be called on remote calls on the method setIndicator.
-    virtual void setIndicator(const std::shared_ptr<CommonAPI::ClientId> _client, std::string _indicator, setIndicatorReply_t _reply) = 0;
-    /// This is the method that will be called on remote calls on the method setCurrent.
-    virtual void setCurrent(const std::shared_ptr<CommonAPI::ClientId> _client, float _current, setCurrentReply_t _reply) = 0;
-    /// This is the method that will be called on remote calls on the method setPowerConsumption.
-    virtual void setPowerConsumption(const std::shared_ptr<CommonAPI::ClientId> _client, uint8_t _powerconsumption, setPowerConsumptionReply_t _reply) = 0;
-    /// This is the method that will be called on remote calls on the method setVoltage.
-    virtual void setVoltage(const std::shared_ptr<CommonAPI::ClientId> _client, float _voltage, setVoltageReply_t _reply) = 0;
-    /// This is the method that will be called on remote calls on the method setBatteryLevel.
-    virtual void setBatteryLevel(const std::shared_ptr<CommonAPI::ClientId> _client, uint8_t _batterylevel, setBatteryLevelReply_t _reply) = 0;
+    /// Provides getter access to the attribute speed
+    virtual const uint32_t &getSpeedAttribute(const std::shared_ptr<CommonAPI::ClientId> _client) = 0;
+    /// sets attribute with the given value and propagates it to the adapter
+    virtual void fireSpeedAttributeChanged(uint32_t _value) {
+    auto stubAdapter = CommonAPI::Stub<ServiceManagerStubAdapter, ServiceManagerStubRemoteEvent>::stubAdapter_.lock();
+    if (stubAdapter)
+        stubAdapter->fireSpeedAttributeChanged(_value);
+    }
+    void lockSpeedAttribute(bool _lockAccess) {
+        auto stubAdapter = CommonAPI::Stub<ServiceManagerStubAdapter, ServiceManagerStubRemoteEvent>::stubAdapter_.lock();
+        if (stubAdapter)
+            stubAdapter->lockSpeedAttribute(_lockAccess);
+    }
+    /// Provides getter access to the attribute rpm
+    virtual const uint32_t &getRpmAttribute(const std::shared_ptr<CommonAPI::ClientId> _client) = 0;
+    /// sets attribute with the given value and propagates it to the adapter
+    virtual void fireRpmAttributeChanged(uint32_t _value) {
+    auto stubAdapter = CommonAPI::Stub<ServiceManagerStubAdapter, ServiceManagerStubRemoteEvent>::stubAdapter_.lock();
+    if (stubAdapter)
+        stubAdapter->fireRpmAttributeChanged(_value);
+    }
+    void lockRpmAttribute(bool _lockAccess) {
+        auto stubAdapter = CommonAPI::Stub<ServiceManagerStubAdapter, ServiceManagerStubRemoteEvent>::stubAdapter_.lock();
+        if (stubAdapter)
+            stubAdapter->lockRpmAttribute(_lockAccess);
+    }
+    /// Provides getter access to the attribute indicator
+    virtual const std::string &getIndicatorAttribute(const std::shared_ptr<CommonAPI::ClientId> _client) = 0;
+    /// sets attribute with the given value and propagates it to the adapter
+    virtual void fireIndicatorAttributeChanged(std::string _value) {
+    auto stubAdapter = CommonAPI::Stub<ServiceManagerStubAdapter, ServiceManagerStubRemoteEvent>::stubAdapter_.lock();
+    if (stubAdapter)
+        stubAdapter->fireIndicatorAttributeChanged(_value);
+    }
+    void lockIndicatorAttribute(bool _lockAccess) {
+        auto stubAdapter = CommonAPI::Stub<ServiceManagerStubAdapter, ServiceManagerStubRemoteEvent>::stubAdapter_.lock();
+        if (stubAdapter)
+            stubAdapter->lockIndicatorAttribute(_lockAccess);
+    }
+    /// Provides getter access to the attribute gear
+    virtual const std::string &getGearAttribute(const std::shared_ptr<CommonAPI::ClientId> _client) = 0;
+    /// sets attribute with the given value and propagates it to the adapter
+    virtual void fireGearAttributeChanged(std::string _value) {
+    auto stubAdapter = CommonAPI::Stub<ServiceManagerStubAdapter, ServiceManagerStubRemoteEvent>::stubAdapter_.lock();
+    if (stubAdapter)
+        stubAdapter->fireGearAttributeChanged(_value);
+    }
+    void lockGearAttribute(bool _lockAccess) {
+        auto stubAdapter = CommonAPI::Stub<ServiceManagerStubAdapter, ServiceManagerStubRemoteEvent>::stubAdapter_.lock();
+        if (stubAdapter)
+            stubAdapter->lockGearAttribute(_lockAccess);
+    }
+    /// Provides getter access to the attribute battery
+    virtual const uint8_t &getBatteryAttribute(const std::shared_ptr<CommonAPI::ClientId> _client) = 0;
+    /// sets attribute with the given value and propagates it to the adapter
+    virtual void fireBatteryAttributeChanged(uint8_t _value) {
+    auto stubAdapter = CommonAPI::Stub<ServiceManagerStubAdapter, ServiceManagerStubRemoteEvent>::stubAdapter_.lock();
+    if (stubAdapter)
+        stubAdapter->fireBatteryAttributeChanged(_value);
+    }
+    void lockBatteryAttribute(bool _lockAccess) {
+        auto stubAdapter = CommonAPI::Stub<ServiceManagerStubAdapter, ServiceManagerStubRemoteEvent>::stubAdapter_.lock();
+        if (stubAdapter)
+            stubAdapter->lockBatteryAttribute(_lockAccess);
+    }
+    /// Provides getter access to the attribute voltage
+    virtual const float &getVoltageAttribute(const std::shared_ptr<CommonAPI::ClientId> _client) = 0;
+    /// sets attribute with the given value and propagates it to the adapter
+    virtual void fireVoltageAttributeChanged(float _value) {
+    auto stubAdapter = CommonAPI::Stub<ServiceManagerStubAdapter, ServiceManagerStubRemoteEvent>::stubAdapter_.lock();
+    if (stubAdapter)
+        stubAdapter->fireVoltageAttributeChanged(_value);
+    }
+    void lockVoltageAttribute(bool _lockAccess) {
+        auto stubAdapter = CommonAPI::Stub<ServiceManagerStubAdapter, ServiceManagerStubRemoteEvent>::stubAdapter_.lock();
+        if (stubAdapter)
+            stubAdapter->lockVoltageAttribute(_lockAccess);
+    }
+    /// Provides getter access to the attribute current
+    virtual const float &getCurrentAttribute(const std::shared_ptr<CommonAPI::ClientId> _client) = 0;
+    /// sets attribute with the given value and propagates it to the adapter
+    virtual void fireCurrentAttributeChanged(float _value) {
+    auto stubAdapter = CommonAPI::Stub<ServiceManagerStubAdapter, ServiceManagerStubRemoteEvent>::stubAdapter_.lock();
+    if (stubAdapter)
+        stubAdapter->fireCurrentAttributeChanged(_value);
+    }
+    void lockCurrentAttribute(bool _lockAccess) {
+        auto stubAdapter = CommonAPI::Stub<ServiceManagerStubAdapter, ServiceManagerStubRemoteEvent>::stubAdapter_.lock();
+        if (stubAdapter)
+            stubAdapter->lockCurrentAttribute(_lockAccess);
+    }
+    /// Provides getter access to the attribute powerConsumption
+    virtual const uint8_t &getPowerConsumptionAttribute(const std::shared_ptr<CommonAPI::ClientId> _client) = 0;
+    /// sets attribute with the given value and propagates it to the adapter
+    virtual void firePowerConsumptionAttributeChanged(uint8_t _value) {
+    auto stubAdapter = CommonAPI::Stub<ServiceManagerStubAdapter, ServiceManagerStubRemoteEvent>::stubAdapter_.lock();
+    if (stubAdapter)
+        stubAdapter->firePowerConsumptionAttributeChanged(_value);
+    }
+    void lockPowerConsumptionAttribute(bool _lockAccess) {
+        auto stubAdapter = CommonAPI::Stub<ServiceManagerStubAdapter, ServiceManagerStubRemoteEvent>::stubAdapter_.lock();
+        if (stubAdapter)
+            stubAdapter->lockPowerConsumptionAttribute(_lockAccess);
+    }
+    /// Provides getter access to the attribute gearSelection
+    virtual const std::string &getGearSelectionAttribute(const std::shared_ptr<CommonAPI::ClientId> _client) = 0;
+    /// sets attribute with the given value and propagates it to the adapter
+    virtual void fireGearSelectionAttributeChanged(std::string _value) {
+    auto stubAdapter = CommonAPI::Stub<ServiceManagerStubAdapter, ServiceManagerStubRemoteEvent>::stubAdapter_.lock();
+    if (stubAdapter)
+        stubAdapter->fireGearSelectionAttributeChanged(_value);
+    }
+    void lockGearSelectionAttribute(bool _lockAccess) {
+        auto stubAdapter = CommonAPI::Stub<ServiceManagerStubAdapter, ServiceManagerStubRemoteEvent>::stubAdapter_.lock();
+        if (stubAdapter)
+            stubAdapter->lockGearSelectionAttribute(_lockAccess);
+    }
 
 
     using CommonAPI::Stub<ServiceManagerStubAdapter, ServiceManagerStubRemoteEvent>::initStubAdapter;

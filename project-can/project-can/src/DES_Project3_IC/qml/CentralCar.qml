@@ -9,7 +9,7 @@ Item {
 
     Image {
         id: mainCarImg
-        source: "images/bg-mask.png"
+        source: "/images/bg-mask.png"
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenterOffset: 89
         anchors.horizontalCenterOffset: 5
@@ -23,12 +23,12 @@ Item {
             y: -18
             width: 383
             height: 226
-            source: "images/car-highlights.png"
+            source: "/images/car-highlights.png"
         }
 
         Image {
             id: mainCarHighlightsSurrond
-            source: "images/car-highlights.png"
+            source: "/images/car-highlights.png"
             x: -255
             y: -218
             width: 809

@@ -4,7 +4,7 @@ Item {
     width: parent.width
     height: parent.height / 3
 
-    property int batteryValue: 100
+    property int battery: 0
 
     Rectangle {  // Background color
         anchors.fill: parent
@@ -15,7 +15,7 @@ Item {
         id: batteryBar
         x: 127
         y: 50
-        width: parent.width * (batteryValue / 100) / 3
+        width: parent.width * (instrumentCluster.battery / 100) / 3
         height: 20
         color: "green"
 
@@ -30,7 +30,7 @@ Item {
         font.family: "Kanit"
         font.pixelSize: 16
         font.bold: true
-        text: batteryValue + "%"
+        text: instrumentCluster.battery + "%"
     }
 
     Image {
@@ -38,6 +38,6 @@ Item {
         y: 46
         width: 23
         height: 24
-        source: "images/elec_car.png"
+        source: "/images/elec_car.png"
     }
 }

@@ -1,67 +1,16 @@
 {
-	"BUILD_DIR" : "/home/lee/project-can/project-can/build/DES_Project3_IC_autogen",
-	"CMAKE_BINARY_DIR" : "/home/lee/project-can/project-can/build",
-	"CMAKE_CURRENT_BINARY_DIR" : "/home/lee/project-can/project-can/build",
-	"CMAKE_CURRENT_SOURCE_DIR" : "/home/lee/project-can/project-can",
+	"BUILD_DIR" : "/home/lee/project-can/build/DES_Project3_IC_autogen",
+	"CMAKE_BINARY_DIR" : "/home/lee/project-can/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/lee/project-can/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/lee/project-can",
 	"CMAKE_EXECUTABLE" : "/opt/cmake-3.27.1-linux-x86_64/bin/cmake",
 	"CMAKE_LIST_FILES" : 
 	[
-		"/home/lee/project-can/project-can/CMakeLists.txt",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeDetermineSystem.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeSystem.cmake.in",
-		"/home/lee/project-can/project-can/build/CMakeFiles/3.27.1/CMakeSystem.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeUnixFindMake.cmake",
+		"/home/lee/project-can/CMakeLists.txt",
+		"/home/lee/project-can/build/CMakeFiles/3.27.1/CMakeSystem.cmake",
 		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake",
 		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeDetermineCXXCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeDetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Platform/Linux-Determine-CXX.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeCompilerIdDetection.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/ADSP-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/ARMCC-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/ARMClang-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/AppleClang-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/Clang-DetermineCompilerInternal.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/Borland-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/Clang-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/Clang-DetermineCompilerInternal.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/Cray-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/Embarcadero-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/Fujitsu-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/GHS-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/HP-CXX-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/IAR-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/Intel-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/MSVC-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/NVHPC-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/NVIDIA-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/PGI-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/PathScale-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/SCO-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/TI-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/Tasking-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/Watcom-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/XL-CXX-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeFindBinUtils.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Compiler/GNU-FindBinUtils.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeCXXCompiler.cmake.in",
-		"/home/lee/project-can/project-can/build/CMakeFiles/3.27.1/CMakeCXXCompiler.cmake",
+		"/home/lee/project-can/build/CMakeFiles/3.27.1/CMakeCXXCompiler.cmake",
 		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake",
 		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake",
 		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake",
@@ -75,18 +24,6 @@
 		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake",
 		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake",
 		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeTestCXXCompiler.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeTestCompilerCommon.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeParseImplicitIncludeInfo.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeParseImplicitLinkInfo.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeParseLibraryArchitecture.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeTestCompilerCommon.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeCXXCompilerABI.cpp",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeDetermineCompileFeatures.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/Internal/FeatureTesting.cmake",
-		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeCXXCompiler.cmake.in",
-		"/home/lee/project-can/project-can/build/CMakeFiles/3.27.1/CMakeCXXCompiler.cmake",
 		"/home/lee/Qt/5.15.15/gcc_64/lib/cmake/Qt5/Qt5ConfigVersion.cmake",
 		"/home/lee/Qt/5.15.15/gcc_64/lib/cmake/Qt5/Qt5Config.cmake",
 		"/home/lee/Qt/5.15.15/gcc_64/lib/cmake/Qt5/Qt5ConfigVersion.cmake",
@@ -159,59 +96,36 @@
 		"/home/lee/Qt/5.15.15/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QXcbIntegrationPlugin.cmake",
 		"/home/lee/Qt/5.15.15/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QXdgDesktopPortalThemePlugin.cmake",
 		"/home/lee/Qt/5.15.15/gcc_64/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake",
-		"/home/lee/project-can/project-can/src/DES_Project3_IC/qml.qrc"
+		"/home/lee/project-can/src/DES_Project3_IC/qml.qrc",
+		"/home/lee/project-can/src/DES_Project3_IC/qml.qrc"
 	],
-	"CMAKE_SOURCE_DIR" : "/home/lee/project-can/project-can",
+	"CMAKE_SOURCE_DIR" : "/home/lee/project-can",
 	"DEP_FILE" : "",
 	"DEP_FILE_RULE_NAME" : "",
 	"HEADERS" : 
 	[
 		[
-			"/home/lee/project-can/project-can/src/Can_Receiver/Can_Data_Register.hpp",
+			"/home/lee/project-can/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPDeployment.hpp",
 			"MU",
-			"LJUE5MCEQR/moc_Can_Data_Register.cpp",
+			"HE7IEBFPKU/moc_ServiceManagerSomeIPDeployment.cpp",
 			null
 		],
 		[
-			"/home/lee/project-can/project-can/src/Can_Receiver/Can_Moving_Average_Filter.hpp",
+			"/home/lee/project-can/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPProxy.hpp",
 			"MU",
-			"LJUE5MCEQR/moc_Can_Moving_Average_Filter.cpp",
+			"HE7IEBFPKU/moc_ServiceManagerSomeIPProxy.cpp",
 			null
 		],
 		[
-			"/home/lee/project-can/project-can/src/Can_Receiver/Can_Receiver.hpp",
-			"MU",
-			"LJUE5MCEQR/moc_Can_Receiver.cpp",
-			null
-		],
-		[
-			"/home/lee/project-can/project-can/src/DES_Project3_IC/ICdataStubImpl.h",
-			"MU",
-			"FHKJJSX2OI/moc_ICdataStubImpl.cpp",
-			null
-		],
-		[
-			"/home/lee/project-can/project-can/src/DES_Project3_IC/ICdatamanager.h",
+			"/home/lee/project-can/src/DES_Project3_IC/ICdatamanager.h",
 			"MU",
 			"FHKJJSX2OI/moc_ICdatamanager.cpp",
-			null
-		],
-		[
-			"/home/lee/project-can/project-can/src/ServiceManager/ServiceManagerSender.hpp",
-			"MU",
-			"LLIWRUY54Z/moc_ServiceManagerSender.cpp",
-			null
-		],
-		[
-			"/home/lee/project-can/project-can/src/ServiceManager/ServiceManagerStubImpl.hpp",
-			"MU",
-			"LLIWRUY54Z/moc_ServiceManagerStubImpl.cpp",
 			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "/home/lee/project-can/project-can/build/DES_Project3_IC_autogen/include",
-	"MOC_COMPILATION_FILE" : "/home/lee/project-can/project-can/build/DES_Project3_IC_autogen/mocs_compilation.cpp",
+	"INCLUDE_DIR" : "/home/lee/project-can/build/DES_Project3_IC_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/lee/project-can/build/DES_Project3_IC_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : 
 	[
 		"QT_CORE_LIB",
@@ -231,12 +145,12 @@
 	],
 	"MOC_INCLUDES" : 
 	[
-		"/home/lee/project-can/project-can/build",
-		"/home/lee/project-can/project-can",
-		"/home/lee/project-can/build-commonapi/capicxx-core-runtime/include",
-		"/home/lee/project-can/build-commonapi/capicxx-someip-runtime/include",
-		"/home/lee/project-can/build-commonapi/vsomeip/interface",
-		"/home/lee/project-can/project-can/src-gen-manager",
+		"/home/lee/project-can/build",
+		"/home/lee/project-can",
+		"/home/lee/build-commonapi/capicxx-core-runtime/include",
+		"/home/lee/build-commonapi/capicxx-someip-runtime/include",
+		"/home/lee/build-commonapi/vsomeip/interface",
+		"/home/lee/project-can/src-gen-manager",
 		"/home/lee/Qt/5.15.15/gcc_64/include",
 		"/home/lee/Qt/5.15.15/gcc_64/include/QtCore",
 		"/home/lee/Qt/5.15.15/gcc_64/mkspecs/linux-g++",
@@ -265,68 +179,51 @@
 		"-c",
 		"/opt/cmake-3.27.1-linux-x86_64/share/cmake-3.27/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "/home/lee/project-can/project-can/build/DES_Project3_IC_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "/home/lee/project-can/build/DES_Project3_IC_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
-	"MOC_SKIP" : [ "/home/lee/project-can/project-can/build/qrc_qml.cpp" ],
+	"MOC_SKIP" : 
+	[
+		"/home/lee/project-can/build/Can_Receiver_Lib_autogen/mocs_compilation.cpp",
+		"/home/lee/project-can/build/Can_Receiver_autogen/mocs_compilation.cpp",
+		"/home/lee/project-can/build/ServiceManagerLib_autogen/mocs_compilation.cpp",
+		"/home/lee/project-can/build/ServiceManager_autogen/mocs_compilation.cpp"
+	],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 4,
-	"PARSE_CACHE_FILE" : "/home/lee/project-can/project-can/build/CMakeFiles/DES_Project3_IC_autogen.dir/ParseCache.txt",
+	"PARSE_CACHE_FILE" : "/home/lee/project-can/build/CMakeFiles/DES_Project3_IC_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/home/lee/Qt/5.15.15/gcc_64/bin/moc",
 	"QT_UIC_EXECUTABLE" : "",
 	"QT_VERSION_MAJOR" : 5,
 	"QT_VERSION_MINOR" : 15,
-	"SETTINGS_FILE" : "/home/lee/project-can/project-can/build/CMakeFiles/DES_Project3_IC_autogen.dir/AutogenUsed.txt",
+	"SETTINGS_FILE" : "/home/lee/project-can/build/CMakeFiles/DES_Project3_IC_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
 		[
-			"/home/lee/project-can/project-can/src/Can_Receiver/Can_Data_Register.cpp",
+			"/home/lee/project-can/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPDeployment.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/lee/project-can/project-can/src/Can_Receiver/Can_Moving_Average_Filter.cpp",
+			"/home/lee/project-can/src-gen-manager/v1/DES_Project3/ServiceManagerSomeIPProxy.cpp",
 			"MU",
 			null
 		],
+		[ "/home/lee/project-can/src/DES_Project3_IC/IC_main.cpp", "MU", null ],
 		[
-			"/home/lee/project-can/project-can/src/Can_Receiver/Can_Receiver.cpp",
-			"MU",
-			null
-		],
-		[
-			"/home/lee/project-can/project-can/src/DES_Project3_IC/ICdataStubImpl.cpp",
-			"MU",
-			null
-		],
-		[
-			"/home/lee/project-can/project-can/src/DES_Project3_IC/ICdatamanager.cpp",
-			"MU",
-			null
-		],
-		[
-			"/home/lee/project-can/project-can/src/DES_Project3_IC/main.cpp",
-			"MU",
-			null
-		],
-		[
-			"/home/lee/project-can/project-can/src/ServiceManager/ServiceManager.cpp",
-			"MU",
-			null
-		],
-		[
-			"/home/lee/project-can/project-can/src/ServiceManager/ServiceManagerSender.cpp",
-			"MU",
-			null
-		],
-		[
-			"/home/lee/project-can/project-can/src/ServiceManager/ServiceManagerStubImpl.cpp",
+			"/home/lee/project-can/src/DES_Project3_IC/ICdatamanager.cpp",
 			"MU",
 			null
 		]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],
-	"UIC_SKIP" : [ "/home/lee/project-can/project-can/build/qrc_qml.cpp" ],
+	"UIC_SKIP" : 
+	[
+		"/home/lee/project-can/build/Can_Receiver_Lib_autogen/mocs_compilation.cpp",
+		"/home/lee/project-can/build/Can_Receiver_autogen/mocs_compilation.cpp",
+		"/home/lee/project-can/build/ServiceManagerLib_autogen/mocs_compilation.cpp",
+		"/home/lee/project-can/build/ServiceManager_autogen/mocs_compilation.cpp"
+	],
 	"UIC_UI_FILES" : [],
 	"VERBOSITY" : 0
 }

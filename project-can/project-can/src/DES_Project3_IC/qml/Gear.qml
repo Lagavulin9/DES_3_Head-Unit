@@ -4,7 +4,7 @@ Item {
     width: parent.width
     height: parent.height / 3
 
-    property string gearState: "P"  // Example gear state
+    property string gearState: "P"
 
     function isCurrentGear(gear) {
         return gearState === gear ? 1 : 0.5
@@ -12,7 +12,7 @@ Item {
 
     Item {
         id: gearGroup
-        width: 280  // 4 gears x 70 pixels each
+        width: 280  
         height: 70
         anchors.centerIn: parent
 

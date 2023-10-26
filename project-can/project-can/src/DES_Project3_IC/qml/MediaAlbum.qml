@@ -13,7 +13,7 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: 30
         anchors.horizontalCenter: parent.horizontalCenter
-        source: "images/CharliePuth.png"  // Main album cover
+        source: "/images/CharliePuth.png"  // Main album cover
     }
 
     Image {
@@ -22,7 +22,7 @@ Item {
         height: 111
         anchors.verticalCenter: mainImage.verticalCenter
         anchors.left: mainImage.right
-        source: "images/LPHalf.png"
+        source: "/images/LPHalf.png"
 
     }
 }

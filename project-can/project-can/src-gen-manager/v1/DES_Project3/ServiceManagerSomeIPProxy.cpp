@@ -33,7 +33,7 @@ std::shared_ptr<CommonAPI::SomeIP::Proxy> createServiceManagerSomeIPProxy(
 void initializeServiceManagerSomeIPProxy() {
     CommonAPI::SomeIP::AddressTranslator::get()->insert(
         "local:DES_Project3.ServiceManager:v1_0:ServiceManager",
-        0x1000, 0x1001, 1, 0);
+        0x9999, 0x5618, 1, 0);
     CommonAPI::SomeIP::Factory::get()->registerProxyCreateMethod(
         "DES_Project3.ServiceManager:v1_0",
         &createServiceManagerSomeIPProxy);
@@ -46,7 +46,16 @@ INITIALIZER(registerServiceManagerSomeIPProxy) {
 ServiceManagerSomeIPProxy::ServiceManagerSomeIPProxy(
     const CommonAPI::SomeIP::Address &_address,
     const std::shared_ptr<CommonAPI::SomeIP::ProxyConnection> &_connection)
-        : CommonAPI::SomeIP::Proxy(_address, _connection)
+        : CommonAPI::SomeIP::Proxy(_address, _connection),
+          speed_(*this, CommonAPI::SomeIP::eventgroup_id_t(0xdb28), CommonAPI::SomeIP::event_id_t(0xdb28), CommonAPI::SomeIP::method_id_t(0x6101), false, CommonAPI::SomeIP::reliability_type_e::RT_UNRELIABLE, false, CommonAPI::SomeIP::method_id_t(0x6102), false, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint32_t>* >(nullptr)),
+          rpm_(*this, CommonAPI::SomeIP::eventgroup_id_t(0xdb8c), CommonAPI::SomeIP::event_id_t(0xdb8c), CommonAPI::SomeIP::method_id_t(0x6201), false, CommonAPI::SomeIP::reliability_type_e::RT_UNRELIABLE, false, CommonAPI::SomeIP::method_id_t(0x6202), false, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint32_t>* >(nullptr)),
+          indicator_(*this, CommonAPI::SomeIP::eventgroup_id_t(0xdbf0), CommonAPI::SomeIP::event_id_t(0xdbf0), CommonAPI::SomeIP::method_id_t(0x6301), true, CommonAPI::SomeIP::reliability_type_e::RT_RELIABLE, false, CommonAPI::SomeIP::method_id_t(0x6302), true, static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr)),
+          gear_(*this, CommonAPI::SomeIP::eventgroup_id_t(0xdc54), CommonAPI::SomeIP::event_id_t(0xdc54), CommonAPI::SomeIP::method_id_t(0x6401), true, CommonAPI::SomeIP::reliability_type_e::RT_RELIABLE, false, CommonAPI::SomeIP::method_id_t(0x6402), true, static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr)),
+          battery_(*this, CommonAPI::SomeIP::eventgroup_id_t(0xdcb8), CommonAPI::SomeIP::event_id_t(0xdcb8), CommonAPI::SomeIP::method_id_t(0x6501), true, CommonAPI::SomeIP::reliability_type_e::RT_RELIABLE, false, CommonAPI::SomeIP::method_id_t(0x6502), true, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr)),
+          voltage_(*this, CommonAPI::SomeIP::eventgroup_id_t(0xdd1c), CommonAPI::SomeIP::event_id_t(0xdd1c), CommonAPI::SomeIP::method_id_t(0x6601), true, CommonAPI::SomeIP::reliability_type_e::RT_RELIABLE, false, CommonAPI::SomeIP::method_id_t(0x6602), true, static_cast< CommonAPI::EmptyDeployment* >(nullptr)),
+          current_(*this, CommonAPI::SomeIP::eventgroup_id_t(0xdd80), CommonAPI::SomeIP::event_id_t(0xdd80), CommonAPI::SomeIP::method_id_t(0x6701), true, CommonAPI::SomeIP::reliability_type_e::RT_RELIABLE, false, CommonAPI::SomeIP::method_id_t(0x6702), true, static_cast< CommonAPI::EmptyDeployment* >(nullptr)),
+          powerConsumption_(*this, CommonAPI::SomeIP::eventgroup_id_t(0xdde4), CommonAPI::SomeIP::event_id_t(0xdde4), CommonAPI::SomeIP::method_id_t(0x6801), true, CommonAPI::SomeIP::reliability_type_e::RT_RELIABLE, false, CommonAPI::SomeIP::method_id_t(0x6802), true, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr)),
+          gearSelection_(*this, CommonAPI::SomeIP::eventgroup_id_t(0xde48), CommonAPI::SomeIP::event_id_t(0xde48), CommonAPI::SomeIP::method_id_t(0x6901), true, CommonAPI::SomeIP::reliability_type_e::RT_RELIABLE, false, CommonAPI::SomeIP::method_id_t(0x6902), true, static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr))
 {
 }
 
@@ -54,459 +63,34 @@ ServiceManagerSomeIPProxy::~ServiceManagerSomeIPProxy() {
     completed_.set_value();
 }
 
-
-
-void ServiceManagerSomeIPProxy::setRpm(uint32_t _filteredRpm, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info) {
-    CommonAPI::Deployable< uint32_t, CommonAPI::SomeIP::IntegerDeployment<uint32_t>> deploy_filteredRpm(_filteredRpm, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint32_t>* >(nullptr));
-    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deploy_message(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
-    CommonAPI::SomeIP::ProxyHelper<
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                uint32_t,
-                CommonAPI::SomeIP::IntegerDeployment<uint32_t>
-            >
-        >,
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                std::string,
-                CommonAPI::SomeIP::StringDeployment
-            >
-        >
-    >::callMethodWithReply(
-        *this,
-        CommonAPI::SomeIP::method_id_t(0x1101),
-        false,
-        false,
-        (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
-        deploy_filteredRpm,
-        _internalCallStatus,
-        deploy_message);
-    _message = deploy_message.getValue();
+ServiceManagerSomeIPProxy::SpeedAttribute& ServiceManagerSomeIPProxy::getSpeedAttribute() {
+    return speed_;
+}
+ServiceManagerSomeIPProxy::RpmAttribute& ServiceManagerSomeIPProxy::getRpmAttribute() {
+    return rpm_;
+}
+ServiceManagerSomeIPProxy::IndicatorAttribute& ServiceManagerSomeIPProxy::getIndicatorAttribute() {
+    return indicator_;
+}
+ServiceManagerSomeIPProxy::GearAttribute& ServiceManagerSomeIPProxy::getGearAttribute() {
+    return gear_;
+}
+ServiceManagerSomeIPProxy::BatteryAttribute& ServiceManagerSomeIPProxy::getBatteryAttribute() {
+    return battery_;
+}
+ServiceManagerSomeIPProxy::VoltageAttribute& ServiceManagerSomeIPProxy::getVoltageAttribute() {
+    return voltage_;
+}
+ServiceManagerSomeIPProxy::CurrentAttribute& ServiceManagerSomeIPProxy::getCurrentAttribute() {
+    return current_;
+}
+ServiceManagerSomeIPProxy::PowerConsumptionAttribute& ServiceManagerSomeIPProxy::getPowerConsumptionAttribute() {
+    return powerConsumption_;
+}
+ServiceManagerSomeIPProxy::GearSelectionAttribute& ServiceManagerSomeIPProxy::getGearSelectionAttribute() {
+    return gearSelection_;
 }
 
-std::future<CommonAPI::CallStatus> ServiceManagerSomeIPProxy::setRpmAsync(const uint32_t &_filteredRpm, SetRpmAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
-    CommonAPI::Deployable< uint32_t, CommonAPI::SomeIP::IntegerDeployment<uint32_t>> deploy_filteredRpm(_filteredRpm, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint32_t>* >(nullptr));
-    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deploy_message(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
-    return CommonAPI::SomeIP::ProxyHelper<
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                uint32_t,
-                CommonAPI::SomeIP::IntegerDeployment<uint32_t>
-            >
-        >,
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                std::string,
-                CommonAPI::SomeIP::StringDeployment
-            >
-        >
-    >::callMethodAsync(
-        *this,
-        CommonAPI::SomeIP::method_id_t(0x1101),
-        false,
-        false,
-        (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
-        deploy_filteredRpm,
-        [_callback] (CommonAPI::CallStatus _internalCallStatus, CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment > _message) {
-            if (_callback)
-                _callback(_internalCallStatus, _message.getValue());
-        },
-        std::make_tuple(deploy_message));
-}
-
-void ServiceManagerSomeIPProxy::setSpeed(uint32_t _filteredSpeed, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info) {
-    CommonAPI::Deployable< uint32_t, CommonAPI::SomeIP::IntegerDeployment<uint32_t>> deploy_filteredSpeed(_filteredSpeed, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint32_t>* >(nullptr));
-    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deploy_message(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
-    CommonAPI::SomeIP::ProxyHelper<
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                uint32_t,
-                CommonAPI::SomeIP::IntegerDeployment<uint32_t>
-            >
-        >,
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                std::string,
-                CommonAPI::SomeIP::StringDeployment
-            >
-        >
-    >::callMethodWithReply(
-        *this,
-        CommonAPI::SomeIP::method_id_t(0x65),
-        false,
-        false,
-        (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
-        deploy_filteredSpeed,
-        _internalCallStatus,
-        deploy_message);
-    _message = deploy_message.getValue();
-}
-
-std::future<CommonAPI::CallStatus> ServiceManagerSomeIPProxy::setSpeedAsync(const uint32_t &_filteredSpeed, SetSpeedAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
-    CommonAPI::Deployable< uint32_t, CommonAPI::SomeIP::IntegerDeployment<uint32_t>> deploy_filteredSpeed(_filteredSpeed, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint32_t>* >(nullptr));
-    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deploy_message(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
-    return CommonAPI::SomeIP::ProxyHelper<
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                uint32_t,
-                CommonAPI::SomeIP::IntegerDeployment<uint32_t>
-            >
-        >,
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                std::string,
-                CommonAPI::SomeIP::StringDeployment
-            >
-        >
-    >::callMethodAsync(
-        *this,
-        CommonAPI::SomeIP::method_id_t(0x65),
-        false,
-        false,
-        (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
-        deploy_filteredSpeed,
-        [_callback] (CommonAPI::CallStatus _internalCallStatus, CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment > _message) {
-            if (_callback)
-                _callback(_internalCallStatus, _message.getValue());
-        },
-        std::make_tuple(deploy_message));
-}
-
-void ServiceManagerSomeIPProxy::setGear(std::string _currentGear, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info) {
-    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deploy_currentGear(_currentGear, static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
-    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deploy_message(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
-    CommonAPI::SomeIP::ProxyHelper<
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                std::string,
-                CommonAPI::SomeIP::StringDeployment
-            >
-        >,
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                std::string,
-                CommonAPI::SomeIP::StringDeployment
-            >
-        >
-    >::callMethodWithReply(
-        *this,
-        CommonAPI::SomeIP::method_id_t(0x66),
-        false,
-        false,
-        (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
-        deploy_currentGear,
-        _internalCallStatus,
-        deploy_message);
-    _message = deploy_message.getValue();
-}
-
-std::future<CommonAPI::CallStatus> ServiceManagerSomeIPProxy::setGearAsync(const std::string &_currentGear, SetGearAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
-    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deploy_currentGear(_currentGear, static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
-    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deploy_message(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
-    return CommonAPI::SomeIP::ProxyHelper<
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                std::string,
-                CommonAPI::SomeIP::StringDeployment
-            >
-        >,
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                std::string,
-                CommonAPI::SomeIP::StringDeployment
-            >
-        >
-    >::callMethodAsync(
-        *this,
-        CommonAPI::SomeIP::method_id_t(0x66),
-        false,
-        false,
-        (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
-        deploy_currentGear,
-        [_callback] (CommonAPI::CallStatus _internalCallStatus, CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment > _message) {
-            if (_callback)
-                _callback(_internalCallStatus, _message.getValue());
-        },
-        std::make_tuple(deploy_message));
-}
-
-void ServiceManagerSomeIPProxy::setIndicator(std::string _indicator, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info) {
-    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deploy_indicator(_indicator, static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
-    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deploy_message(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
-    CommonAPI::SomeIP::ProxyHelper<
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                std::string,
-                CommonAPI::SomeIP::StringDeployment
-            >
-        >,
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                std::string,
-                CommonAPI::SomeIP::StringDeployment
-            >
-        >
-    >::callMethodWithReply(
-        *this,
-        CommonAPI::SomeIP::method_id_t(0x67),
-        false,
-        false,
-        (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
-        deploy_indicator,
-        _internalCallStatus,
-        deploy_message);
-    _message = deploy_message.getValue();
-}
-
-std::future<CommonAPI::CallStatus> ServiceManagerSomeIPProxy::setIndicatorAsync(const std::string &_indicator, SetIndicatorAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
-    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deploy_indicator(_indicator, static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
-    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deploy_message(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
-    return CommonAPI::SomeIP::ProxyHelper<
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                std::string,
-                CommonAPI::SomeIP::StringDeployment
-            >
-        >,
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                std::string,
-                CommonAPI::SomeIP::StringDeployment
-            >
-        >
-    >::callMethodAsync(
-        *this,
-        CommonAPI::SomeIP::method_id_t(0x67),
-        false,
-        false,
-        (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
-        deploy_indicator,
-        [_callback] (CommonAPI::CallStatus _internalCallStatus, CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment > _message) {
-            if (_callback)
-                _callback(_internalCallStatus, _message.getValue());
-        },
-        std::make_tuple(deploy_message));
-}
-
-void ServiceManagerSomeIPProxy::setCurrent(float _current, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info) {
-    CommonAPI::Deployable< float, CommonAPI::EmptyDeployment> deploy_current(_current, static_cast< CommonAPI::EmptyDeployment* >(nullptr));
-    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deploy_message(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
-    CommonAPI::SomeIP::ProxyHelper<
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                float,
-                CommonAPI::EmptyDeployment
-            >
-        >,
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                std::string,
-                CommonAPI::SomeIP::StringDeployment
-            >
-        >
-    >::callMethodWithReply(
-        *this,
-        CommonAPI::SomeIP::method_id_t(0x68),
-        false,
-        false,
-        (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
-        deploy_current,
-        _internalCallStatus,
-        deploy_message);
-    _message = deploy_message.getValue();
-}
-
-std::future<CommonAPI::CallStatus> ServiceManagerSomeIPProxy::setCurrentAsync(const float &_current, SetCurrentAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
-    CommonAPI::Deployable< float, CommonAPI::EmptyDeployment> deploy_current(_current, static_cast< CommonAPI::EmptyDeployment* >(nullptr));
-    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deploy_message(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
-    return CommonAPI::SomeIP::ProxyHelper<
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                float,
-                CommonAPI::EmptyDeployment
-            >
-        >,
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                std::string,
-                CommonAPI::SomeIP::StringDeployment
-            >
-        >
-    >::callMethodAsync(
-        *this,
-        CommonAPI::SomeIP::method_id_t(0x68),
-        false,
-        false,
-        (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
-        deploy_current,
-        [_callback] (CommonAPI::CallStatus _internalCallStatus, CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment > _message) {
-            if (_callback)
-                _callback(_internalCallStatus, _message.getValue());
-        },
-        std::make_tuple(deploy_message));
-}
-
-void ServiceManagerSomeIPProxy::setPowerConsumption(uint8_t _powerconsumption, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info) {
-    CommonAPI::Deployable< uint8_t, CommonAPI::SomeIP::IntegerDeployment<uint8_t>> deploy_powerconsumption(_powerconsumption, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr));
-    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deploy_message(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
-    CommonAPI::SomeIP::ProxyHelper<
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                uint8_t,
-                CommonAPI::SomeIP::IntegerDeployment<uint8_t>
-            >
-        >,
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                std::string,
-                CommonAPI::SomeIP::StringDeployment
-            >
-        >
-    >::callMethodWithReply(
-        *this,
-        CommonAPI::SomeIP::method_id_t(0x69),
-        false,
-        false,
-        (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
-        deploy_powerconsumption,
-        _internalCallStatus,
-        deploy_message);
-    _message = deploy_message.getValue();
-}
-
-std::future<CommonAPI::CallStatus> ServiceManagerSomeIPProxy::setPowerConsumptionAsync(const uint8_t &_powerconsumption, SetPowerConsumptionAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
-    CommonAPI::Deployable< uint8_t, CommonAPI::SomeIP::IntegerDeployment<uint8_t>> deploy_powerconsumption(_powerconsumption, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr));
-    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deploy_message(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
-    return CommonAPI::SomeIP::ProxyHelper<
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                uint8_t,
-                CommonAPI::SomeIP::IntegerDeployment<uint8_t>
-            >
-        >,
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                std::string,
-                CommonAPI::SomeIP::StringDeployment
-            >
-        >
-    >::callMethodAsync(
-        *this,
-        CommonAPI::SomeIP::method_id_t(0x69),
-        false,
-        false,
-        (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
-        deploy_powerconsumption,
-        [_callback] (CommonAPI::CallStatus _internalCallStatus, CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment > _message) {
-            if (_callback)
-                _callback(_internalCallStatus, _message.getValue());
-        },
-        std::make_tuple(deploy_message));
-}
-
-void ServiceManagerSomeIPProxy::setVoltage(float _voltage, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info) {
-    CommonAPI::Deployable< float, CommonAPI::EmptyDeployment> deploy_voltage(_voltage, static_cast< CommonAPI::EmptyDeployment* >(nullptr));
-    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deploy_message(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
-    CommonAPI::SomeIP::ProxyHelper<
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                float,
-                CommonAPI::EmptyDeployment
-            >
-        >,
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                std::string,
-                CommonAPI::SomeIP::StringDeployment
-            >
-        >
-    >::callMethodWithReply(
-        *this,
-        CommonAPI::SomeIP::method_id_t(0x6a),
-        false,
-        false,
-        (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
-        deploy_voltage,
-        _internalCallStatus,
-        deploy_message);
-    _message = deploy_message.getValue();
-}
-
-std::future<CommonAPI::CallStatus> ServiceManagerSomeIPProxy::setVoltageAsync(const float &_voltage, SetVoltageAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
-    CommonAPI::Deployable< float, CommonAPI::EmptyDeployment> deploy_voltage(_voltage, static_cast< CommonAPI::EmptyDeployment* >(nullptr));
-    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deploy_message(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
-    return CommonAPI::SomeIP::ProxyHelper<
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                float,
-                CommonAPI::EmptyDeployment
-            >
-        >,
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                std::string,
-                CommonAPI::SomeIP::StringDeployment
-            >
-        >
-    >::callMethodAsync(
-        *this,
-        CommonAPI::SomeIP::method_id_t(0x6a),
-        false,
-        false,
-        (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
-        deploy_voltage,
-        [_callback] (CommonAPI::CallStatus _internalCallStatus, CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment > _message) {
-            if (_callback)
-                _callback(_internalCallStatus, _message.getValue());
-        },
-        std::make_tuple(deploy_message));
-}
-
-void ServiceManagerSomeIPProxy::setBatteryLevel(uint8_t _batterylevel, CommonAPI::CallStatus &_internalCallStatus, const CommonAPI::CallInfo *_info) {
-    CommonAPI::Deployable< uint8_t, CommonAPI::SomeIP::IntegerDeployment<uint8_t>> deploy_batterylevel(_batterylevel, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr));
-    CommonAPI::SomeIP::ProxyHelper<
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                uint8_t,
-                CommonAPI::SomeIP::IntegerDeployment<uint8_t>
-            >
-        >,
-        CommonAPI::SomeIP::SerializableArguments<
-        >
-    >::callMethodWithReply(
-        *this,
-        CommonAPI::SomeIP::method_id_t(0x6b),
-        false,
-        false,
-        (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
-        deploy_batterylevel,
-        _internalCallStatus);
-}
-
-std::future<CommonAPI::CallStatus> ServiceManagerSomeIPProxy::setBatteryLevelAsync(const uint8_t &_batterylevel, SetBatteryLevelAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
-    CommonAPI::Deployable< uint8_t, CommonAPI::SomeIP::IntegerDeployment<uint8_t>> deploy_batterylevel(_batterylevel, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr));
-    return CommonAPI::SomeIP::ProxyHelper<
-        CommonAPI::SomeIP::SerializableArguments<
-            CommonAPI::Deployable<
-                uint8_t,
-                CommonAPI::SomeIP::IntegerDeployment<uint8_t>
-            >
-        >,
-        CommonAPI::SomeIP::SerializableArguments<
-        >
-    >::callMethodAsync(
-        *this,
-        CommonAPI::SomeIP::method_id_t(0x6b),
-        false,
-        false,
-        (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
-        deploy_batterylevel,
-        [_callback] (CommonAPI::CallStatus _internalCallStatus) {
-            if (_callback)
-                _callback(_internalCallStatus);
-        },
-        std::make_tuple());
-}
 
 void ServiceManagerSomeIPProxy::getOwnVersion(uint16_t& ownVersionMajor, uint16_t& ownVersionMinor) const {
     ownVersionMajor = 1;

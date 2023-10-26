@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_QMLMODELS_LIB -DQT_QML_LIB -DQT_QUICK_LIB
 
-CXX_INCLUDES = -I/home/lee/project-can/project-can/build -I/home/lee/project-can/project-can -I/home/lee/project-can/project-can/build/DES_Project3_IC_autogen/include -I/home/lee/project-can/project-can/../build-commonapi/capicxx-core-runtime/include -I/home/lee/project-can/project-can/../build-commonapi/capicxx-someip-runtime/include -I/home/lee/project-can/project-can/../build-commonapi/vsomeip/interface -I/home/lee/project-can/project-can/src-gen-manager -isystem /home/lee/Qt/5.15.15/gcc_64/include -isystem /home/lee/Qt/5.15.15/gcc_64/include/QtCore -isystem /home/lee/Qt/5.15.15/gcc_64/./mkspecs/linux-g++ -isystem /home/lee/Qt/5.15.15/gcc_64/include/QtQuick -isystem /home/lee/Qt/5.15.15/gcc_64/include/QtQmlModels -isystem /home/lee/Qt/5.15.15/gcc_64/include/QtQml -isystem /home/lee/Qt/5.15.15/gcc_64/include/QtNetwork -isystem /home/lee/Qt/5.15.15/gcc_64/include/QtGui
+CXX_INCLUDES = -I/home/lee/project-can/build -I/home/lee/project-can -I/home/lee/project-can/build/DES_Project3_IC_autogen/include -I/home/lee/project-can/../build-commonapi/capicxx-core-runtime/include -I/home/lee/project-can/../build-commonapi/capicxx-someip-runtime/include -I/home/lee/project-can/../build-commonapi/vsomeip/interface -I/home/lee/project-can/src-gen-manager -isystem /home/lee/Qt/5.15.15/gcc_64/include -isystem /home/lee/Qt/5.15.15/gcc_64/include/QtCore -isystem /home/lee/Qt/5.15.15/gcc_64/./mkspecs/linux-g++ -isystem /home/lee/Qt/5.15.15/gcc_64/include/QtQuick -isystem /home/lee/Qt/5.15.15/gcc_64/include/QtQmlModels -isystem /home/lee/Qt/5.15.15/gcc_64/include/QtQml -isystem /home/lee/Qt/5.15.15/gcc_64/include/QtNetwork -isystem /home/lee/Qt/5.15.15/gcc_64/include/QtGui
 
-CXX_FLAGS = -std=gnu++11 -fPIC
+CXX_FLAGS =  -pthread -std=c++0x -std=gnu++11 -fPIC
 

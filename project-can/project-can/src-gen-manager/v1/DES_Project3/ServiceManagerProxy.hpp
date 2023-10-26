@@ -18,6 +18,8 @@
 #define HAS_DEFINED_COMMONAPI_INTERNAL_COMPILATION_HERE
 #endif
 
+#include <CommonAPI/AttributeExtension.hpp>
+#include <CommonAPI/Factory.hpp>
 
 #if defined (HAS_DEFINED_COMMONAPI_INTERNAL_COMPILATION_HERE)
 #undef COMMONAPI_INTERNAL_COMPILATION
@@ -69,172 +71,59 @@ public:
     virtual std::future<void> getCompletionFuture();
 
     /**
-     * Calls setRpm with synchronous semantics.
-     *
-     * All const parameters are input parameters to this method.
-     * All non-const parameters will be filled with the returned values.
-     * The CallStatus will be filled when the method returns and indicate either
-     * "SUCCESS" or which type of error has occurred. In case of an error, ONLY the CallStatus
-     * will be set.
+     * Returns the wrapper class that provides access to the attribute speed.
      */
-    virtual void setRpm(uint32_t _filteredRpm, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info = nullptr);
+    virtual SpeedAttribute& getSpeedAttribute() {
+        return delegate_->getSpeedAttribute();
+    }
     /**
-     * Calls setRpm with asynchronous semantics.
-     *
-     * The provided callback will be called when the reply to this call arrives or
-     * an error occurs during the call. The CallStatus will indicate either "SUCCESS"
-     * or which type of error has occurred. In case of any error, ONLY the CallStatus
-     * will have a defined value.
-     * The std::future returned by this method will be fulfilled at arrival of the reply.
-     * It will provide the same value for CallStatus as will be handed to the callback.
+     * Returns the wrapper class that provides access to the attribute rpm.
      */
-    virtual std::future<CommonAPI::CallStatus> setRpmAsync(const uint32_t &_filteredRpm, SetRpmAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr);
+    virtual RpmAttribute& getRpmAttribute() {
+        return delegate_->getRpmAttribute();
+    }
     /**
-     * Calls setSpeed with synchronous semantics.
-     *
-     * All const parameters are input parameters to this method.
-     * All non-const parameters will be filled with the returned values.
-     * The CallStatus will be filled when the method returns and indicate either
-     * "SUCCESS" or which type of error has occurred. In case of an error, ONLY the CallStatus
-     * will be set.
+     * Returns the wrapper class that provides access to the attribute indicator.
      */
-    virtual void setSpeed(uint32_t _filteredSpeed, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info = nullptr);
+    virtual IndicatorAttribute& getIndicatorAttribute() {
+        return delegate_->getIndicatorAttribute();
+    }
     /**
-     * Calls setSpeed with asynchronous semantics.
-     *
-     * The provided callback will be called when the reply to this call arrives or
-     * an error occurs during the call. The CallStatus will indicate either "SUCCESS"
-     * or which type of error has occurred. In case of any error, ONLY the CallStatus
-     * will have a defined value.
-     * The std::future returned by this method will be fulfilled at arrival of the reply.
-     * It will provide the same value for CallStatus as will be handed to the callback.
+     * Returns the wrapper class that provides access to the attribute gear.
      */
-    virtual std::future<CommonAPI::CallStatus> setSpeedAsync(const uint32_t &_filteredSpeed, SetSpeedAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr);
+    virtual GearAttribute& getGearAttribute() {
+        return delegate_->getGearAttribute();
+    }
     /**
-     * Calls setGear with synchronous semantics.
-     *
-     * All const parameters are input parameters to this method.
-     * All non-const parameters will be filled with the returned values.
-     * The CallStatus will be filled when the method returns and indicate either
-     * "SUCCESS" or which type of error has occurred. In case of an error, ONLY the CallStatus
-     * will be set.
+     * Returns the wrapper class that provides access to the attribute battery.
      */
-    virtual void setGear(std::string _currentGear, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info = nullptr);
+    virtual BatteryAttribute& getBatteryAttribute() {
+        return delegate_->getBatteryAttribute();
+    }
     /**
-     * Calls setGear with asynchronous semantics.
-     *
-     * The provided callback will be called when the reply to this call arrives or
-     * an error occurs during the call. The CallStatus will indicate either "SUCCESS"
-     * or which type of error has occurred. In case of any error, ONLY the CallStatus
-     * will have a defined value.
-     * The std::future returned by this method will be fulfilled at arrival of the reply.
-     * It will provide the same value for CallStatus as will be handed to the callback.
+     * Returns the wrapper class that provides access to the attribute voltage.
      */
-    virtual std::future<CommonAPI::CallStatus> setGearAsync(const std::string &_currentGear, SetGearAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr);
+    virtual VoltageAttribute& getVoltageAttribute() {
+        return delegate_->getVoltageAttribute();
+    }
     /**
-     * Calls setIndicator with synchronous semantics.
-     *
-     * All const parameters are input parameters to this method.
-     * All non-const parameters will be filled with the returned values.
-     * The CallStatus will be filled when the method returns and indicate either
-     * "SUCCESS" or which type of error has occurred. In case of an error, ONLY the CallStatus
-     * will be set.
+     * Returns the wrapper class that provides access to the attribute current.
      */
-    virtual void setIndicator(std::string _indicator, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info = nullptr);
+    virtual CurrentAttribute& getCurrentAttribute() {
+        return delegate_->getCurrentAttribute();
+    }
     /**
-     * Calls setIndicator with asynchronous semantics.
-     *
-     * The provided callback will be called when the reply to this call arrives or
-     * an error occurs during the call. The CallStatus will indicate either "SUCCESS"
-     * or which type of error has occurred. In case of any error, ONLY the CallStatus
-     * will have a defined value.
-     * The std::future returned by this method will be fulfilled at arrival of the reply.
-     * It will provide the same value for CallStatus as will be handed to the callback.
+     * Returns the wrapper class that provides access to the attribute powerConsumption.
      */
-    virtual std::future<CommonAPI::CallStatus> setIndicatorAsync(const std::string &_indicator, SetIndicatorAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr);
+    virtual PowerConsumptionAttribute& getPowerConsumptionAttribute() {
+        return delegate_->getPowerConsumptionAttribute();
+    }
     /**
-     * Calls setCurrent with synchronous semantics.
-     *
-     * All const parameters are input parameters to this method.
-     * All non-const parameters will be filled with the returned values.
-     * The CallStatus will be filled when the method returns and indicate either
-     * "SUCCESS" or which type of error has occurred. In case of an error, ONLY the CallStatus
-     * will be set.
+     * Returns the wrapper class that provides access to the attribute gearSelection.
      */
-    virtual void setCurrent(float _current, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info = nullptr);
-    /**
-     * Calls setCurrent with asynchronous semantics.
-     *
-     * The provided callback will be called when the reply to this call arrives or
-     * an error occurs during the call. The CallStatus will indicate either "SUCCESS"
-     * or which type of error has occurred. In case of any error, ONLY the CallStatus
-     * will have a defined value.
-     * The std::future returned by this method will be fulfilled at arrival of the reply.
-     * It will provide the same value for CallStatus as will be handed to the callback.
-     */
-    virtual std::future<CommonAPI::CallStatus> setCurrentAsync(const float &_current, SetCurrentAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr);
-    /**
-     * Calls setPowerConsumption with synchronous semantics.
-     *
-     * All const parameters are input parameters to this method.
-     * All non-const parameters will be filled with the returned values.
-     * The CallStatus will be filled when the method returns and indicate either
-     * "SUCCESS" or which type of error has occurred. In case of an error, ONLY the CallStatus
-     * will be set.
-     */
-    virtual void setPowerConsumption(uint8_t _powerconsumption, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info = nullptr);
-    /**
-     * Calls setPowerConsumption with asynchronous semantics.
-     *
-     * The provided callback will be called when the reply to this call arrives or
-     * an error occurs during the call. The CallStatus will indicate either "SUCCESS"
-     * or which type of error has occurred. In case of any error, ONLY the CallStatus
-     * will have a defined value.
-     * The std::future returned by this method will be fulfilled at arrival of the reply.
-     * It will provide the same value for CallStatus as will be handed to the callback.
-     */
-    virtual std::future<CommonAPI::CallStatus> setPowerConsumptionAsync(const uint8_t &_powerconsumption, SetPowerConsumptionAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr);
-    /**
-     * Calls setVoltage with synchronous semantics.
-     *
-     * All const parameters are input parameters to this method.
-     * All non-const parameters will be filled with the returned values.
-     * The CallStatus will be filled when the method returns and indicate either
-     * "SUCCESS" or which type of error has occurred. In case of an error, ONLY the CallStatus
-     * will be set.
-     */
-    virtual void setVoltage(float _voltage, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info = nullptr);
-    /**
-     * Calls setVoltage with asynchronous semantics.
-     *
-     * The provided callback will be called when the reply to this call arrives or
-     * an error occurs during the call. The CallStatus will indicate either "SUCCESS"
-     * or which type of error has occurred. In case of any error, ONLY the CallStatus
-     * will have a defined value.
-     * The std::future returned by this method will be fulfilled at arrival of the reply.
-     * It will provide the same value for CallStatus as will be handed to the callback.
-     */
-    virtual std::future<CommonAPI::CallStatus> setVoltageAsync(const float &_voltage, SetVoltageAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr);
-    /**
-     * Calls setBatteryLevel with synchronous semantics.
-     *
-     * All const parameters are input parameters to this method.
-     * The CallStatus will be filled when the method returns and indicate either
-     * "SUCCESS" or which type of error has occurred. In case of an error, ONLY the CallStatus
-     * will be set.
-     */
-    virtual void setBatteryLevel(uint8_t _batterylevel, CommonAPI::CallStatus &_internalCallStatus, const CommonAPI::CallInfo *_info = nullptr);
-    /**
-     * Calls setBatteryLevel with asynchronous semantics.
-     *
-     * The provided callback will be called when the reply to this call arrives or
-     * an error occurs during the call. The CallStatus will indicate either "SUCCESS"
-     * or which type of error has occurred. In case of any error, ONLY the CallStatus
-     * will have a defined value.
-     * The std::future returned by this method will be fulfilled at arrival of the reply.
-     * It will provide the same value for CallStatus as will be handed to the callback.
-     */
-    virtual std::future<CommonAPI::CallStatus> setBatteryLevelAsync(const uint8_t &_batterylevel, SetBatteryLevelAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr);
+    virtual GearSelectionAttribute& getGearSelectionAttribute() {
+        return delegate_->getGearSelectionAttribute();
+    }
 
 
 
@@ -244,6 +133,179 @@ public:
 
 typedef ServiceManagerProxy<> ServiceManagerProxyDefault;
 
+namespace ServiceManagerExtensions {
+    template <template <typename > class _ExtensionType>
+    class SpeedAttributeExtension {
+     public:
+        typedef _ExtensionType< ServiceManagerProxyBase::SpeedAttribute> extension_type;
+    
+        static_assert(std::is_base_of<typename CommonAPI::AttributeExtension< ServiceManagerProxyBase::SpeedAttribute>, extension_type>::value,
+                      "Not CommonAPI Attribute Extension!");
+    
+        SpeedAttributeExtension(ServiceManagerProxyBase& proxy): attributeExtension_(proxy.getSpeedAttribute()) {
+        }
+    
+        inline extension_type& getSpeedAttributeExtension() {
+            return attributeExtension_;
+        }
+    
+     private:
+        extension_type attributeExtension_;
+    };
+
+    template <template <typename > class _ExtensionType>
+    class RpmAttributeExtension {
+     public:
+        typedef _ExtensionType< ServiceManagerProxyBase::RpmAttribute> extension_type;
+    
+        static_assert(std::is_base_of<typename CommonAPI::AttributeExtension< ServiceManagerProxyBase::RpmAttribute>, extension_type>::value,
+                      "Not CommonAPI Attribute Extension!");
+    
+        RpmAttributeExtension(ServiceManagerProxyBase& proxy): attributeExtension_(proxy.getRpmAttribute()) {
+        }
+    
+        inline extension_type& getRpmAttributeExtension() {
+            return attributeExtension_;
+        }
+    
+     private:
+        extension_type attributeExtension_;
+    };
+
+    template <template <typename > class _ExtensionType>
+    class IndicatorAttributeExtension {
+     public:
+        typedef _ExtensionType< ServiceManagerProxyBase::IndicatorAttribute> extension_type;
+    
+        static_assert(std::is_base_of<typename CommonAPI::AttributeExtension< ServiceManagerProxyBase::IndicatorAttribute>, extension_type>::value,
+                      "Not CommonAPI Attribute Extension!");
+    
+        IndicatorAttributeExtension(ServiceManagerProxyBase& proxy): attributeExtension_(proxy.getIndicatorAttribute()) {
+        }
+    
+        inline extension_type& getIndicatorAttributeExtension() {
+            return attributeExtension_;
+        }
+    
+     private:
+        extension_type attributeExtension_;
+    };
+
+    template <template <typename > class _ExtensionType>
+    class GearAttributeExtension {
+     public:
+        typedef _ExtensionType< ServiceManagerProxyBase::GearAttribute> extension_type;
+    
+        static_assert(std::is_base_of<typename CommonAPI::AttributeExtension< ServiceManagerProxyBase::GearAttribute>, extension_type>::value,
+                      "Not CommonAPI Attribute Extension!");
+    
+        GearAttributeExtension(ServiceManagerProxyBase& proxy): attributeExtension_(proxy.getGearAttribute()) {
+        }
+    
+        inline extension_type& getGearAttributeExtension() {
+            return attributeExtension_;
+        }
+    
+     private:
+        extension_type attributeExtension_;
+    };
+
+    template <template <typename > class _ExtensionType>
+    class BatteryAttributeExtension {
+     public:
+        typedef _ExtensionType< ServiceManagerProxyBase::BatteryAttribute> extension_type;
+    
+        static_assert(std::is_base_of<typename CommonAPI::AttributeExtension< ServiceManagerProxyBase::BatteryAttribute>, extension_type>::value,
+                      "Not CommonAPI Attribute Extension!");
+    
+        BatteryAttributeExtension(ServiceManagerProxyBase& proxy): attributeExtension_(proxy.getBatteryAttribute()) {
+        }
+    
+        inline extension_type& getBatteryAttributeExtension() {
+            return attributeExtension_;
+        }
+    
+     private:
+        extension_type attributeExtension_;
+    };
+
+    template <template <typename > class _ExtensionType>
+    class VoltageAttributeExtension {
+     public:
+        typedef _ExtensionType< ServiceManagerProxyBase::VoltageAttribute> extension_type;
+    
+        static_assert(std::is_base_of<typename CommonAPI::AttributeExtension< ServiceManagerProxyBase::VoltageAttribute>, extension_type>::value,
+                      "Not CommonAPI Attribute Extension!");
+    
+        VoltageAttributeExtension(ServiceManagerProxyBase& proxy): attributeExtension_(proxy.getVoltageAttribute()) {
+        }
+    
+        inline extension_type& getVoltageAttributeExtension() {
+            return attributeExtension_;
+        }
+    
+     private:
+        extension_type attributeExtension_;
+    };
+
+    template <template <typename > class _ExtensionType>
+    class CurrentAttributeExtension {
+     public:
+        typedef _ExtensionType< ServiceManagerProxyBase::CurrentAttribute> extension_type;
+    
+        static_assert(std::is_base_of<typename CommonAPI::AttributeExtension< ServiceManagerProxyBase::CurrentAttribute>, extension_type>::value,
+                      "Not CommonAPI Attribute Extension!");
+    
+        CurrentAttributeExtension(ServiceManagerProxyBase& proxy): attributeExtension_(proxy.getCurrentAttribute()) {
+        }
+    
+        inline extension_type& getCurrentAttributeExtension() {
+            return attributeExtension_;
+        }
+    
+     private:
+        extension_type attributeExtension_;
+    };
+
+    template <template <typename > class _ExtensionType>
+    class PowerConsumptionAttributeExtension {
+     public:
+        typedef _ExtensionType< ServiceManagerProxyBase::PowerConsumptionAttribute> extension_type;
+    
+        static_assert(std::is_base_of<typename CommonAPI::AttributeExtension< ServiceManagerProxyBase::PowerConsumptionAttribute>, extension_type>::value,
+                      "Not CommonAPI Attribute Extension!");
+    
+        PowerConsumptionAttributeExtension(ServiceManagerProxyBase& proxy): attributeExtension_(proxy.getPowerConsumptionAttribute()) {
+        }
+    
+        inline extension_type& getPowerConsumptionAttributeExtension() {
+            return attributeExtension_;
+        }
+    
+     private:
+        extension_type attributeExtension_;
+    };
+
+    template <template <typename > class _ExtensionType>
+    class GearSelectionAttributeExtension {
+     public:
+        typedef _ExtensionType< ServiceManagerProxyBase::GearSelectionAttribute> extension_type;
+    
+        static_assert(std::is_base_of<typename CommonAPI::AttributeExtension< ServiceManagerProxyBase::GearSelectionAttribute>, extension_type>::value,
+                      "Not CommonAPI Attribute Extension!");
+    
+        GearSelectionAttributeExtension(ServiceManagerProxyBase& proxy): attributeExtension_(proxy.getGearSelectionAttribute()) {
+        }
+    
+        inline extension_type& getGearSelectionAttributeExtension() {
+            return attributeExtension_;
+        }
+    
+     private:
+        extension_type attributeExtension_;
+    };
+
+} // namespace ServiceManagerExtensions
 
 //
 // ServiceManagerProxy Implementation
@@ -258,78 +320,6 @@ template <typename ... _AttributeExtensions>
 ServiceManagerProxy<_AttributeExtensions...>::~ServiceManagerProxy() {
 }
 
-template <typename ... _AttributeExtensions>
-void ServiceManagerProxy<_AttributeExtensions...>::setRpm(uint32_t _filteredRpm, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info) {
-    delegate_->setRpm(_filteredRpm, _internalCallStatus, _message, _info);
-}
-
-template <typename ... _AttributeExtensions>
-std::future<CommonAPI::CallStatus> ServiceManagerProxy<_AttributeExtensions...>::setRpmAsync(const uint32_t &_filteredRpm, SetRpmAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
-    return delegate_->setRpmAsync(_filteredRpm, _callback, _info);
-}
-template <typename ... _AttributeExtensions>
-void ServiceManagerProxy<_AttributeExtensions...>::setSpeed(uint32_t _filteredSpeed, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info) {
-    delegate_->setSpeed(_filteredSpeed, _internalCallStatus, _message, _info);
-}
-
-template <typename ... _AttributeExtensions>
-std::future<CommonAPI::CallStatus> ServiceManagerProxy<_AttributeExtensions...>::setSpeedAsync(const uint32_t &_filteredSpeed, SetSpeedAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
-    return delegate_->setSpeedAsync(_filteredSpeed, _callback, _info);
-}
-template <typename ... _AttributeExtensions>
-void ServiceManagerProxy<_AttributeExtensions...>::setGear(std::string _currentGear, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info) {
-    delegate_->setGear(_currentGear, _internalCallStatus, _message, _info);
-}
-
-template <typename ... _AttributeExtensions>
-std::future<CommonAPI::CallStatus> ServiceManagerProxy<_AttributeExtensions...>::setGearAsync(const std::string &_currentGear, SetGearAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
-    return delegate_->setGearAsync(_currentGear, _callback, _info);
-}
-template <typename ... _AttributeExtensions>
-void ServiceManagerProxy<_AttributeExtensions...>::setIndicator(std::string _indicator, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info) {
-    delegate_->setIndicator(_indicator, _internalCallStatus, _message, _info);
-}
-
-template <typename ... _AttributeExtensions>
-std::future<CommonAPI::CallStatus> ServiceManagerProxy<_AttributeExtensions...>::setIndicatorAsync(const std::string &_indicator, SetIndicatorAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
-    return delegate_->setIndicatorAsync(_indicator, _callback, _info);
-}
-template <typename ... _AttributeExtensions>
-void ServiceManagerProxy<_AttributeExtensions...>::setCurrent(float _current, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info) {
-    delegate_->setCurrent(_current, _internalCallStatus, _message, _info);
-}
-
-template <typename ... _AttributeExtensions>
-std::future<CommonAPI::CallStatus> ServiceManagerProxy<_AttributeExtensions...>::setCurrentAsync(const float &_current, SetCurrentAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
-    return delegate_->setCurrentAsync(_current, _callback, _info);
-}
-template <typename ... _AttributeExtensions>
-void ServiceManagerProxy<_AttributeExtensions...>::setPowerConsumption(uint8_t _powerconsumption, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info) {
-    delegate_->setPowerConsumption(_powerconsumption, _internalCallStatus, _message, _info);
-}
-
-template <typename ... _AttributeExtensions>
-std::future<CommonAPI::CallStatus> ServiceManagerProxy<_AttributeExtensions...>::setPowerConsumptionAsync(const uint8_t &_powerconsumption, SetPowerConsumptionAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
-    return delegate_->setPowerConsumptionAsync(_powerconsumption, _callback, _info);
-}
-template <typename ... _AttributeExtensions>
-void ServiceManagerProxy<_AttributeExtensions...>::setVoltage(float _voltage, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info) {
-    delegate_->setVoltage(_voltage, _internalCallStatus, _message, _info);
-}
-
-template <typename ... _AttributeExtensions>
-std::future<CommonAPI::CallStatus> ServiceManagerProxy<_AttributeExtensions...>::setVoltageAsync(const float &_voltage, SetVoltageAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
-    return delegate_->setVoltageAsync(_voltage, _callback, _info);
-}
-template <typename ... _AttributeExtensions>
-void ServiceManagerProxy<_AttributeExtensions...>::setBatteryLevel(uint8_t _batterylevel, CommonAPI::CallStatus &_internalCallStatus, const CommonAPI::CallInfo *_info) {
-    delegate_->setBatteryLevel(_batterylevel, _internalCallStatus, _info);
-}
-
-template <typename ... _AttributeExtensions>
-std::future<CommonAPI::CallStatus> ServiceManagerProxy<_AttributeExtensions...>::setBatteryLevelAsync(const uint8_t &_batterylevel, SetBatteryLevelAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
-    return delegate_->setBatteryLevelAsync(_batterylevel, _callback, _info);
-}
 
 template <typename ... _AttributeExtensions>
 const CommonAPI::Address &ServiceManagerProxy<_AttributeExtensions...>::getAddress() const {
@@ -365,6 +355,23 @@ std::future<void> ServiceManagerProxy<_AttributeExtensions...>::getCompletionFut
 } // namespace DES_Project3
 } // namespace v1
 
+namespace CommonAPI {
+template<template<typename > class _AttributeExtension>
+struct DefaultAttributeProxyHelper< ::v1::DES_Project3::ServiceManagerProxy,
+    _AttributeExtension> {
+    typedef typename ::v1::DES_Project3::ServiceManagerProxy<
+            ::v1::DES_Project3::ServiceManagerExtensions::SpeedAttributeExtension<_AttributeExtension>, 
+            ::v1::DES_Project3::ServiceManagerExtensions::RpmAttributeExtension<_AttributeExtension>, 
+            ::v1::DES_Project3::ServiceManagerExtensions::IndicatorAttributeExtension<_AttributeExtension>, 
+            ::v1::DES_Project3::ServiceManagerExtensions::GearAttributeExtension<_AttributeExtension>, 
+            ::v1::DES_Project3::ServiceManagerExtensions::BatteryAttributeExtension<_AttributeExtension>, 
+            ::v1::DES_Project3::ServiceManagerExtensions::VoltageAttributeExtension<_AttributeExtension>, 
+            ::v1::DES_Project3::ServiceManagerExtensions::CurrentAttributeExtension<_AttributeExtension>, 
+            ::v1::DES_Project3::ServiceManagerExtensions::PowerConsumptionAttributeExtension<_AttributeExtension>, 
+            ::v1::DES_Project3::ServiceManagerExtensions::GearSelectionAttributeExtension<_AttributeExtension>
+    > class_t;
+};
+}
 
 
 // Compatibility

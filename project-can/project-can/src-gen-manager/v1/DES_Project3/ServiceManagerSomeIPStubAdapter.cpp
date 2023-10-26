@@ -35,7 +35,7 @@ std::shared_ptr<CommonAPI::SomeIP::StubAdapter> createServiceManagerSomeIPStubAd
 void initializeServiceManagerSomeIPStubAdapter() {
     CommonAPI::SomeIP::AddressTranslator::get()->insert(
         "local:DES_Project3.ServiceManager:v1_0:ServiceManager",
-         0x1000, 0x1001, 1, 0);
+         0x9999, 0x5618, 1, 0);
     CommonAPI::SomeIP::Factory::get()->registerStubAdapterCreateMethod(
         "DES_Project3.ServiceManager:v1_0",
         &createServiceManagerSomeIPStubAdapter);

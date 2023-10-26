@@ -4,27 +4,50 @@ Item {
     width: parent.width
     height: parent.height * 2 / 3
 
-    property real currentValue: 13
     property string currentUnit: "W"
+    property double voltage: 0.0
+    property double current: 0.0
+    property double powerConsumption: 0.0
+
+    property real currentValue: {
+        if (currentUnit === "W") {
+            return instrumentCluster.powerConsumption;
+        } else if (currentUnit === "V") {
+            return instrumentCluster.voltage;
+        } else if (currentUnit === "mA") {
+            return instrumentCluster.current;
+        }
+        return 0;
+    }
 
     function switchUnit() {
         if (currentUnit === "W") {
             currentUnit = "V";
-            currentValue = 11;
         } else if (currentUnit === "V") {
             currentUnit = "mA";
-            currentValue = 1.2;
         } else if (currentUnit === "mA") {
             currentUnit = "W";
-            currentValue = 13;
         }
+    }
+
+    function updateDisplay() {
+        mainValue.text = currentValue.toString();
+        secondaryText1.text = currentUnit === "W" ? instrumentCluster.voltage.toString() : (currentUnit === "V" ? instrumentCluster.current.toString() : instrumentCluster.powerConsumption.toString());
+        secondaryText2.text = currentUnit === "W" ? instrumentCluster.current.toString() : (currentUnit === "V" ? instrumentCluster.powerConsumption.toString() : instrumentCluster.voltage.toString());
+    }
+
+    Connections {
+        target: instrumentCluster
+        onPowerConsumptionChanged: updateDisplay();
+        onVoltageChanged: updateDisplay();
+        onCurrentChanged: updateDisplay();
     }
 
     Text {
         id: mainValue
         anchors { horizontalCenter: parent.horizontalCenter; top: parent.top; topMargin: 156 }
         font { family: "Kanit"; pixelSize: 96; bold: true }
-        text: currentValue
+        text: currentValue.toString()
         anchors.horizontalCenterOffset: 0
     }
 
@@ -40,7 +63,6 @@ Item {
         x: 105
         y: 332
         font { family: "Kanit"; pixelSize: 24; bold: true }
-        text: currentUnit === "W" ? "11" : (currentUnit === "V" ? "1.2" : "13")
     }
 
     Text {
@@ -56,7 +78,6 @@ Item {
         x: 260
         y: 332
         font { family: "Kanit"; pixelSize: 24; bold: true }
-        text: currentUnit === "W" ? "1.2" : (currentUnit === "V" ? "13" : "11")
     }
 
     Text {
@@ -70,14 +91,14 @@ Item {
     MouseArea {
         anchors.fill: mainValue
         anchors.margins: -25
-        onClicked: switchUnit()
+        onClicked: {
+            switchUnit();
+            updateDisplay(); 
+        }
     }
 
-    Component.onCompleted: switchUnit()
+    Component.onCompleted: {
+        switchUnit();
+        updateDisplay(); 
+    }
 }
-
-/*##^##
-Designer {
-    D{i:0;formeditorZoom:1.1}
-}
-##^##*/

@@ -46,6 +46,24 @@ public:
         ServiceManagerSomeIPStubAdapterHelper::deinit();
     }
 
+    void fireSpeedAttributeChanged(const uint32_t &_value);
+    
+    void fireRpmAttributeChanged(const uint32_t &_value);
+    
+    void fireIndicatorAttributeChanged(const std::string &_value);
+    
+    void fireGearAttributeChanged(const std::string &_value);
+    
+    void fireBatteryAttributeChanged(const uint8_t &_value);
+    
+    void fireVoltageAttributeChanged(const float &_value);
+    
+    void fireCurrentAttributeChanged(const float &_value);
+    
+    void firePowerConsumptionAttributeChanged(const uint8_t &_value);
+    
+    void fireGearSelectionAttributeChanged(const std::string &_value);
+    
     void deactivateManagedInstances() {}
     
     CommonAPI::SomeIP::GetAttributeStubDispatcher<
@@ -53,69 +71,109 @@ public:
         CommonAPI::Version
     > getServiceManagerInterfaceVersionStubDispatcher;
 
-    CommonAPI::SomeIP::MethodWithReplyStubDispatcher<
+    CommonAPI::SomeIP::GetAttributeStubDispatcher<
         ::v1::DES_Project3::ServiceManagerStub,
-        std::tuple< uint32_t>,
-        std::tuple< std::string>,
-        std::tuple< CommonAPI::SomeIP::IntegerDeployment<uint32_t>>,
-        std::tuple< CommonAPI::SomeIP::StringDeployment>
-    > setRpmStubDispatcher;
+        uint32_t,
+        CommonAPI::SomeIP::IntegerDeployment<uint32_t>
+    > getSpeedAttributeStubDispatcher;
     
-    CommonAPI::SomeIP::MethodWithReplyStubDispatcher<
+    CommonAPI::SomeIP::SetObservableAttributeStubDispatcher<
         ::v1::DES_Project3::ServiceManagerStub,
-        std::tuple< uint32_t>,
-        std::tuple< std::string>,
-        std::tuple< CommonAPI::SomeIP::IntegerDeployment<uint32_t>>,
-        std::tuple< CommonAPI::SomeIP::StringDeployment>
-    > setSpeedStubDispatcher;
+        uint32_t,
+        CommonAPI::SomeIP::IntegerDeployment<uint32_t>
+    > setSpeedAttributeStubDispatcher;
     
-    CommonAPI::SomeIP::MethodWithReplyStubDispatcher<
+    CommonAPI::SomeIP::GetAttributeStubDispatcher<
         ::v1::DES_Project3::ServiceManagerStub,
-        std::tuple< std::string>,
-        std::tuple< std::string>,
-        std::tuple< CommonAPI::SomeIP::StringDeployment>,
-        std::tuple< CommonAPI::SomeIP::StringDeployment>
-    > setGearStubDispatcher;
+        uint32_t,
+        CommonAPI::SomeIP::IntegerDeployment<uint32_t>
+    > getRpmAttributeStubDispatcher;
     
-    CommonAPI::SomeIP::MethodWithReplyStubDispatcher<
+    CommonAPI::SomeIP::SetObservableAttributeStubDispatcher<
         ::v1::DES_Project3::ServiceManagerStub,
-        std::tuple< std::string>,
-        std::tuple< std::string>,
-        std::tuple< CommonAPI::SomeIP::StringDeployment>,
-        std::tuple< CommonAPI::SomeIP::StringDeployment>
-    > setIndicatorStubDispatcher;
+        uint32_t,
+        CommonAPI::SomeIP::IntegerDeployment<uint32_t>
+    > setRpmAttributeStubDispatcher;
     
-    CommonAPI::SomeIP::MethodWithReplyStubDispatcher<
+    CommonAPI::SomeIP::GetAttributeStubDispatcher<
         ::v1::DES_Project3::ServiceManagerStub,
-        std::tuple< float>,
-        std::tuple< std::string>,
-        std::tuple< CommonAPI::EmptyDeployment>,
-        std::tuple< CommonAPI::SomeIP::StringDeployment>
-    > setCurrentStubDispatcher;
+        std::string,
+        CommonAPI::SomeIP::StringDeployment
+    > getIndicatorAttributeStubDispatcher;
     
-    CommonAPI::SomeIP::MethodWithReplyStubDispatcher<
+    CommonAPI::SomeIP::SetObservableAttributeStubDispatcher<
         ::v1::DES_Project3::ServiceManagerStub,
-        std::tuple< uint8_t>,
-        std::tuple< std::string>,
-        std::tuple< CommonAPI::SomeIP::IntegerDeployment<uint8_t>>,
-        std::tuple< CommonAPI::SomeIP::StringDeployment>
-    > setPowerConsumptionStubDispatcher;
+        std::string,
+        CommonAPI::SomeIP::StringDeployment
+    > setIndicatorAttributeStubDispatcher;
     
-    CommonAPI::SomeIP::MethodWithReplyStubDispatcher<
+    CommonAPI::SomeIP::GetAttributeStubDispatcher<
         ::v1::DES_Project3::ServiceManagerStub,
-        std::tuple< float>,
-        std::tuple< std::string>,
-        std::tuple< CommonAPI::EmptyDeployment>,
-        std::tuple< CommonAPI::SomeIP::StringDeployment>
-    > setVoltageStubDispatcher;
+        std::string,
+        CommonAPI::SomeIP::StringDeployment
+    > getGearAttributeStubDispatcher;
     
-    CommonAPI::SomeIP::MethodWithReplyStubDispatcher<
+    CommonAPI::SomeIP::SetObservableAttributeStubDispatcher<
         ::v1::DES_Project3::ServiceManagerStub,
-        std::tuple< uint8_t>,
-        std::tuple< >,
-        std::tuple< CommonAPI::SomeIP::IntegerDeployment<uint8_t>>,
-        std::tuple< >
-    > setBatteryLevelStubDispatcher;
+        std::string,
+        CommonAPI::SomeIP::StringDeployment
+    > setGearAttributeStubDispatcher;
+    
+    CommonAPI::SomeIP::GetAttributeStubDispatcher<
+        ::v1::DES_Project3::ServiceManagerStub,
+        uint8_t,
+        CommonAPI::SomeIP::IntegerDeployment<uint8_t>
+    > getBatteryAttributeStubDispatcher;
+    
+    CommonAPI::SomeIP::SetObservableAttributeStubDispatcher<
+        ::v1::DES_Project3::ServiceManagerStub,
+        uint8_t,
+        CommonAPI::SomeIP::IntegerDeployment<uint8_t>
+    > setBatteryAttributeStubDispatcher;
+    
+    CommonAPI::SomeIP::GetAttributeStubDispatcher<
+        ::v1::DES_Project3::ServiceManagerStub,
+        float
+    > getVoltageAttributeStubDispatcher;
+    
+    CommonAPI::SomeIP::SetObservableAttributeStubDispatcher<
+        ::v1::DES_Project3::ServiceManagerStub,
+        float
+    > setVoltageAttributeStubDispatcher;
+    
+    CommonAPI::SomeIP::GetAttributeStubDispatcher<
+        ::v1::DES_Project3::ServiceManagerStub,
+        float
+    > getCurrentAttributeStubDispatcher;
+    
+    CommonAPI::SomeIP::SetObservableAttributeStubDispatcher<
+        ::v1::DES_Project3::ServiceManagerStub,
+        float
+    > setCurrentAttributeStubDispatcher;
+    
+    CommonAPI::SomeIP::GetAttributeStubDispatcher<
+        ::v1::DES_Project3::ServiceManagerStub,
+        uint8_t,
+        CommonAPI::SomeIP::IntegerDeployment<uint8_t>
+    > getPowerConsumptionAttributeStubDispatcher;
+    
+    CommonAPI::SomeIP::SetObservableAttributeStubDispatcher<
+        ::v1::DES_Project3::ServiceManagerStub,
+        uint8_t,
+        CommonAPI::SomeIP::IntegerDeployment<uint8_t>
+    > setPowerConsumptionAttributeStubDispatcher;
+    
+    CommonAPI::SomeIP::GetAttributeStubDispatcher<
+        ::v1::DES_Project3::ServiceManagerStub,
+        std::string,
+        CommonAPI::SomeIP::StringDeployment
+    > getGearSelectionAttributeStubDispatcher;
+    
+    CommonAPI::SomeIP::SetObservableAttributeStubDispatcher<
+        ::v1::DES_Project3::ServiceManagerStub,
+        std::string,
+        CommonAPI::SomeIP::StringDeployment
+    > setGearSelectionAttributeStubDispatcher;
     
     ServiceManagerSomeIPStubAdapterInternal(
         const CommonAPI::SomeIP::Address &_address,
@@ -127,79 +185,216 @@ public:
             _connection,
             std::dynamic_pointer_cast< ServiceManagerStub>(_stub)),
         getServiceManagerInterfaceVersionStubDispatcher(&ServiceManagerStub::lockInterfaceVersionAttribute, &ServiceManagerStub::getInterfaceVersion, false, true),
-        setRpmStubDispatcher(
-            &ServiceManagerStub::setRpm,
+        getSpeedAttributeStubDispatcher(
+            &::v1::DES_Project3::ServiceManagerStub::lockSpeedAttribute,
+            &::v1::DES_Project3::ServiceManagerStub::getSpeedAttribute,
             false,
-            _stub->hasElement(0),
-            std::make_tuple(static_cast< CommonAPI::SomeIP::IntegerDeployment<uint32_t>* >(nullptr)),
-            std::make_tuple(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr)))
-        
+            _stub->hasElement(0)),
+        setSpeedAttributeStubDispatcher(
+            &::v1::DES_Project3::ServiceManagerStub::lockSpeedAttribute,
+            &::v1::DES_Project3::ServiceManagerStub::getSpeedAttribute,
+            &ServiceManagerStubRemoteEvent::onRemoteSetSpeedAttribute,
+            &ServiceManagerStubRemoteEvent::onRemoteSpeedAttributeChanged,
+            &ServiceManagerStubAdapter::fireSpeedAttributeChanged,
+            false,
+            _stub->hasElement(0))
         ,
-        setSpeedStubDispatcher(
-            &ServiceManagerStub::setSpeed,
+        getRpmAttributeStubDispatcher(
+            &::v1::DES_Project3::ServiceManagerStub::lockRpmAttribute,
+            &::v1::DES_Project3::ServiceManagerStub::getRpmAttribute,
             false,
-            _stub->hasElement(1),
-            std::make_tuple(static_cast< CommonAPI::SomeIP::IntegerDeployment<uint32_t>* >(nullptr)),
-            std::make_tuple(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr)))
-        
+            _stub->hasElement(1)),
+        setRpmAttributeStubDispatcher(
+            &::v1::DES_Project3::ServiceManagerStub::lockRpmAttribute,
+            &::v1::DES_Project3::ServiceManagerStub::getRpmAttribute,
+            &ServiceManagerStubRemoteEvent::onRemoteSetRpmAttribute,
+            &ServiceManagerStubRemoteEvent::onRemoteRpmAttributeChanged,
+            &ServiceManagerStubAdapter::fireRpmAttributeChanged,
+            false,
+            _stub->hasElement(1))
         ,
-        setGearStubDispatcher(
-            &ServiceManagerStub::setGear,
+        getIndicatorAttributeStubDispatcher(
+            &::v1::DES_Project3::ServiceManagerStub::lockIndicatorAttribute,
+            &::v1::DES_Project3::ServiceManagerStub::getIndicatorAttribute,
             false,
-            _stub->hasElement(2),
-            std::make_tuple(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr)),
-            std::make_tuple(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr)))
-        
+            _stub->hasElement(2)),
+        setIndicatorAttributeStubDispatcher(
+            &::v1::DES_Project3::ServiceManagerStub::lockIndicatorAttribute,
+            &::v1::DES_Project3::ServiceManagerStub::getIndicatorAttribute,
+            &ServiceManagerStubRemoteEvent::onRemoteSetIndicatorAttribute,
+            &ServiceManagerStubRemoteEvent::onRemoteIndicatorAttributeChanged,
+            &ServiceManagerStubAdapter::fireIndicatorAttributeChanged,
+            false,
+            _stub->hasElement(2))
         ,
-        setIndicatorStubDispatcher(
-            &ServiceManagerStub::setIndicator,
+        getGearAttributeStubDispatcher(
+            &::v1::DES_Project3::ServiceManagerStub::lockGearAttribute,
+            &::v1::DES_Project3::ServiceManagerStub::getGearAttribute,
             false,
-            _stub->hasElement(3),
-            std::make_tuple(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr)),
-            std::make_tuple(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr)))
-        
+            _stub->hasElement(3)),
+        setGearAttributeStubDispatcher(
+            &::v1::DES_Project3::ServiceManagerStub::lockGearAttribute,
+            &::v1::DES_Project3::ServiceManagerStub::getGearAttribute,
+            &ServiceManagerStubRemoteEvent::onRemoteSetGearAttribute,
+            &ServiceManagerStubRemoteEvent::onRemoteGearAttributeChanged,
+            &ServiceManagerStubAdapter::fireGearAttributeChanged,
+            false,
+            _stub->hasElement(3))
         ,
-        setCurrentStubDispatcher(
-            &ServiceManagerStub::setCurrent,
+        getBatteryAttributeStubDispatcher(
+            &::v1::DES_Project3::ServiceManagerStub::lockBatteryAttribute,
+            &::v1::DES_Project3::ServiceManagerStub::getBatteryAttribute,
             false,
-            _stub->hasElement(4),
-            std::make_tuple(static_cast< CommonAPI::EmptyDeployment* >(nullptr)),
-            std::make_tuple(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr)))
-        
+            _stub->hasElement(4)),
+        setBatteryAttributeStubDispatcher(
+            &::v1::DES_Project3::ServiceManagerStub::lockBatteryAttribute,
+            &::v1::DES_Project3::ServiceManagerStub::getBatteryAttribute,
+            &ServiceManagerStubRemoteEvent::onRemoteSetBatteryAttribute,
+            &ServiceManagerStubRemoteEvent::onRemoteBatteryAttributeChanged,
+            &ServiceManagerStubAdapter::fireBatteryAttributeChanged,
+            false,
+            _stub->hasElement(4))
         ,
-        setPowerConsumptionStubDispatcher(
-            &ServiceManagerStub::setPowerConsumption,
+        getVoltageAttributeStubDispatcher(
+            &::v1::DES_Project3::ServiceManagerStub::lockVoltageAttribute,
+            &::v1::DES_Project3::ServiceManagerStub::getVoltageAttribute,
             false,
-            _stub->hasElement(5),
-            std::make_tuple(static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr)),
-            std::make_tuple(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr)))
-        
+            _stub->hasElement(5)),
+        setVoltageAttributeStubDispatcher(
+            &::v1::DES_Project3::ServiceManagerStub::lockVoltageAttribute,
+            &::v1::DES_Project3::ServiceManagerStub::getVoltageAttribute,
+            &ServiceManagerStubRemoteEvent::onRemoteSetVoltageAttribute,
+            &ServiceManagerStubRemoteEvent::onRemoteVoltageAttributeChanged,
+            &ServiceManagerStubAdapter::fireVoltageAttributeChanged,
+            false,
+            _stub->hasElement(5))
         ,
-        setVoltageStubDispatcher(
-            &ServiceManagerStub::setVoltage,
+        getCurrentAttributeStubDispatcher(
+            &::v1::DES_Project3::ServiceManagerStub::lockCurrentAttribute,
+            &::v1::DES_Project3::ServiceManagerStub::getCurrentAttribute,
             false,
-            _stub->hasElement(6),
-            std::make_tuple(static_cast< CommonAPI::EmptyDeployment* >(nullptr)),
-            std::make_tuple(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr)))
-        
+            _stub->hasElement(6)),
+        setCurrentAttributeStubDispatcher(
+            &::v1::DES_Project3::ServiceManagerStub::lockCurrentAttribute,
+            &::v1::DES_Project3::ServiceManagerStub::getCurrentAttribute,
+            &ServiceManagerStubRemoteEvent::onRemoteSetCurrentAttribute,
+            &ServiceManagerStubRemoteEvent::onRemoteCurrentAttributeChanged,
+            &ServiceManagerStubAdapter::fireCurrentAttributeChanged,
+            false,
+            _stub->hasElement(6))
         ,
-        setBatteryLevelStubDispatcher(
-            &ServiceManagerStub::setBatteryLevel,
+        getPowerConsumptionAttributeStubDispatcher(
+            &::v1::DES_Project3::ServiceManagerStub::lockPowerConsumptionAttribute,
+            &::v1::DES_Project3::ServiceManagerStub::getPowerConsumptionAttribute,
             false,
-            _stub->hasElement(7),
-            std::make_tuple(static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr)),
-            std::make_tuple())
-        
+            _stub->hasElement(7)),
+        setPowerConsumptionAttributeStubDispatcher(
+            &::v1::DES_Project3::ServiceManagerStub::lockPowerConsumptionAttribute,
+            &::v1::DES_Project3::ServiceManagerStub::getPowerConsumptionAttribute,
+            &ServiceManagerStubRemoteEvent::onRemoteSetPowerConsumptionAttribute,
+            &ServiceManagerStubRemoteEvent::onRemotePowerConsumptionAttributeChanged,
+            &ServiceManagerStubAdapter::firePowerConsumptionAttributeChanged,
+            false,
+            _stub->hasElement(7))
+        ,
+        getGearSelectionAttributeStubDispatcher(
+            &::v1::DES_Project3::ServiceManagerStub::lockGearSelectionAttribute,
+            &::v1::DES_Project3::ServiceManagerStub::getGearSelectionAttribute,
+            false,
+            _stub->hasElement(8)),
+        setGearSelectionAttributeStubDispatcher(
+            &::v1::DES_Project3::ServiceManagerStub::lockGearSelectionAttribute,
+            &::v1::DES_Project3::ServiceManagerStub::getGearSelectionAttribute,
+            &ServiceManagerStubRemoteEvent::onRemoteSetGearSelectionAttribute,
+            &ServiceManagerStubRemoteEvent::onRemoteGearSelectionAttributeChanged,
+            &ServiceManagerStubAdapter::fireGearSelectionAttributeChanged,
+            false,
+            _stub->hasElement(8))
     {
-        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x1101) }, &setRpmStubDispatcher );
-        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x65) }, &setSpeedStubDispatcher );
-        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x66) }, &setGearStubDispatcher );
-        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x67) }, &setIndicatorStubDispatcher );
-        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x68) }, &setCurrentStubDispatcher );
-        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x69) }, &setPowerConsumptionStubDispatcher );
-        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x6a) }, &setVoltageStubDispatcher );
-        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x6b) }, &setBatteryLevelStubDispatcher );
+        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x6101) }, &getSpeedAttributeStubDispatcher );
+        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x6102) }, &setSpeedAttributeStubDispatcher );
+        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x6201) }, &getRpmAttributeStubDispatcher );
+        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x6202) }, &setRpmAttributeStubDispatcher );
+        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x6301) }, &getIndicatorAttributeStubDispatcher );
+        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x6302) }, &setIndicatorAttributeStubDispatcher );
+        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x6401) }, &getGearAttributeStubDispatcher );
+        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x6402) }, &setGearAttributeStubDispatcher );
+        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x6501) }, &getBatteryAttributeStubDispatcher );
+        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x6502) }, &setBatteryAttributeStubDispatcher );
+        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x6601) }, &getVoltageAttributeStubDispatcher );
+        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x6602) }, &setVoltageAttributeStubDispatcher );
+        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x6701) }, &getCurrentAttributeStubDispatcher );
+        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x6702) }, &setCurrentAttributeStubDispatcher );
+        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x6801) }, &getPowerConsumptionAttributeStubDispatcher );
+        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x6802) }, &setPowerConsumptionAttributeStubDispatcher );
+        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x6901) }, &getGearSelectionAttributeStubDispatcher );
+        ServiceManagerSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x6902) }, &setGearSelectionAttributeStubDispatcher );
+        std::shared_ptr<CommonAPI::SomeIP::ClientId> itsClient = std::make_shared<CommonAPI::SomeIP::ClientId>(0xFFFF, 0xFFFFFFFF, 0xFFFFFFFF);
+
         // Provided events/fields
+        if (_stub->hasElement(0)) {
+            std::set<CommonAPI::SomeIP::eventgroup_id_t> itsEventGroups;
+            itsEventGroups.insert(CommonAPI::SomeIP::eventgroup_id_t(CommonAPI::SomeIP::eventgroup_id_t(0xdb28)));
+            CommonAPI::SomeIP::StubAdapter::registerEvent(CommonAPI::SomeIP::event_id_t(0xdb28), itsEventGroups, CommonAPI::SomeIP::event_type_e::ET_FIELD, CommonAPI::SomeIP::reliability_type_e::RT_UNRELIABLE);
+            fireSpeedAttributeChanged(std::dynamic_pointer_cast< ::v1::DES_Project3::ServiceManagerStub>(_stub)->getSpeedAttribute(itsClient));
+        }
+
+        if (_stub->hasElement(1)) {
+            std::set<CommonAPI::SomeIP::eventgroup_id_t> itsEventGroups;
+            itsEventGroups.insert(CommonAPI::SomeIP::eventgroup_id_t(CommonAPI::SomeIP::eventgroup_id_t(0xdb8c)));
+            CommonAPI::SomeIP::StubAdapter::registerEvent(CommonAPI::SomeIP::event_id_t(0xdb8c), itsEventGroups, CommonAPI::SomeIP::event_type_e::ET_FIELD, CommonAPI::SomeIP::reliability_type_e::RT_UNRELIABLE);
+            fireRpmAttributeChanged(std::dynamic_pointer_cast< ::v1::DES_Project3::ServiceManagerStub>(_stub)->getRpmAttribute(itsClient));
+        }
+
+        if (_stub->hasElement(2)) {
+            std::set<CommonAPI::SomeIP::eventgroup_id_t> itsEventGroups;
+            itsEventGroups.insert(CommonAPI::SomeIP::eventgroup_id_t(CommonAPI::SomeIP::eventgroup_id_t(0xdbf0)));
+            CommonAPI::SomeIP::StubAdapter::registerEvent(CommonAPI::SomeIP::event_id_t(0xdbf0), itsEventGroups, CommonAPI::SomeIP::event_type_e::ET_FIELD, CommonAPI::SomeIP::reliability_type_e::RT_RELIABLE);
+            fireIndicatorAttributeChanged(std::dynamic_pointer_cast< ::v1::DES_Project3::ServiceManagerStub>(_stub)->getIndicatorAttribute(itsClient));
+        }
+
+        if (_stub->hasElement(3)) {
+            std::set<CommonAPI::SomeIP::eventgroup_id_t> itsEventGroups;
+            itsEventGroups.insert(CommonAPI::SomeIP::eventgroup_id_t(CommonAPI::SomeIP::eventgroup_id_t(0xdc54)));
+            CommonAPI::SomeIP::StubAdapter::registerEvent(CommonAPI::SomeIP::event_id_t(0xdc54), itsEventGroups, CommonAPI::SomeIP::event_type_e::ET_FIELD, CommonAPI::SomeIP::reliability_type_e::RT_RELIABLE);
+            fireGearAttributeChanged(std::dynamic_pointer_cast< ::v1::DES_Project3::ServiceManagerStub>(_stub)->getGearAttribute(itsClient));
+        }
+
+        if (_stub->hasElement(4)) {
+            std::set<CommonAPI::SomeIP::eventgroup_id_t> itsEventGroups;
+            itsEventGroups.insert(CommonAPI::SomeIP::eventgroup_id_t(CommonAPI::SomeIP::eventgroup_id_t(0xdcb8)));
+            CommonAPI::SomeIP::StubAdapter::registerEvent(CommonAPI::SomeIP::event_id_t(0xdcb8), itsEventGroups, CommonAPI::SomeIP::event_type_e::ET_FIELD, CommonAPI::SomeIP::reliability_type_e::RT_RELIABLE);
+            fireBatteryAttributeChanged(std::dynamic_pointer_cast< ::v1::DES_Project3::ServiceManagerStub>(_stub)->getBatteryAttribute(itsClient));
+        }
+
+        if (_stub->hasElement(5)) {
+            std::set<CommonAPI::SomeIP::eventgroup_id_t> itsEventGroups;
+            itsEventGroups.insert(CommonAPI::SomeIP::eventgroup_id_t(CommonAPI::SomeIP::eventgroup_id_t(0xdd1c)));
+            CommonAPI::SomeIP::StubAdapter::registerEvent(CommonAPI::SomeIP::event_id_t(0xdd1c), itsEventGroups, CommonAPI::SomeIP::event_type_e::ET_FIELD, CommonAPI::SomeIP::reliability_type_e::RT_RELIABLE);
+            fireVoltageAttributeChanged(std::dynamic_pointer_cast< ::v1::DES_Project3::ServiceManagerStub>(_stub)->getVoltageAttribute(itsClient));
+        }
+
+        if (_stub->hasElement(6)) {
+            std::set<CommonAPI::SomeIP::eventgroup_id_t> itsEventGroups;
+            itsEventGroups.insert(CommonAPI::SomeIP::eventgroup_id_t(CommonAPI::SomeIP::eventgroup_id_t(0xdd80)));
+            CommonAPI::SomeIP::StubAdapter::registerEvent(CommonAPI::SomeIP::event_id_t(0xdd80), itsEventGroups, CommonAPI::SomeIP::event_type_e::ET_FIELD, CommonAPI::SomeIP::reliability_type_e::RT_RELIABLE);
+            fireCurrentAttributeChanged(std::dynamic_pointer_cast< ::v1::DES_Project3::ServiceManagerStub>(_stub)->getCurrentAttribute(itsClient));
+        }
+
+        if (_stub->hasElement(7)) {
+            std::set<CommonAPI::SomeIP::eventgroup_id_t> itsEventGroups;
+            itsEventGroups.insert(CommonAPI::SomeIP::eventgroup_id_t(CommonAPI::SomeIP::eventgroup_id_t(0xdde4)));
+            CommonAPI::SomeIP::StubAdapter::registerEvent(CommonAPI::SomeIP::event_id_t(0xdde4), itsEventGroups, CommonAPI::SomeIP::event_type_e::ET_FIELD, CommonAPI::SomeIP::reliability_type_e::RT_RELIABLE);
+            firePowerConsumptionAttributeChanged(std::dynamic_pointer_cast< ::v1::DES_Project3::ServiceManagerStub>(_stub)->getPowerConsumptionAttribute(itsClient));
+        }
+
+        if (_stub->hasElement(8)) {
+            std::set<CommonAPI::SomeIP::eventgroup_id_t> itsEventGroups;
+            itsEventGroups.insert(CommonAPI::SomeIP::eventgroup_id_t(CommonAPI::SomeIP::eventgroup_id_t(0xde48)));
+            CommonAPI::SomeIP::StubAdapter::registerEvent(CommonAPI::SomeIP::event_id_t(0xde48), itsEventGroups, CommonAPI::SomeIP::event_type_e::ET_FIELD, CommonAPI::SomeIP::reliability_type_e::RT_RELIABLE);
+            fireGearSelectionAttributeChanged(std::dynamic_pointer_cast< ::v1::DES_Project3::ServiceManagerStub>(_stub)->getGearSelectionAttribute(itsClient));
+        }
+
     }
 
     // Register/Unregister event handlers for selective broadcasts
@@ -207,6 +402,160 @@ public:
     void unregisterSelectiveEventHandlers();
 
 };
+
+template <typename _Stub, typename... _Stubs>
+void ServiceManagerSomeIPStubAdapterInternal<_Stub, _Stubs...>::fireSpeedAttributeChanged(const uint32_t &_value) {
+    CommonAPI::Deployable< uint32_t, CommonAPI::SomeIP::IntegerDeployment<uint32_t>> deployedValue(_value, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint32_t>* >(nullptr));
+    CommonAPI::SomeIP::StubEventHelper<
+        CommonAPI::SomeIP::SerializableArguments<
+            CommonAPI::Deployable<
+                uint32_t,
+                CommonAPI::SomeIP::IntegerDeployment<uint32_t>
+            >
+            >
+    >::sendEvent(
+        *this,
+        CommonAPI::SomeIP::event_id_t(0xdb28),
+        false,
+        deployedValue
+    );
+}
+
+template <typename _Stub, typename... _Stubs>
+void ServiceManagerSomeIPStubAdapterInternal<_Stub, _Stubs...>::fireRpmAttributeChanged(const uint32_t &_value) {
+    CommonAPI::Deployable< uint32_t, CommonAPI::SomeIP::IntegerDeployment<uint32_t>> deployedValue(_value, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint32_t>* >(nullptr));
+    CommonAPI::SomeIP::StubEventHelper<
+        CommonAPI::SomeIP::SerializableArguments<
+            CommonAPI::Deployable<
+                uint32_t,
+                CommonAPI::SomeIP::IntegerDeployment<uint32_t>
+            >
+            >
+    >::sendEvent(
+        *this,
+        CommonAPI::SomeIP::event_id_t(0xdb8c),
+        false,
+        deployedValue
+    );
+}
+
+template <typename _Stub, typename... _Stubs>
+void ServiceManagerSomeIPStubAdapterInternal<_Stub, _Stubs...>::fireIndicatorAttributeChanged(const std::string &_value) {
+    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deployedValue(_value, static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
+    CommonAPI::SomeIP::StubEventHelper<
+        CommonAPI::SomeIP::SerializableArguments<
+            CommonAPI::Deployable<
+                std::string,
+                CommonAPI::SomeIP::StringDeployment
+            >
+            >
+    >::sendEvent(
+        *this,
+        CommonAPI::SomeIP::event_id_t(0xdbf0),
+        false,
+        deployedValue
+    );
+}
+
+template <typename _Stub, typename... _Stubs>
+void ServiceManagerSomeIPStubAdapterInternal<_Stub, _Stubs...>::fireGearAttributeChanged(const std::string &_value) {
+    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deployedValue(_value, static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
+    CommonAPI::SomeIP::StubEventHelper<
+        CommonAPI::SomeIP::SerializableArguments<
+            CommonAPI::Deployable<
+                std::string,
+                CommonAPI::SomeIP::StringDeployment
+            >
+            >
+    >::sendEvent(
+        *this,
+        CommonAPI::SomeIP::event_id_t(0xdc54),
+        false,
+        deployedValue
+    );
+}
+
+template <typename _Stub, typename... _Stubs>
+void ServiceManagerSomeIPStubAdapterInternal<_Stub, _Stubs...>::fireBatteryAttributeChanged(const uint8_t &_value) {
+    CommonAPI::Deployable< uint8_t, CommonAPI::SomeIP::IntegerDeployment<uint8_t>> deployedValue(_value, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr));
+    CommonAPI::SomeIP::StubEventHelper<
+        CommonAPI::SomeIP::SerializableArguments<
+            CommonAPI::Deployable<
+                uint8_t,
+                CommonAPI::SomeIP::IntegerDeployment<uint8_t>
+            >
+            >
+    >::sendEvent(
+        *this,
+        CommonAPI::SomeIP::event_id_t(0xdcb8),
+        false,
+        deployedValue
+    );
+}
+
+template <typename _Stub, typename... _Stubs>
+void ServiceManagerSomeIPStubAdapterInternal<_Stub, _Stubs...>::fireVoltageAttributeChanged(const float &_value) {
+    CommonAPI::SomeIP::StubEventHelper<
+        CommonAPI::SomeIP::SerializableArguments<
+            float
+            >
+    >::sendEvent(
+        *this,
+        CommonAPI::SomeIP::event_id_t(0xdd1c),
+        false,
+        _value
+    );
+}
+
+template <typename _Stub, typename... _Stubs>
+void ServiceManagerSomeIPStubAdapterInternal<_Stub, _Stubs...>::fireCurrentAttributeChanged(const float &_value) {
+    CommonAPI::SomeIP::StubEventHelper<
+        CommonAPI::SomeIP::SerializableArguments<
+            float
+            >
+    >::sendEvent(
+        *this,
+        CommonAPI::SomeIP::event_id_t(0xdd80),
+        false,
+        _value
+    );
+}
+
+template <typename _Stub, typename... _Stubs>
+void ServiceManagerSomeIPStubAdapterInternal<_Stub, _Stubs...>::firePowerConsumptionAttributeChanged(const uint8_t &_value) {
+    CommonAPI::Deployable< uint8_t, CommonAPI::SomeIP::IntegerDeployment<uint8_t>> deployedValue(_value, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr));
+    CommonAPI::SomeIP::StubEventHelper<
+        CommonAPI::SomeIP::SerializableArguments<
+            CommonAPI::Deployable<
+                uint8_t,
+                CommonAPI::SomeIP::IntegerDeployment<uint8_t>
+            >
+            >
+    >::sendEvent(
+        *this,
+        CommonAPI::SomeIP::event_id_t(0xdde4),
+        false,
+        deployedValue
+    );
+}
+
+template <typename _Stub, typename... _Stubs>
+void ServiceManagerSomeIPStubAdapterInternal<_Stub, _Stubs...>::fireGearSelectionAttributeChanged(const std::string &_value) {
+    CommonAPI::Deployable< std::string, CommonAPI::SomeIP::StringDeployment> deployedValue(_value, static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
+    CommonAPI::SomeIP::StubEventHelper<
+        CommonAPI::SomeIP::SerializableArguments<
+            CommonAPI::Deployable<
+                std::string,
+                CommonAPI::SomeIP::StringDeployment
+            >
+            >
+    >::sendEvent(
+        *this,
+        CommonAPI::SomeIP::event_id_t(0xde48),
+        false,
+        deployedValue
+    );
+}
 
 
 template <typename _Stub, typename... _Stubs>

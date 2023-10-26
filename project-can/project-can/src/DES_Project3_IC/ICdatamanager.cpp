@@ -1,124 +1,57 @@
 #include "ICdatamanager.h"
+#include <unistd.h>
+#include <iostream>
 
-ICdatamanager::ICdatamanager(QObject *parent) : QObject(parent), m_rpm(0), m_speed(0), m_gear("P"),
-m_current(0.0f), m_powerConsumption(0), m_voltage(0.0f), m_batteryLevel(0) {}
+ICdatamanager::ICdatamanager() {
+    // Initialize Runtime and Proxy
+    runtime = CommonAPI::Runtime::get();
+    ICProxy = runtime->buildProxy<v1_0::DES_Project3::ServiceManagerProxy>("local", "ServiceManager", "InstrumentCluster_Proxy");
 
-
-// RPM
-uint32_t ICdatamanager::getRpm() const {
-    return m_rpm;
+    ICProxyInit();
 }
 
-void ICdatamanager::setRpm(uint32_t rpm) {
-    if (ICProxy && ICProxy->isAvailable()) {
-        CommonAPI::CallStatus callStatus;
-        std::string message;
-        ICProxy->setRpm(rpm, callStatus, message);
-        if (callStatus == CommonAPI::CallStatus::SUCCESS && m_rpm != rpm) {
-            m_rpm = rpm;
-            emit rpmChanged();
-        }
-    }
+ICdatamanager::~ICdatamanager(){
+
 }
 
-// Speed
-uint32_t ICdatamanager::getSpeed() const {
-    return m_speed;
+void ICdatamanager::ICProxyInit(){
+    std::cout << "Checking ICProxy Availability!" << std::endl;
+    while(!ICProxy->isAvailable())
+        usleep(10);
+    std::cout << "Available..." << std::endl; 
+
+    ICProxy->getRpmAttribute().getChangedEvent().subscribe([this](const uint32_t& rpm){
+        emit rpmChanged(rpm);
+    });
+
+    ICProxy->getSpeedAttribute().getChangedEvent().subscribe([this](const uint32_t& speed){
+        emit speedChanged(speed);
+    });
+   
+    ICProxy->getGearAttribute().getChangedEvent().subscribe([this](const std::string& gear){
+        emit gearChanged(QString::fromStdString(gear));
+    });
+   
+    
+    ICProxy->getCurrentAttribute().getChangedEvent().subscribe([this](const float& current){
+        emit currentChanged(current);
+    });
+   
+    
+    ICProxy->getPowerConsumptionAttribute().getChangedEvent().subscribe([this](const float& powerConsumption){
+        emit powerConsumptionChanged(powerConsumption);
+    });
+   
+
+    ICProxy->getVoltageAttribute().getChangedEvent().subscribe([this](const float voltage){
+        emit voltageChanged(voltage);
+    });
+   
+
+    ICProxy->getBatteryAttribute().getChangedEvent().subscribe([this](const uint8_t& battery){
+        emit batteryChanged(battery);
+    });
+   
+
 }
 
-void ICdatamanager::setSpeed(uint32_t speed) {
-    if (ICProxy && ICProxy->isAvailable()) {
-        CommonAPI::CallStatus callStatus;
-        std::string message;
-        ICProxy->setSpeed(speed, callStatus, message);
-        if (callStatus == CommonAPI::CallStatus::SUCCESS && m_speed != speed) {
-            m_speed = speed;
-            emit speedChanged();
-        }
-    }
-}
-
-// Gear
-QString ICdatamanager::getGear() const {
-    return m_gear;
-}
-
-void ICdatamanager::setGear(const QString &gear) {
-    if (ICProxy && ICProxy->isAvailable()) {
-        CommonAPI::CallStatus callStatus;
-        std::string message;
-        ICProxy->setGear(gear.toStdString(), callStatus, message);
-        if (callStatus == CommonAPI::CallStatus::SUCCESS && m_gear != gear) {
-            m_gear = gear;
-            emit gearChanged();
-        }
-    }
-}
-
-// Current
-float ICdatamanager::getCurrent() const {
-    return m_current;
-}
-
-void ICdatamanager::setCurrent(float current) {
-    if (ICProxy && ICProxy->isAvailable()) {
-        CommonAPI::CallStatus callStatus;
-        std::string message;
-        ICProxy->setCurrent(current, callStatus, message);
-        if (callStatus == CommonAPI::CallStatus::SUCCESS && m_current != current) {
-            m_current = current;
-            emit currentChanged();
-        }
-    }
-}
-
-// Power Consumption
-uint8_t ICdatamanager::getPowerConsumption() const {
-    return m_powerConsumption;
-}
-
-void ICdatamanager::setPowerConsumption(uint8_t powerConsumption) {
-    if (ICProxy && ICProxy->isAvailable()) {
-        CommonAPI::CallStatus callStatus;
-        std::string message;
-        ICProxy->setPowerConsumption(powerConsumption, callStatus, message);
-        if (callStatus == CommonAPI::CallStatus::SUCCESS && m_powerConsumption != powerConsumption) {
-            m_powerConsumption = powerConsumption;
-            emit powerConsumptionChanged();
-        }
-    }
-}
-
-// Voltage
-float ICdatamanager::getVoltage() const {
-    return m_voltage;
-}
-
-void ICdatamanager::setVoltage(float voltage) {
-    if (ICProxy && ICProxy->isAvailable()) {
-        CommonAPI::CallStatus callStatus;
-        std::string message;
-        ICProxy->setVoltage(voltage, callStatus, message);
-        if (callStatus == CommonAPI::CallStatus::SUCCESS && m_voltage != voltage) {
-            m_voltage = voltage;
-            emit voltageChanged();
-        }
-    }
-}
-
-// Battery Level
-uint8_t ICdatamanager::getBatteryLevel() const {
-    return m_batteryLevel;
-}
-
-void ICdatamanager::setBatteryLevel(uint8_t batteryLevel) {
-    if (ICProxy && ICProxy->isAvailable()) {
-        CommonAPI::CallStatus callStatus;
-        std::string message;
-        ICProxy->setBatteryLevel(batteryLevel, callStatus, message);
-        if (callStatus == CommonAPI::CallStatus::SUCCESS && m_batteryLevel != batteryLevel) {
-            m_batteryLevel = batteryLevel;
-            emit batteryLevelChanged();
-        }
-    }
-}

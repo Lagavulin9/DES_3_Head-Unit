@@ -20,6 +20,7 @@
 #include <CommonAPI/SomeIP/Factory.hpp>
 #include <CommonAPI/SomeIP/Proxy.hpp>
 #include <CommonAPI/SomeIP/Types.hpp>
+#include <CommonAPI/SomeIP/Attribute.hpp>
 
 #if defined (HAS_DEFINED_COMMONAPI_INTERNAL_COMPILATION_HERE)
 #undef COMMONAPI_INTERNAL_COMPILATION
@@ -53,43 +54,38 @@ public:
 
     virtual ~ServiceManagerSomeIPProxy();
 
-    virtual void setRpm(uint32_t _filteredRpm, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info);
+    virtual SpeedAttribute& getSpeedAttribute();
 
-    virtual std::future<CommonAPI::CallStatus> setRpmAsync(const uint32_t &_filteredRpm, SetRpmAsyncCallback _callback, const CommonAPI::CallInfo *_info);
+    virtual RpmAttribute& getRpmAttribute();
 
-    virtual void setSpeed(uint32_t _filteredSpeed, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info);
+    virtual IndicatorAttribute& getIndicatorAttribute();
 
-    virtual std::future<CommonAPI::CallStatus> setSpeedAsync(const uint32_t &_filteredSpeed, SetSpeedAsyncCallback _callback, const CommonAPI::CallInfo *_info);
+    virtual GearAttribute& getGearAttribute();
 
-    virtual void setGear(std::string _currentGear, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info);
+    virtual BatteryAttribute& getBatteryAttribute();
 
-    virtual std::future<CommonAPI::CallStatus> setGearAsync(const std::string &_currentGear, SetGearAsyncCallback _callback, const CommonAPI::CallInfo *_info);
+    virtual VoltageAttribute& getVoltageAttribute();
 
-    virtual void setIndicator(std::string _indicator, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info);
+    virtual CurrentAttribute& getCurrentAttribute();
 
-    virtual std::future<CommonAPI::CallStatus> setIndicatorAsync(const std::string &_indicator, SetIndicatorAsyncCallback _callback, const CommonAPI::CallInfo *_info);
+    virtual PowerConsumptionAttribute& getPowerConsumptionAttribute();
 
-    virtual void setCurrent(float _current, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info);
-
-    virtual std::future<CommonAPI::CallStatus> setCurrentAsync(const float &_current, SetCurrentAsyncCallback _callback, const CommonAPI::CallInfo *_info);
-
-    virtual void setPowerConsumption(uint8_t _powerconsumption, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info);
-
-    virtual std::future<CommonAPI::CallStatus> setPowerConsumptionAsync(const uint8_t &_powerconsumption, SetPowerConsumptionAsyncCallback _callback, const CommonAPI::CallInfo *_info);
-
-    virtual void setVoltage(float _voltage, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info);
-
-    virtual std::future<CommonAPI::CallStatus> setVoltageAsync(const float &_voltage, SetVoltageAsyncCallback _callback, const CommonAPI::CallInfo *_info);
-
-    virtual void setBatteryLevel(uint8_t _batterylevel, CommonAPI::CallStatus &_internalCallStatus, const CommonAPI::CallInfo *_info);
-
-    virtual std::future<CommonAPI::CallStatus> setBatteryLevelAsync(const uint8_t &_batterylevel, SetBatteryLevelAsyncCallback _callback, const CommonAPI::CallInfo *_info);
+    virtual GearSelectionAttribute& getGearSelectionAttribute();
 
     virtual void getOwnVersion(uint16_t &_major, uint16_t &_minor) const;
 
     virtual std::future<void> getCompletionFuture();
 
 private:
+    CommonAPI::SomeIP::ObservableAttribute<CommonAPI::SomeIP::Attribute<SpeedAttribute, CommonAPI::SomeIP::IntegerDeployment<uint32_t>>> speed_;
+    CommonAPI::SomeIP::ObservableAttribute<CommonAPI::SomeIP::Attribute<RpmAttribute, CommonAPI::SomeIP::IntegerDeployment<uint32_t>>> rpm_;
+    CommonAPI::SomeIP::ObservableAttribute<CommonAPI::SomeIP::Attribute<IndicatorAttribute, CommonAPI::SomeIP::StringDeployment>> indicator_;
+    CommonAPI::SomeIP::ObservableAttribute<CommonAPI::SomeIP::Attribute<GearAttribute, CommonAPI::SomeIP::StringDeployment>> gear_;
+    CommonAPI::SomeIP::ObservableAttribute<CommonAPI::SomeIP::Attribute<BatteryAttribute, CommonAPI::SomeIP::IntegerDeployment<uint8_t>>> battery_;
+    CommonAPI::SomeIP::ObservableAttribute<CommonAPI::SomeIP::Attribute<VoltageAttribute>> voltage_;
+    CommonAPI::SomeIP::ObservableAttribute<CommonAPI::SomeIP::Attribute<CurrentAttribute>> current_;
+    CommonAPI::SomeIP::ObservableAttribute<CommonAPI::SomeIP::Attribute<PowerConsumptionAttribute, CommonAPI::SomeIP::IntegerDeployment<uint8_t>>> powerConsumption_;
+    CommonAPI::SomeIP::ObservableAttribute<CommonAPI::SomeIP::Attribute<GearSelectionAttribute, CommonAPI::SomeIP::StringDeployment>> gearSelection_;
 
     std::promise<void> completed_;
 };

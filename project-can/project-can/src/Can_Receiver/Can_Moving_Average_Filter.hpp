@@ -8,6 +8,8 @@
 
 class MovingAverageFilter{
 public:
+
+
     MovingAverageFilter(size_t size, size_t discardSize);
     double filter(double new_value);
 

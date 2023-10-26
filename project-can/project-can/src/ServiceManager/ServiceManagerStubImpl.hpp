@@ -1,26 +1,15 @@
 #ifndef SERVICEMANAGERSTUBIMPL_HPP
 #define SERVICEMANAGERSTUBIMPL_HPP
 
-#include <string>
+// Include necessary headers for CommonAPI
 #include <CommonAPI/CommonAPI.hpp>
 #include <v1/DES_Project3/ServiceManagerStubDefault.hpp>
 
-#include "ServiceManagerSender.hpp"
-
-class ServiceManagerStubImpl : public v1::DES_Project3::ServiceManagerStubDefault {
-
-private:
-    ServiceManagerSender sender;
-
+class ServiceManagerStubImpl: public v1_0::DES_Project3::ServiceManagerStubDefault
+{
 public:
     ServiceManagerStubImpl();
     virtual ~ServiceManagerStubImpl();
-
-    virtual void setRpm(const std::shared_ptr<CommonAPI::ClientId> _client, uint32_t _receivedRpm, setRpmReply_t _return) override;
-    virtual void setSpeed(const std::shared_ptr<CommonAPI::ClientId> _client, uint32_t _receivedSpeed, setSpeedReply_t _return) override; 
-
-    
-   
 };
 
-#endif  // SERVICEMANAGERSTUBIMPL_HPP
+#endif // SERVICEMANAGERSTUBIMPL_HPP

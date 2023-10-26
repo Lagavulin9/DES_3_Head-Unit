@@ -1,134 +1,45 @@
 package DES_Project3
 
-interface ServiceManager{
-  version{major 1 minor 0}
+interface Speed_Sensor {
+    version { major 1 minor 0 }
 
-  method setRpm{
-    in {
-      UInt32 filteredRpm
-    }
-    out{
-      String message
-    }
-  }
-  method setSpeed{
-    in{
-      UInt32 filteredSpeed
-    }
-    out{
-      String message
-    }
-  }
-  method setGear{
-    in{
-      String currentGear
-    }
-    out{
-      String message
-    }
-  }
+    attribute UInt32 speed 
+    attribute UInt32 rpm 
+}
 
-  method setIndicator{
-    in{
-      String indicator
-    }
-    out{
-      String message
-    }
-  }
+interface Car_Control {
+    version { major 1 minor 0 }
 
-  method setCurrent{
-    in{
-      Float current
-    }
-    out{
-      String message
+    attribute String indicator 
+    attribute String gear
+}
 
-    }
-  }
+interface Car_Information {
+    version { major 1 minor 0 }
 
-  method setPowerConsumption{
-    in{
-      UInt8 powerconsumption
-    }
-    out{
-      String message
-    }
-  }
-
-  method setVoltage{
-    in{
-      Float voltage
-    }
-    out{
-      String message
-    }
-  }
-
-  method setBatteryLevel{
-    in{
-      UInt8 batterylevel
-    }
-  }
+    attribute UInt8 battery 
+    attribute Float voltage 
+    attribute Float current 
+    attribute UInt8 powerConsumption 
 }
 
 
-interface IC{
-  version {major 1 minor 0}
-  method setRpm{
-    in{
-      UInt32 filteredRpm
-    }
-    out{
-      String message
-    }
-  }
-  method setSpeed{
-    in{
-      UInt32 filteredSpeed
-    }
-    out{
-      String message
-    }
-  }
-  method setGear{
-    in{
-      String currentGear
-    }
-    out{
-      String message
-    }
-  }
-  method setCurrent{
-    in{
-      Float current
-    }
-    out{
-      String message
-    }
-  }
-  method setPowerConsumption{
-    in{
-      UInt8 powerconsumption
-    }
-    out{
-      String message
-    }
-  }
-  method setVoltage{
-    in{
-      Float voltage
-    }
-    out{
-      String message
-    }
-  }
-  method setBatteryLevel{
-    in{
-      UInt8 batterylevel
-    }
-    out{
-      String message
-    }
-  }
+interface HU {
+    version { major 1 minor 0 }
+
+    attribute String gearSelection
+}
+
+interface ServiceManager {
+    version { major 1 minor 0 }
+    attribute UInt32 speed
+    attribute UInt32 rpm
+    attribute String indicator
+    attribute String gear
+    attribute UInt8 battery
+    attribute Float voltage
+    attribute Float current
+    attribute UInt8 powerConsumption
+    
+    attribute String gearSelection
 }

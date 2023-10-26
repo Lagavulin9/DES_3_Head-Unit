@@ -1,26 +1,10 @@
 #include "Can_Receiver.hpp"
-#include "Can_Moving_Average_Filter.hpp"
-#include "Can_Data_Register.hpp"
 
-#include <thread>
-#include <mutex>
-#include <atomic>
-#include <chrono>
+CanReceiver::CanReceiver() : raw_rpm(0), running(false) {}
 
+CanReceiver::~CanReceiver() {}
 
-const char* CAN_INTERFACE = "can0";
-int soc;
-
-const double FACTOR = 0.025;
-const double WHEEL_RADIUS = 0.065;
-
-std::mutex dataMutex;
-int raw_rpm = 0;
-std::atomic<bool> running;
-std::chrono::steady_clock::time_point last_received_time;
-MovingAverageFilter rpmFilter(10 , 5);
-
-int openPort(const char* iface) {
+int CanReceiver::openPort(const char* iface) {
     struct sockaddr_can addr;
     struct ifreq ifr;
 
@@ -30,23 +14,18 @@ int openPort(const char* iface) {
     }
 
     std::strcpy(ifr.ifr_name , iface);
-    // if(ioctl(soc, SIOCGIFINDEX, &ifr) < 0){
-    //     perror("ioctl error");
-    //     return -1;
-    // }
-
     addr.can_family = AF_CAN;
     addr.can_ifindex = ifr.ifr_ifindex;
 
-    if(bind(soc, (struct sockaddr *)&addr, sizeof(addr)) < 0 ) {
-        perror("Bind error");
-        return -1;
-    }
+    // if(bind(soc, (struct sockaddr *)&addr, sizeof(addr)) < 0 ) {
+    //     perror("Bind error");
+    //     return -1;
+    // }
 
     return 0;
 }
 
-void readData() {
+void CanReceiver::readData() {
     struct can_frame frame;
 
     while(running) {
@@ -68,14 +47,16 @@ void readData() {
     }
 }
 
-void processAndFilterData() {
-    CanDataRegister dataRegister;
+void CanReceiver::processAndFilterData() {
+    MovingAverageFilter rpmFilter(10, 5);
+    
+
     double PI = M_PI;
+    double filtered_rpm;
+    double filtered_speed;
 
     while(running) {
-        double filtered_rpm;
-        double filtered_speed;
-
+        raw_rpm += 100;
         {
             std::lock_guard<std::mutex> lock(dataMutex);
             filtered_rpm = rpmFilter.filter(raw_rpm);
@@ -85,13 +66,14 @@ void processAndFilterData() {
 
         std::cout << "Filtered RPM : " << filtered_rpm << ", Filtered Speed : " << filtered_speed << std::endl;
 
-        dataRegister.sendDataToVSomeIP(filtered_rpm, filtered_speed);
+        dataRegister.sendDataToVSomeIP(static_cast<uint32_t>(filtered_rpm), static_cast<uint32_t>(filtered_speed));
+
 
         usleep(100000); // 0.1sec
     }
 }
 
-void checkTimeout() {
+void CanReceiver::checkTimeout() {
     while(running) {
         auto now = std::chrono::steady_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::seconds>(now - last_received_time).count();
@@ -106,11 +88,11 @@ void checkTimeout() {
     }
 }
 
-void closePort() {
+void CanReceiver::closePort() {
     close(soc);
 }
 
-int main() {
+int CanReceiver::run() {
     if (openPort(CAN_INTERFACE) < 0) {
         return -1;
     }
@@ -118,9 +100,9 @@ int main() {
     running = true;
     last_received_time = std::chrono::steady_clock::now();
 
-    std::thread readerThread(readData);
-    std::thread processorThread(processAndFilterData);
-    std::thread timeoutCheckerThread(checkTimeout);
+    std::thread readerThread(&CanReceiver::readData, this);
+    std::thread processorThread(&CanReceiver::processAndFilterData, this);
+    std::thread timeoutCheckerThread(&CanReceiver::checkTimeout, this);
 
     readerThread.join();
     processorThread.join();
@@ -130,4 +112,3 @@ int main() {
 
     return 0;
 }
-
