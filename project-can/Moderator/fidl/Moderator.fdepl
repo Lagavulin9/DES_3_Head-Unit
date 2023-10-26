@@ -1,0 +1,90 @@
+package Moderator
+
+import "platform:/plugin/org.genivi.commonapi.someip/deployment/CommonAPI-4-SOMEIP_deployment_spec.fdepl"
+import "Moderator.fidl"
+
+define org.genivi.commonapi.someip.deployment for interface Moderator.ServiceManager {
+    SomeIpServiceID = 0x9999
+   
+
+    attribute speed {
+        SomeIpGetterID = 0x6101
+        SomeIpSetterID = 0x6102
+        SomeIpNotifierID = 56104
+        SomeIpAttributeReliable = false
+        SomeIpNotifierEventGroups = { 56104 }
+    }
+
+    attribute rpm {
+        SomeIpGetterID = 0x6201
+        SomeIpSetterID = 0x6202
+        SomeIpNotifierID = 56204
+        SomeIpAttributeReliable = false
+        SomeIpNotifierEventGroups = { 56204 }
+    }
+
+    attribute indicator {
+        SomeIpGetterID = 0x6301
+        SomeIpSetterID = 0x6302
+        SomeIpNotifierID = 56304
+        SomeIpAttributeReliable = true
+        SomeIpNotifierEventGroups = { 56304 }
+    }
+
+    attribute gear {
+        SomeIpGetterID = 0x6401
+        SomeIpSetterID = 0x6402  
+        SomeIpNotifierID = 56404  
+        SomeIpAttributeReliable = true
+        SomeIpNotifierEventGroups = { 56404 }
+    }
+
+    attribute battery {
+        SomeIpGetterID = 0x6501
+        SomeIpSetterID = 0x6502
+        SomeIpNotifierID = 56504
+        SomeIpAttributeReliable = true
+        SomeIpNotifierEventGroups = { 56504 }
+    }
+
+    attribute voltage {
+        SomeIpGetterID = 0x6601
+        SomeIpSetterID = 0x6602
+        SomeIpNotifierID = 56604
+        SomeIpAttributeReliable = true
+        SomeIpNotifierEventGroups = { 56604 }
+    }
+
+    attribute current {
+        SomeIpGetterID = 0x6701
+        SomeIpSetterID = 0x6702
+        SomeIpNotifierID = 56704
+        SomeIpAttributeReliable = true
+        SomeIpNotifierEventGroups = { 56704 }
+    }
+
+    attribute powerConsumption {
+        SomeIpGetterID = 0x6801
+        SomeIpSetterID = 0x6802
+        SomeIpNotifierID = 56804
+        SomeIpAttributeReliable = true
+        SomeIpNotifierEventGroups = { 56804 }
+    }
+
+    attribute gearSelection{
+        SomeIpGetterID = 0x6901
+        SomeIpSetterID = 0x6902
+        SomeIpNotifierID = 56904
+        SomeIpAttributeReliable = true
+        SomeIpNotifierEventGroups = { 56904 }
+    }
+}
+
+
+define org.genivi.commonapi.someip.deployment for provider as Service {
+    instance Moderator.ServiceManager {
+        InstanceId = "ServiceManager"
+
+        SomeIpInstanceID = 22040
+    }
+}
