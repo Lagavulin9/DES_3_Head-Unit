@@ -35,11 +35,22 @@ int main(void)
 	while (true)
 	{
 		Input input = gamepad->readInput();
-		piracer->setGear("N");
-		piracer->setIndicator("Right");
-		piracer->setThrottle(0.1);
-		piracer->setSteering(11);
-		std::this_thread::sleep_for(std::chrono::seconds(1));
+		if (input.button_x)
+			piracer->setGear("N");
+		else if (input.button_y)
+			piracer->setGear("R");
+		else if (input.button_a)
+			piracer->setGear("D");
+		else if (input.button_b)
+			piracer->setGear("P");
+		if (input.button_l1)
+			piracer->setIndicator("Left");
+		else if (input.button_r1)
+			piracer->setIndicator("Right");
+		else
+			piracer->setIndicator("None");
+		piracer->setThrottle(input.analog_stick_right.y * 0.5);
+		piracer->setSteering(input.analog_stick_left.x);
 	}
 	return (0);
 }

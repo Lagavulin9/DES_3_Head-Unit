@@ -55,6 +55,8 @@ bool PiRacer::setGear(const std::string& gear)
 
 bool PiRacer::setIndicator(const std::string& indicator)
 {
+	if (_indicator == indicator)
+		return false;
 	_indicator = indicator;
 	std::cout << "indicator set to: " << indicator << std::endl;
 	return true;
@@ -64,12 +66,12 @@ bool PiRacer::setThrottle(const double& throttle)
 {
 	if (_gear == "P" || _gear == "N")
 		return false;
-	if (_gear == "D" && throttle < 0)
+	if (_gear == "D" && throttle < -0.1)
 		return false;
 	if (_gear == "R" && throttle > 0)
 		return false;
 	_throttle = throttle;
-	std::cout << "throttle set to: " << throttle * 100  << "%" << std::endl;
+	//std::cout << "throttle set to: " << throttle * 100  << "%" << std::endl;
 	py::object setThrottle = pInstance.attr("set_throttle_percent");
 	setThrottle(_throttle);
 	return true;
@@ -78,7 +80,7 @@ bool PiRacer::setThrottle(const double& throttle)
 bool PiRacer::setSteering(const double& steering)
 {
 	_steering = steering;
-	std::cout << "steering set to: " << steering << std::endl;
+	//std::cout << "steering set to: " << steering << std::endl;
 	py::object setSteering = pInstance.attr("set_steering_percent");
 	setSteering(_steering);
 	return true;

@@ -29,16 +29,15 @@ typedef struct
 	bool		button_select;
 	bool		button_start;
 	bool		button_home;
-	double		button_l1;
-	double		button_l2;
-	double		button_r1;
-	double		button_r2;
+	bool		button_l1;
+	bool		button_l2;
+	bool		button_r1;
+	bool		button_r2;
 } Input;
 
 class GamePad
 {
 private:
-	Input		_input;
 	py::object	pModule;
 	py::object	pClass;
 	py::object	pInstance;

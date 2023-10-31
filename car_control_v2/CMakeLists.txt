@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 3.0)
 project(Car_Control)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -fsanitize=address -g")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 
 find_package(Python3 COMPONENTS Development)
 find_package(Boost REQUIRED COMPONENTS python3)

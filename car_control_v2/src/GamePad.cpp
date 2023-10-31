@@ -2,7 +2,6 @@
 
 GamePad::GamePad()
 {
-	bzero(&_input, sizeof(Input));
 	try 
 	{
 		pModule = py::import(GAMEPAD_MODULE_NAME);
@@ -30,20 +29,20 @@ GamePad* GamePad::getInstance()
 
 Input GamePad::readInput()
 {
-	//TODO: read from python and update
-	std::cout << "reading input" << std::endl;
+	// std::cout << "reading input" << std::endl;
+	Input recv;
 	try
 	{
 		py::object read_data = pInstance.attr("read_data");
 		py::object input = read_data();
-		convert(input);
+		recv = convert(input);
 	}
 	catch (const py::error_already_set&)
 	{
 		PyErr_Print();
 		exit(1);
 	}
-	return Input();
+	return recv;
 }
 
 Input GamePad::convert(const py::object& py_input)
@@ -77,14 +76,28 @@ Input GamePad::convert(const py::object& py_input)
 					? py::extract<bool>(py_input.attr("button_home")) : false;
 
 	// I don't know why but these buttons are float in piracer library
+	// but I will extract it with bool
 	_input.button_l1 = hasAttr(py_input, "button_l1") \
-					? py::extract<double>(py_input.attr("button_l1")) : 0.0;
+					? py::extract<bool>(py_input.attr("button_l1")) : 0.0;
 	_input.button_l2 = hasAttr(py_input, "button_l2") \
-					? py::extract<double>(py_input.attr("button_l2")) : 0.0;
+					? py::extract<bool>(py_input.attr("button_l2")) : 0.0;
 	_input.button_r1 = hasAttr(py_input, "button_r1") \
-					? py::extract<double>(py_input.attr("button_r1")) : 0.0;
+					? py::extract<bool>(py_input.attr("button_r1")) : 0.0;
 	_input.button_r2 = hasAttr(py_input, "button_r2") \
-					? py::extract<double>(py_input.attr("button_r2")) : 0.0;
+					? py::extract<bool>(py_input.attr("button_r2")) : 0.0;
+
+	// std::cout << "button_x: " << _input.button_x << std::endl;
+	// std::cout << "button_y: " << _input.button_y << std::endl;
+	// std::cout << "button_a: " << _input.button_a << std::endl;
+	// std::cout << "button_b: " << _input.button_b << std::endl;
+	// std::cout << "button_select: " << _input.button_select << std::endl;
+	// std::cout << "button_start: " << _input.button_start << std::endl;
+	// std::cout << "button_home: " << _input.button_home << std::endl;
+	// std::cout << "button_l1: " << _input.button_l1 << std::endl;
+	// std::cout << "button_l2: " << _input.button_l2 << std::endl;
+	// std::cout << "button_r1: " << _input.button_r1 << std::endl;
+	// std::cout << "button_r2: " << _input.button_r2 << std::endl;
+	// std::cout << std::endl;
 
 	return _input;
 }
