@@ -4,6 +4,12 @@
 
 #include <iostream>
 #include <mutex>
+#include <boost/python.hpp>
+
+#define GAMEPAD_MODULE_NAME "gamepads"
+#define GAMEPAD_CLASS_NAME "ShanWanGamepad"
+
+namespace py = boost::python;
 
 typedef struct
 {
@@ -32,16 +38,20 @@ typedef struct
 class GamePad
 {
 private:
-	Input	_input;
+	Input		_input;
+	py::object	pModule;
+	py::object	pClass;
+	py::object	pInstance;
 
 	GamePad();
 	~GamePad();
 	GamePad(const GamePad&) = delete;
 	GamePad& operator=(const GamePad&) = delete;
+	Input			convert(const py::object&);
+	bool			hasAttr(const py::object&, const char*);
 public:
 	static GamePad*	getInstance();
-	void 			readInput();
-	void			updateInput();
+	Input 			readInput();
 };
 
 #endif

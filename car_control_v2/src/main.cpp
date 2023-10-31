@@ -2,29 +2,37 @@
 #include "PiRacer.hpp"
 #include <thread>
 #include <chrono>
-#include <atomic>
 #include <csignal>
+#include <cstdlib>
 #include <unistd.h>
-
-std::atomic<bool> running;
+#include <Python.h>
 
 void signalHandler(int signum)
 {
-	std::cout << "signal: " << signum << std::endl;
-	running.store(false);
+	std::cout << "\nsignal: " << signum << std::endl;
 	std::cout << "Shutting down..." << std::endl;
+	exit(128 + signum);
+}
+
+void cleanUp()
+{
+	Py_Finalize();
+	std::cout << "Python Interpreter Finalized" << std::endl;
 }
 
 int main(void)
 {
 	signal(SIGINT, signalHandler);
+	signal(SIGQUIT, signalHandler);
+
+	setenv("PYTHONPATH", "../piracer", 0);
+	Py_Initialize();
+	atexit(cleanUp);
 
 	GamePad* gamepad = GamePad::getInstance();
 	PiRacer* piracer = PiRacer::getInstance();
 
-	running.store(true);
-
-	while (running)
+	while (true)
 	{
 		Input input = gamepad->readInput();
 		piracer->setGear("N");
