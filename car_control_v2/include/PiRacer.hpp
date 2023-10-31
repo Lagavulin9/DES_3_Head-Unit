@@ -5,6 +5,12 @@
 #include <iostream>
 #include <string>
 #include <mutex>
+#include <boost/python.hpp>
+
+#define PIRACER_MODULE_NAME "vehicles"
+#define PIRACER_CLASS_NAME "PiRacerStandard"
+
+namespace py = boost::python;
 
 class PiRacer
 {
@@ -14,6 +20,9 @@ private:
 	double		_throttle;
 	double		_steering;
 	std::mutex	_mutex;
+	py::object	pModule;
+	py::object	pClass;
+	py::object	pInstance;
 
 	PiRacer();
 	~PiRacer();

@@ -3,9 +3,20 @@
 PiRacer::PiRacer():
 	_gear("P"),
 	_indicator("None"),
-	_throttle(0),
-	_steering(0)
+	_throttle(0.0),
+	_steering(0.0)
 {
+	try
+	{
+		pModule = py::import(PIRACER_MODULE_NAME);
+		pClass = pModule.attr(PIRACER_CLASS_NAME);
+		pInstance = pClass();
+	}
+	catch(const py::error_already_set&)
+	{
+		PyErr_Print();
+		exit(1);
+	}
 	std::cout << "instance Created" << std::endl;
 }
 
@@ -36,7 +47,9 @@ bool PiRacer::setGear(const std::string& gear)
 	if (_throttle >= 1)
 		return false;
 	_gear = gear;
-	std::cout << "gear set to: " << gear << std::endl;
+	std::cout << "gear set to: " << _gear << std::endl;
+	py::object setThrottle = pInstance.attr("set_throttle_percent");
+	setThrottle(0.0);
 	return true;
 }
 
@@ -49,8 +62,16 @@ bool PiRacer::setIndicator(const std::string& indicator)
 
 bool PiRacer::setThrottle(const double& throttle)
 {
+	if (_gear == "P" || _gear == "N")
+		return false;
+	if (_gear == "D" && throttle < 0)
+		return false;
+	if (_gear == "R" && throttle > 0)
+		return false;
 	_throttle = throttle;
-	std::cout << "throttle set to: " << throttle << std::endl;
+	std::cout << "throttle set to: " << throttle * 100  << "%" << std::endl;
+	py::object setThrottle = pInstance.attr("set_throttle_percent");
+	setThrottle(_throttle);
 	return true;
 }
 
@@ -58,5 +79,7 @@ bool PiRacer::setSteering(const double& steering)
 {
 	_steering = steering;
 	std::cout << "steering set to: " << steering << std::endl;
+	py::object setSteering = pInstance.attr("set_steering_percent");
+	setSteering(_steering);
 	return true;
 }
