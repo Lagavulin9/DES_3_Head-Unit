@@ -23,7 +23,7 @@ private:
 	py::object	pModule;
 	py::object	pClass;
 	py::object	pInstance;
-
+protected:
 	PiRacer();
 	~PiRacer();
 	PiRacer(const PiRacer&) = delete;

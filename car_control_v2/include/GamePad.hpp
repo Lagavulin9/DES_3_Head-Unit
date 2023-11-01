@@ -41,13 +41,13 @@ private:
 	py::object	pModule;
 	py::object	pClass;
 	py::object	pInstance;
-
+	Input		convert(const py::object&);
+	bool		hasAttr(const py::object&, const char*);	
+protected:
 	GamePad();
 	~GamePad();
 	GamePad(const GamePad&) = delete;
 	GamePad& operator=(const GamePad&) = delete;
-	Input			convert(const py::object&);
-	bool			hasAttr(const py::object&, const char*);
 public:
 	static GamePad*	getInstance();
 	Input 			readInput();

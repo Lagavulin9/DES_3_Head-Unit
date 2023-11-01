@@ -5,7 +5,10 @@
 #include <csignal>
 #include <cstdlib>
 #include <unistd.h>
+#include <vector>
 #include <Python.h>
+
+std::mutex _mutex;
 
 void signalHandler(int signum)
 {
@@ -20,6 +23,24 @@ void cleanUp()
 	std::cout << "Python Interpreter Finalized" << std::endl;
 }
 
+void notify()
+{
+	PiRacer* piracer = PiRacer::getInstance();
+	std::vector<std::string> gears = {"P", "R", "N", "D"};
+
+	while (true)
+	{
+		{
+			PyGILState_STATE gilState = PyGILState_Ensure(); 
+			std::string random_gear = gears[std::rand() % 4];
+			std::cout << "HU - Event: " << random_gear << std::endl;
+			piracer->setGear(random_gear);
+			PyGILState_Release(gilState);
+		}
+		std::this_thread::sleep_for(std::chrono::seconds(5));
+	}
+}
+
 int main(void)
 {
 	signal(SIGINT, signalHandler);
@@ -32,8 +53,12 @@ int main(void)
 	GamePad* gamepad = GamePad::getInstance();
 	PiRacer* piracer = PiRacer::getInstance();
 
+	std::thread dummy(notify);
+	dummy.detach();
+
 	while (true)
 	{
+		PyGILState_STATE gilState = PyGILState_Ensure();
 		Input input = gamepad->readInput();
 		if (input.button_x)
 			piracer->setGear("N");
@@ -51,6 +76,7 @@ int main(void)
 			piracer->setIndicator("None");
 		piracer->setThrottle(input.analog_stick_right.y * 0.5);
 		piracer->setSteering(input.analog_stick_left.x);
+		PyGILState_Release(gilState);
 	}
 	return (0);
 }
