@@ -17,18 +17,18 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_PREFIX_PATH "~/Qt/5.15.15/gcc_64/lib/cmake")
 
 include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}/../build-commonapi/capicxx-core-runtime/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/../build-commonapi/capicxx-someip-runtime/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/../build-commonapi/vsomeip/interface
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../build-commonapi/capicxx-core-runtime/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../build-commonapi/capicxx-someip-runtime/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../build-commonapi/vsomeip/interface
     ${CMAKE_CURRENT_SOURCE_DIR}/../Moderator/src-gen-moderator
    
 
 )
 
 link_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}/../build-commonapi/capicxx-core-runtime/build
-    ${CMAKE_CURRENT_SOURCE_DIR}/../build-commonapi/capicxx-someip-runtime/build
-    ${CMAKE_CURRENT_SOURCE_DIR}/../build-commonapi/vsomeip/build
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../build-commonapi/capicxx-core-runtime/build
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../build-commonapi/capicxx-someip-runtime/build
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../build-commonapi/vsomeip/build
 )
 
 find_package(QT NAMES Qt5 COMPONENTS Core Quick REQUIRED)

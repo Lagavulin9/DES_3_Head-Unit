@@ -17,10 +17,14 @@ int CanReceiver::openPort(const char* iface) {
     addr.can_family = AF_CAN;
     addr.can_ifindex = ifr.ifr_ifindex;
 
-    // if(bind(soc, (struct sockaddr *)&addr, sizeof(addr)) < 0 ) {
-    //     perror("Bind error");
-    //     return -1;
-    // }
+    // Set the socket timeout to 10 seconds
+    struct timeval timeout;
+    timeout.tv_sec = 10;
+    timeout.tv_usec = 0;
+    if (setsockopt(soc, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof(timeout)) < 0) {
+        perror("Failed to set socket timeout");
+        return -1;
+    }
 
     return 0;
 }
@@ -29,15 +33,23 @@ void CanReceiver::readData() {
     struct can_frame frame;
 
     while(running) {
-        ssize_t nbytes = read(soc, &frame, sizeof(struct can_frame));
+        ssize_t nbytes = recv(soc, &frame, sizeof(struct can_frame), MSG_WAITALL);
+
+        if (nbytes < 0) {
+            if (errno == EAGAIN || errno == EWOULDBLOCK) {
+                // This means a timeout occurred
+                std::cerr << "Receive timeout occurred! Stopping..." << std::endl;
+                running = false;
+                break;
+            } else {
+                // Some other error occurred during reading
+                perror("Failed to receive data");
+                continue;
+            }
+        }
 
         if(nbytes == sizeof(struct can_frame)) {
             last_received_time = std::chrono::steady_clock::now();
-        }
-
-        if(nbytes < sizeof(struct can_frame)) {
-            perror("Incomplete CAN frame");
-            continue;
         }
 
         {
@@ -50,17 +62,19 @@ void CanReceiver::readData() {
 void CanReceiver::processAndFilterData() {
     MovingAverageFilter rpmFilter(10, 5);
     
-
     double PI = M_PI;
     double filtered_rpm;
     double filtered_speed;
 
     while(running) {
-        raw_rpm += 100;
+        int current_rpm;
         {
             std::lock_guard<std::mutex> lock(dataMutex);
-            filtered_rpm = rpmFilter.filter(raw_rpm);
+            current_rpm = raw_rpm;
         }
+        
+        filtered_rpm = rpmFilter.filter(current_rpm);
+        
 
         filtered_speed = (((filtered_rpm * FACTOR) / WHEEL_RADIUS) * PI) * WHEEL_RADIUS;
 
@@ -73,20 +87,6 @@ void CanReceiver::processAndFilterData() {
     }
 }
 
-void CanReceiver::checkTimeout() {
-    while(running) {
-        auto now = std::chrono::steady_clock::now();
-        auto duration = std::chrono::duration_cast<std::chrono::seconds>(now - last_received_time).count();
-
-        if(duration > 10) {
-            std::cout << "No data for 10 seconds. Setting running to false..." << std::endl;
-            running = false;
-            break;
-        }
-
-        usleep(5000000); // 5secs
-    }
-}
 
 void CanReceiver::closePort() {
     close(soc);
@@ -102,11 +102,10 @@ int CanReceiver::run() {
 
     std::thread readerThread(&CanReceiver::readData, this);
     std::thread processorThread(&CanReceiver::processAndFilterData, this);
-    std::thread timeoutCheckerThread(&CanReceiver::checkTimeout, this);
 
     readerThread.join();
     processorThread.join();
-    timeoutCheckerThread.join();
+
 
     closePort();
 

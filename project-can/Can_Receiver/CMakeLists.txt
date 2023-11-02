@@ -12,17 +12,17 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}/../build-commonapi/capicxx-core-runtime/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/../build-commonapi/capicxx-someip-runtime/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/../build-commonapi/vsomeip/interface
-    ${CMAKE_CURRENT_SOURCE_DIR}/src-gen-canReceiver
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../build-commonapi/capicxx-core-runtime/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../build-commonapi/capicxx-someip-runtime/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../build-commonapi/vsomeip/interface
+    ${CMAKE_CURRENT_SOURCE_DIR}/src-gen-can
 
 )
 
 link_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}/../build-commonapi/capicxx-core-runtime/build
-    ${CMAKE_CURRENT_SOURCE_DIR}/../build-commonapi/capicxx-someip-runtime/build
-    ${CMAKE_CURRENT_SOURCE_DIR}/../build-commonapi/vsomeip/build
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../build-commonapi/capicxx-core-runtime/build
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../build-commonapi/capicxx-someip-runtime/build
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../build-commonapi/vsomeip/build
 )
 
 # For Can_Receiver
@@ -33,8 +33,8 @@ set(Can_Receiver_SOURCES
     src/Can_Moving_Average_Filter.cpp
     src/Can_Receiver.cpp
 
-    src-gen-canReceiver/v1/Can_Receiver/Speed_SensorSomeIPStubAdapter.cpp
-    src-gen-canReceiver/v1/Can_Receiver/Speed_SensorSomeIPDeployment.cpp
+    src-gen-can/v1/Can_Receiver/Speed_SensorSomeIPStubAdapter.cpp
+    src-gen-can/v1/Can_Receiver/Speed_SensorSomeIPDeployment.cpp
     )
 add_executable(Can_Receiver ${Can_Receiver_SOURCES})
 add_library(Can_Receiver_Lib SHARED ${Can_Receiver_SOURCES})

@@ -22,5 +22,5 @@ private:
 };
 
 
-#endif   //  CAN_MOVING_AVERAGE_FILTER_HPP
+#endif   //CAN_MOVING_AVERAGE_FILTER_HPP
 

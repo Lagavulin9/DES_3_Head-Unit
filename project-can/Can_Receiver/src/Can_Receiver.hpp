@@ -1,7 +1,6 @@
 #ifndef CAN_RECEIVER_HPP
 #define CAN_RECEIVER_HPP
 
-#include "Can_Receiver.hpp"
 #include "Can_Moving_Average_Filter.hpp"
 #include "Can_Data_Register.hpp"
 
@@ -42,7 +41,6 @@ private:
     int openPort(const char* iface);
     void readData();
     void processAndFilterData();
-    void checkTimeout();
     void closePort();
 };
 

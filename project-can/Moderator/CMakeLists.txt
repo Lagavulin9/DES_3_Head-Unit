@@ -12,19 +12,19 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
 include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}/../build-commonapi/capicxx-core-runtime/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/../build-commonapi/capicxx-someip-runtime/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/../build-commonapi/vsomeip/interface
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../build-commonapi/capicxx-core-runtime/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../build-commonapi/capicxx-someip-runtime/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../build-commonapi/vsomeip/interface
     ${CMAKE_CURRENT_SOURCE_DIR}/src-gen-moderator
-    ${CMAKE_CURRENT_SOURCE_DIR}/../Can_Receiver/src-gen-canReceiver
+    ${CMAKE_CURRENT_SOURCE_DIR}/../Can_Receiver/src-gen-can
     
 
 )
 
 link_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}/../build-commonapi/capicxx-core-runtime/build
-    ${CMAKE_CURRENT_SOURCE_DIR}/../build-commonapi/capicxx-someip-runtime/build
-    ${CMAKE_CURRENT_SOURCE_DIR}/../build-commonapi/vsomeip/build
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../build-commonapi/capicxx-core-runtime/build
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../build-commonapi/capicxx-someip-runtime/build
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../build-commonapi/vsomeip/build
 )
 
 # For ServiceManager
@@ -37,8 +37,8 @@ set(ServiceManager_SOURCES
     src-gen-moderator/v1/Moderator/ServiceManagerSomeIPDeployment.cpp
     src-gen-moderator/v1/Moderator/ServiceManagerSomeIPStubAdapter.cpp
     
-    ../Can_Receiver/src-gen-canReceiver/v1/Can_Receiver/Speed_SensorSomeIPDeployment.cpp
-    ../Can_Receiver/src-gen-canReceiver/v1/Can_Receiver/Speed_SensorSomeIPProxy.cpp
+    ../Can_Receiver/src-gen-can/v1/Can_Receiver/Speed_SensorSomeIPDeployment.cpp
+    ../Can_Receiver/src-gen-can/v1/Can_Receiver/Speed_SensorSomeIPProxy.cpp
     
     # src-gen-moderator/v1/DES_Project3/Car_ControlSomeIPDeployment.cpp
     # src-gen-moderator/v1/DES_Project3/Car_ControlSomeIPProxy.cpp

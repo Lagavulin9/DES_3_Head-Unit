@@ -1,5 +1,3 @@
-package Can_Receiver
-
 import "platform:/plugin/org.genivi.commonapi.someip/deployment/CommonAPI-4-SOMEIP_deployment_spec.fdepl"
 import "Can_Receiver.fidl"
 
