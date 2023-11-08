@@ -1,0 +1,16 @@
+package commonapi
+
+interface CarInfo {
+    version { major 0 minor 1 }
+    attribute CommonTypes.batteryStruct battery readonly
+}
+
+typeCollection CommonTypes {
+    version { major 0 minor 1 }
+    struct batteryStruct {
+        Float level
+        Double consumption
+        Double current
+        Double voltage
+    }
+}
