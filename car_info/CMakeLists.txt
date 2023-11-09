@@ -42,15 +42,14 @@ link_directories(
 
 ### BUILD ###
 # Services
-add_executable(CarControlService 
-    src/GamePad.cpp
+add_executable(CarInfoService 
     src/PiRacer.cpp
-    src/CarControlService.cpp
-    src/CarControlStubImpl.cpp
-    src-gen-carcontrol/someip/v0/commonapi/CarControlSomeIPStubAdapter.cpp
-    src-gen-carcontrol/someip/v0/commonapi/CarControlSomeIPDeployment.cpp
+    src/CarInfoService.cpp
+    src/CarInfoStubImpl.cpp
+    src-gen-carinfo/someip/v0/commonapi/CarInfoSomeIPStubAdapter.cpp
+    src-gen-carinfo/someip/v0/commonapi/CarInfoSomeIPDeployment.cpp
 )
-target_link_libraries(CarControlService 
+target_link_libraries(CarInfoService 
     CommonAPI 
     CommonAPI-SomeIP 
     vsomeip3
@@ -58,12 +57,12 @@ target_link_libraries(CarControlService
     Boost::python
 )
 # Client 
-add_executable(CarControlClient
-    src/CarControlClient.cpp
-    src-gen-carcontrol/someip/v0/commonapi/CarControlSomeIPProxy.cpp
-    src-gen-carcontrol/someip/v0/commonapi/CarControlSomeIPDeployment.cpp
+add_executable(CarInfoClient
+    src/CarInfoClient.cpp
+    src-gen-carinfo/someip/v0/commonapi/CarInfoSomeIPProxy.cpp
+    src-gen-carinfo/someip/v0/commonapi/CarInfoSomeIPDeployment.cpp
 )
-target_link_libraries(CarControlClient 
+target_link_libraries(CarInfoClient 
     CommonAPI 
     CommonAPI-SomeIP 
     vsomeip3
