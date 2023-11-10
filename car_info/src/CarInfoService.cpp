@@ -69,10 +69,10 @@ int main() {
 		PyGILState_STATE gilState = PyGILState_Ensure();
 		// read battery info
         piracer->readBatteryInfo();
-        float voltage       = piracer->getVoltage();
-        float current       = piracer->getCurrent();
-        float consumption   = piracer->getConsumption();
-        float level         = piracer->getLevel();
+        float voltage       = piracer->getBatteryVoltage();
+        float current       = piracer->getBatteryCurrent();
+        float consumption   = piracer->getBatteryConsumption();
+        float level         = piracer->getBatteryLevel();
         // set to myService
         myService->setBatteryStruct(level, voltage, current, consumption);
 		// release python interpreter

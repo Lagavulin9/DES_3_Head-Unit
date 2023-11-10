@@ -13,7 +13,7 @@ find_package(CommonAPI REQUIRED)
 find_package(CommonAPI-SomeIP REQUIRED)
 
 ### VARIABLES ###
-set(PRJ_SRC_GEN_PATH ${CMAKE_CURRENT_SOURCE_DIR}/src-gen-carcontrol)
+set(PRJ_SRC_GEN_PATH ${CMAKE_CURRENT_SOURCE_DIR}/src-gen-carinfo)
 set(CORE_GEN_SRC_DIR ${PRJ_SRC_GEN_PATH}/core)
 set(SOMEIP_GEN_SRC_DIR ${PRJ_SRC_GEN_PATH}/someip)
 set(CORE_RUNTIME_DIR ~/capicxx-core-runtime)

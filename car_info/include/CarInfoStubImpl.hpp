@@ -1,13 +1,12 @@
-#ifndef CarControlStubImpl_H_
-#define CarControlStubImpl_H_
+#ifndef CarInfoStubImpl_H_
+#define CarInfoStubImpl_H_
 
 #include <CommonAPI/CommonAPI.hpp>
-#include "../src-gen-carcontrol/core/v0/commonapi/CarInfoStubDefault.hpp"
 
 #include "PiRacer.hpp"
 #include <Python.h>
 
-class CarInfoStubImpl : public CarInfoStub {
+class CarInfoStubImpl: public v0::commonapi::CarInfoStubDefault {
     public: 
     CarInfoStubImpl();
     ~CarInfoStubImpl();
