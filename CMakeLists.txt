@@ -5,22 +5,21 @@ project(${PROJ_NAME})
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}-pthread -std=c++11 -fsanitize=thread -g ")
 
 ### PACKAGES ###
-# python 
 find_package(Python3 COMPONENTS Development)
 find_package(Boost REQUIRED COMPONENTS python3)
-## common api 
 find_package(CommonAPI REQUIRED)
 find_package(CommonAPI-SomeIP REQUIRED)
 
 ### VARIABLES ###
-set(PRJ_SRC_GEN_PATH ${CMAKE_CURRENT_SOURCE_DIR}/src-gen-carinfo)
+set(PRJ_SRC_VAR src)
+set(PRJ_SRC_GEN_VAR src-gen)
+set(PRJ_SRC_GEN_PATH ${CMAKE_CURRENT_SOURCE_DIR}/${PRJ_SRC_GEN_VAR})
 set(CORE_GEN_SRC_DIR ${PRJ_SRC_GEN_PATH}/core)
 set(SOMEIP_GEN_SRC_DIR ${PRJ_SRC_GEN_PATH}/someip)
 set(CORE_RUNTIME_DIR ~/capicxx-core-runtime)
 set(SOMEIP_RUNTIME_DIR ~/capicxx-someip-runtime)
 set(VSOMEIP_DIR ~/vsomeip)
-set(PRJ_SRC_PATH src)
-set(PRJ_SRC_GEN_PATH src-gen)
+set(COMMONAPI_INTERFACE_VER v0/commonapi)
 
 ### DIRECTORIES ###
 include_directories(
@@ -38,16 +37,15 @@ link_directories(
     ${CORE_RUNTIME_DIR}/build
     ${VSOMEIP_DIR}/build
 )
-### FILES ###
 
 ### BUILD ###
 # Services
 add_executable(CarInfoService 
-    src/PiRacer.cpp
-    src/CarInfoService.cpp
-    src/CarInfoStubImpl.cpp
-    src-gen-carinfo/someip/v0/commonapi/CarInfoSomeIPStubAdapter.cpp
-    src-gen-carinfo/someip/v0/commonapi/CarInfoSomeIPDeployment.cpp
+    ${PRJ_SRC_VAR}/PiRacer.cpp
+    ${PRJ_SRC_VAR}/CarInfoService.cpp
+    ${PRJ_SRC_VAR}/CarInfoStubImpl.cpp
+    ${SOMEIP_GEN_SRC_DIR}/${COMMONAPI_INTERFACE_VER}/CarInfoSomeIPStubAdapter.cpp
+    ${SOMEIP_GEN_SRC_DIR}/${COMMONAPI_INTERFACE_VER}/CarInfoSomeIPDeployment.cpp
 )
 target_link_libraries(CarInfoService 
     CommonAPI 
@@ -58,9 +56,9 @@ target_link_libraries(CarInfoService
 )
 # Client 
 add_executable(CarInfoClient
-    src/CarInfoClient.cpp
-    src-gen-carinfo/someip/v0/commonapi/CarInfoSomeIPProxy.cpp
-    src-gen-carinfo/someip/v0/commonapi/CarInfoSomeIPDeployment.cpp
+    ${PRJ_SRC_VAR}/CarInfoClient.cpp
+    ${SOMEIP_GEN_SRC_DIR}/${COMMONAPI_INTERFACE_VER}/CarInfoSomeIPProxy.cpp
+    ${SOMEIP_GEN_SRC_DIR}/${COMMONAPI_INTERFACE_VER}/CarInfoSomeIPDeployment.cpp
 )
 target_link_libraries(CarInfoClient 
     CommonAPI 

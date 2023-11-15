@@ -1,4 +1,5 @@
 ################## build ##################
+cd ..
 #delete "build" folder if it exists
 if [ -d "build" ]; then
     rm -rf build
