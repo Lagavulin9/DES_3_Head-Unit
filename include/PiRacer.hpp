@@ -7,6 +7,7 @@
 #include <mutex>
 #include <boost/python.hpp>
 #include <cmath>
+#include <algorithm>
 
 #define PIRACER_MODULE_NAME "vehicles"
 #define PIRACER_CLASS_NAME "PiRacerStandard"

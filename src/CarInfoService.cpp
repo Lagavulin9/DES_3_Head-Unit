@@ -77,6 +77,8 @@ int main() {
         myService->setBatteryStruct(level, voltage, current, consumption);
 		// release python interpreter
 		PyGILState_Release(gilState);
+        // sleep for 1 second
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 	}
     return 0;
 }

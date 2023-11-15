@@ -20,6 +20,7 @@ PiRacer::PiRacer():
 	catch(const py::error_already_set&)
 	{
 		PyErr_Print();
+		std::cout << "Failed to create PiRacer instance." << std::endl;
 		exit(1);
 	}
 	std::cout << "PiRacer instance created." << std::endl;
@@ -57,16 +58,16 @@ bool PiRacer::deleteInstance()
 }
 
 void PiRacer::readBatteryInfo(){
+
 	py::object get_battery_voltage 		= pInstance.attr("get_battery_voltage");
 	_voltage = py::extract<float>(get_battery_voltage());
-	py::object get_battery_consumption 	= pInstance.attr("get_battery_consumption");
+	py::object get_battery_consumption 	= pInstance.attr("get_power_consumption");
 	_consumption = py::extract<float>(get_battery_consumption());
 	py::object get_battery_current 		= pInstance.attr("get_battery_current");
 	_current = py::extract<float>(get_battery_current());
 	double x = _voltage / _numcells;
 	double y = -691.919 * pow(x,3) + 7991.667 * pow(x,2) - 30541.295 * x + 38661.5;
-    // nomalized value
-    _level = y ;//min(max(round(y, 3), 0), 100);
+	_level = std::min(std::max(std::round(y*1000) / 1000, 0.0), 1.0);     // nomalized value between 0 and 1
 }
 
 const float PiRacer::getBatteryLevel()
