@@ -30,10 +30,10 @@ int main(){
         [&](const v0::commonapi::CommonTypes::batteryStruct& val) {
             std::cout << " ---------------------------"             << std::endl 
                       << "Received change message for battery"      << std::endl 
-                      << "\tlevel     : " << val.getLevel()         << std::endl 
-                      << "\tvoltage   : " << val.getVoltage()       << std::endl 
-                      << "\tcurrent   : " << val.getCurrent()       << std::endl 
-                      << "\tconsuption: " << val.getConsumption()   << std::endl 
+                      << "\tlevel      : " << val.getLevel()         << std::endl 
+                      << "\tvoltage    : " << val.getVoltage()       << std::endl 
+                      << "\tcurrent    : " << val.getCurrent()       << std::endl 
+                      << "\tconsumption: " << val.getConsumption()   << std::endl 
                       << " ---------------------------" << std::endl;
         }, 
         [&](const CommonAPI::CallStatus &status) {
