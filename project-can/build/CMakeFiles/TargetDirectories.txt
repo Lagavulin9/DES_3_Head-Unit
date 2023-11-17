@@ -1,4 +1,0 @@
-/home/lee/DES_Head-Unit/project-can/build/CMakeFiles/Can_Receiver.dir
-/home/lee/DES_Head-Unit/project-can/build/CMakeFiles/ServiceManager.dir
-/home/lee/DES_Head-Unit/project-can/build/CMakeFiles/edit_cache.dir
-/home/lee/DES_Head-Unit/project-can/build/CMakeFiles/rebuild_cache.dir
