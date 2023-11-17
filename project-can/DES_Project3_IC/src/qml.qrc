@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/elec_car.png</file>
+        <file>images/bg-mask.png</file>
+        <file>images/car-highlights.png</file>
+        <file>images/CharliePuth.png</file>
+        <file>images/LPHalf.png</file>
+        <file>qml.qrc</file>
+        <file>qml/MediaLyrics.qml</file>
+        <file>qml/Background.qml</file>
+        <file>qml/BatteryBar.qml</file>
+        <file>qml/BatteryValue.qml</file>
+        <file>qml/CentralCar.qml</file>
+        <file>qml/Gear.qml</file>
+        <file>qml/main.qml</file>
+        <file>qml/MediaAlbum.qml</file>
+        <file>qml/Speed.qml</file>
+        <file>qml/Time.qml</file>
+    </qresource>
+</RCC>

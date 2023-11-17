@@ -1,0 +1,8 @@
+package Can_Receiver
+
+interface Speed_Sensor {
+    version { major 1 minor 0 }
+
+    attribute UInt32 speed 
+    attribute UInt32 rpm 
+}
