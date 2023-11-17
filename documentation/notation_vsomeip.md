@@ -1,6 +1,6 @@
 # Notation vSOME/IP
 
-The used notation on the vSOME/IP interface is set in the .dfidl files of each application. <br>
+The used notation on the vSOME/IP interface is set in the dfidl files of each application. <br>
 
 # Conventions: 
 - IDs binded to the sequence number of the application 
