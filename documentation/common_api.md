@@ -97,19 +97,72 @@ Service:
 
 https://github.com/SEA-ME/Team-Pilot/tree/Moon/Project-2/CommonAPI-vSomeIP
 
-## Step 1: Install OpenJDK Java 8
-## Step 2: Install Boost.Asio library
-## Step 3: Build the CommonAPI Runtime Library
-## Step 4: Build the vsomeip Library
-## Step 5: Build the CommonAPI SOME/IP Runtime Library
-## Step 6: Write the Franca file 
-## Step 7: Generate Code
+- Step 1: Install Dependencies 
+Java 8, Boost-dev, libdbus and ascii are required. 
+See Some/IP documentations for more informations. 
+```bash
+sudo apt update
+sudo apt install openjdk-8-jdk
+sudo apt-get install libboost-all-dev
+sudo apt-get install libdbus-1-dev
+sudo apt install ascii
+```
+Additionally, the piracer's drivetrain and battery control unit needs some python dependencies.
+Install piracer-py package globally (not recommended). 
+```bash
+pip install piracer-py
+```
+
+- Step 3: Build & Install the CommonAPI Core Runtime Library
+```bash
+cd ~
+git clone https://github.com/GENIVI/capicxx-core-runtime.git
+cd capicxx-core-runtime/
+mkdir build
+cd build
+cmake ..
+make 
+sudo make install
+```
+
+- Step 4: Build & Install the vSomeIP Library
+```bash
+cd ~
+git clone https://github.com/COVESA/vsomeip.git
+cd vsomeip
+mkdir build
+cd build
+cmake -DENABLE_SIGNAL_HANDLING=1 -DDIAGNOSIS_ADDRESS=0x10 ..
+make
+sudo make install
+```
+
+- Step 5: Build the CommonAPI SOME/IP Runtime Library
+```bash
+git clone https://github.com/GENIVI/capicxx-someip-runtime.git
+cd capicxx-someip-runtime
+mkdir build
+cd build
+cmake -DUSE_INSTALLED_COMMONAPI=OFF ..
+make
+sudo make install
+```
+
+- Step 6: Write the Franca file 
+- Step 7: Generate Code with the CommonAPI Generator
 Unfortunately, code generator [doesn’t support arm architecture.]((https://github.com/COVESA/capicxx-core-tools/issues/19)). 
 So if you want to use this generator, I recommend that you use the code generator on your own machine or use github actions to generated code. 
 The code generator automatically generates codes according to fidl and fdepl files. In the case of vsomeip binding, you have to run it twice with core-generator and some-generator to complete it.
 
-## Setup Raspberry Pi 4B
+CORE TOOL:  https://github.com/COVESA/capicxx-core-tools
+VSOME TOOL: https://github.com/COVESA/capicxx-someip-tools
+SEE: https://github.com/SEA-ME-COSS/DES-Head-Unit/tree/main/setting
+Unfornauteley, the generator does not run on the target system (Raspberry Pi). Therefore, the teams laptop or ci automation (github action) can be used.
 
+```bash
+/home/seame02/generator/core-generator/commonapi-core-generator-linux-x86_64 -sk ./fidl/carinfo.fidl -d ./src-gen-carinfo/core
+/home/seame02/generator/someip-generator/commonapi-someip-generator-linux-x86_64  ./fidl/carinfo.fdepl -d ./src-gen-carinfo/someip
+```
 ### Binding to vSOME/IP 
 // https://github.com/SEA-ME/Team-Pilot/tree/Moon/Project-2/CommonAPI-vSomeIP
 CommonAPI and available bindings can be configured by ini-files (see e.g. http://en.wikipedia.org/wiki/INI_file).
@@ -121,73 +174,6 @@ file (in the following order):
 The configuration file has 4 possible sections; all sections are optional.
 The default default binding is "dbus". This can be changed by setting the "binding" variable in the "default"-section of the CommonAPI configuration file or by setting the environment variable "COMMONAPI_DEFAULT_BINDING". The environment variable overwrites the setting provided by the configuration file.
 Write CommonAPI Configuration Files
-
-### SYSTEM DEPENCENDIES  
-1) Install System dependencies
-Java 8, Boost-dev, libdbus and ascii are required. 
-See Some/IP documentations for more informations. 
-```bash
-sudo apt update
-sudo apt install openjdk-8-jdk
-sudo apt-get install libboost-all-dev
-sudo apt-get install libdbus-1-dev
-sudo apt install ascii
-```
-2) Install Python dependencies
-Install python dependencies globally (not recommended). 
-```bash
-pip install piracer-py
-```
-## CommonAPI Core Runtime Library 
-```bash
-cd ~
-git clone https://github.com/GENIVI/capicxx-core-runtime.git
-cd capicxx-core-runtime/
-mkdir build
-cd build
-cmake ..
-make 
-sudo make install
-```
-### vSOME/IP Library
-```bash
-cd ~
-git clone https://github.com/COVESA/vsomeip.git
-cd vsomeip
-mkdir build
-cd build
-cmake -DENABLE_SIGNAL_HANDLING=1 -DDIAGNOSIS_ADDRESS=0x10 ..
-make
-sudo make install
-```
-### CommonAPI SOMEip Runtime Library 
-```bash
-git clone https://github.com/GENIVI/capicxx-someip-runtime.git
-cd capicxx-someip-runtime
-mkdir build
-cd build
-cmake -DUSE_INSTALLED_COMMONAPI=OFF ..
-make
-sudo make install
-```
-### COMMONAPI generator
-ASSUME TO INSTALL IN HOME DIRECTORY
-CORE TOOL:  https://github.com/COVESA/capicxx-core-tools
-VSOME TOOL: https://github.com/COVESA/capicxx-someip-tools
-SEE: https://github.com/SEA-ME-COSS/DES-Head-Unit/tree/main/setting
-This needs to be run before running Build.sh
-Unfornauteley, the generator does not run on the target system (Raspberry Pi). Therefore, the teams laptop or ci automation (github action) can be used.
-
-```bash
-#!/bin/bash
-#delete "src-gen-carinfo" folder if it exists
-if [ -d "src-gen-carinfo" ]; then
-    rm -rf src-gen-carinfo
-fi
-#run generator
-/home/seame02/generator/core-generator/commonapi-core-generator-linux-x86_64 -sk ./fidl/carinfo.fidl -d ./src-gen-carinfo/core
-/home/seame02/generator/someip-generator/commonapi-someip-generator-linux-x86_64  ./fidl/carinfo.fdepl -d ./src-gen-carinfo/someip
-```
 
 ## Reference
 - [CommonAPI SomeIP in 10-minutes](https://github.com/COVESA/capicxx-someip-tools/wiki/CommonAPI-C---SomeIP-in-10-minutes)
