@@ -12,45 +12,45 @@ The following tree shows the project structure. <br>
 This application uses Convesa's Common API to connect the PiRacer's drivetrain to the on-board network. <br>
 
 ```bash
-car_control <br>
-├── build <br>
-├── fidl <br>
-│   ├── car_control.fidl <br>
-│   ├── car_control.fdepl <br>
-├── include <br>
-│   ├── CarControlStubImpl.hpp <br>
-│   ├── GamePad.hpp <br>
-│   ├── PiRacer.hpp <br>
-├── piracer <br>
-│   ├── gamepads.py<br>
-│   ├── vehichles.py<br>
-├── scripts <br>
-│   ├── Build.sh <br>
-│   ├── Run_Client.sh <br>
-│   ├── Run_Services.sh <br>
-├── src <br>
-│   ├── CarControlClient.cpp <br>
-│   ├── CarControlService.cpp <br>
-│   ├── CarControlStubImpl.cpp <br>
-│   ├── GamePad.cpp <br>
-│   ├── PiRacer.cpp <br>
-├── src-gen/v0/commonapi <br>
+car_control
+├── build 
+├── fidl
+│   ├── car_control.fidl 
+│   ├── car_control.fdepl 
+├── include 
+│   ├── CarControlStubImpl.hpp 
+│   ├── GamePad.hpp 
+│   ├── PiRacer.hpp 
+├── piracer 
+│   ├── gamepads.py
+│   ├── vehichles.py
+├── scripts 
+│   ├── Build.sh 
+│   ├── Run_Client.sh 
+│   ├── Run_Services.sh 
+├── src 
+│   ├── CarControlClient.cpp 
+│   ├── CarControlService.cpp 
+│   ├── CarControlStubImpl.cpp 
+│   ├── GamePad.cpp 
+│   ├── PiRacer.cpp 
+├── src-gen/v0/commonapi 
 │   ├── core 
-│   │   ├── CarControl.hpp <br>
-│   │   ├── CarControlProxy.hpp <br>
-│   │   ├── CarControlProxyBase.hpp <br>
-│   │   ├── CarControlStub.hpp <br>
-│   │   ├── CarControlStubDefault.hpp <br>
-│   ├── someip <br>
-│   │   ├── CarControlSomeIPDeployment.cpp <br>
-│   │   ├── CarControlSomeIPDeployment.hpp <br>
-│   │   ├── CarControlSomeIPProxy.cpp <br>
-│   │   ├── CarControlSomeIPProxy.hpp <br>
-│   │   ├── CarControlSomeIPStubAdapter.cpp <br>
-│   │   ├── CarControlSomeIPStubAdapter.hpp <br>
-├── CMakeLists.txt <br>
-.github <br>
-├── workflows <br>
+│   │   ├── CarControl.hpp 
+│   │   ├── CarControlProxy.hpp 
+│   │   ├── CarControlProxyBase.hpp 
+│   │   ├── CarControlStub.hpp 
+│   │   ├── CarControlStubDefault.hpp 
+│   ├── someip 
+│   │   ├── CarControlSomeIPDeployment.cpp 
+│   │   ├── CarControlSomeIPDeployment.hpp 
+│   │   ├── CarControlSomeIPProxy.cpp 
+│   │   ├── CarControlSomeIPProxy.hpp 
+│   │   ├── CarControlSomeIPStubAdapter.cpp 
+│   │   ├── CarControlSomeIPStubAdapter.hpp 
+├── CMakeLists.txt 
+.github 
+├── workflows 
 ```
 
 The application uses the python modules gamepads.py and vehicles.py from SEA:ME (see: [1]) and Convesa's CommonAPI that runs on C++. To connect python and C++, the Boost.Python libary is used. Boost.Python is a C++ library which enables seamless interoperability between C++ and the Python programming language. <br>
