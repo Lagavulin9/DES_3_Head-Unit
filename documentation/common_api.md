@@ -13,15 +13,23 @@ CommonAPI is a middleware developed by the GENIVI Alliance. It is a framework th
 If you have no knowledge about CommonAPI, vSOME/IP and Franca, we recommend to read the following [CommonAPI user guide] first.
 
 ## Fundamentals
+### SOME/IP
+!! Put picture of SOME/IP Architecture (msg) here !! <br>
+- SOME/IP is a protocol that is used to communicate between ECUs in a vehicle.
 
 ### Communication Patterns
+!! Put picture of communication patterns here !! <br>
 - Request-Response
 - Fire-Forget 
 - Subscribe-Notify
 - Request-Response with Callback
 
+### CommonAPI
+CommonAPI is a middleware developed by the GENIVI Alliance. It is a framework that allows the development of in-vehicle infotainment (IVI) applications. It is based on the concept of service-oriented architecture (SOA) and provides a service-oriented middleware (SOM) that allows the development of applications independently of the underlying communication technology. <br>
+!! put picture of CommonAPI Architecture here (see CommonAPI user guide) !!
+
 ## Project Notation 
-For this project the vSOME/IP bining is used. 
+For this project the SOME/IP bining is used. 
 To establish a reliable communication between the applications, the follwing notation between the applications is used. <br>
 The used notation on the vSOME/IP interface is set in the dfidl files of each application. <br>
 
