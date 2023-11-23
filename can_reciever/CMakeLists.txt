@@ -50,9 +50,11 @@ link_directories(
 add_executable(Can_Receiver 
     ${Can_Receiver_SOURCES}
 )
-#add_library(Can_Receiver_Lib SHARED ${Can_Receiver_SOURCES})
-#target_link_libraries(Can_Receiver PRIVATE stdc++ CommonAPI CommonAPI-SomeIP vsomeip3)
+add_library(Can_Receiver_Lib 
+    SHARED ${Can_Receiver_SOURCES}
+)
 target_link_libraries(Can_Receiver 
+    PRIVATE stdc++
     CommonAPI 
     CommonAPI-SomeIP 
     vsomeip3
