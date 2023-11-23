@@ -1,18 +1,37 @@
-# Common API & vSOME/IP 
+# Common API
 
 ## Table of Contents
 
+## Introduction
+CommonAPI is a middleware developed by the GENIVI Alliance. It is a framework that allows the development of in-vehicle infotainment (IVI) applications. It is based on the concept of service-oriented architecture (SOA) and provides a service-oriented middleware (SOM) that allows the development of applications independently of the underlying communication technology. 
+If you have no knowledge about CommonAPI, vSOME/IP and Franca, we recommend to read the following [CommonAPI user guide] first.
 
-## Notation vSOME/IP
+## Fundamentals
+
+### Communication Patterns
+- Request-Response
+- Fire-Forget 
+- Subscribe-Notify
+- Request-Response with Callback
+
+## Project Notation 
+For this project the vSOME/IP bining is used. 
+To establish a reliable communication between the applications, the follwing notation between the applications is used. <br>
 The used notation on the vSOME/IP interface is set in the dfidl files of each application. <br>
-### Conventions: 
-- IDs binded to the sequence number of the application 
+
+### Convention 
+
+Usually, on-board networks like AUTOSAR and vSOME/IP use a clearly defined notation. (!! insert AUTOSAR DOC LINK here !!)
+
+In this project, the following (lighet weighted) notation is used: <br>
+
+- IDs are binded to the sequence number of the application. 
     - 1 = Head_Unit 
     - 2 = Dashboard 
     - 3 = Can_Speedsensor 
     - 4 = Car_Control 
     - 5 = Car_Info
-- 0x | App. sequence number | Eventgroup | Event ID | 
+- 0x | Appication sequence number | Eventgroup ID | Event ID | 
 - Reliable mode = on
 - Network: 
     - IP: 192.168.0.2 
@@ -30,8 +49,7 @@ The used notation on the vSOME/IP interface is set in the dfidl files of each ap
     test
 ```
 
-
-#### 3) Can_Speedsensor
+#### 3) Can Speedsensor
 ```yaml
 interface Can_Receiver.Speed_Sensor:
     SomeIpServiceID = 0x3000
@@ -93,11 +111,11 @@ Service:
     SomeIpUnreliableUnicastPort     = 50011
 ```
 
-# CommonAPI vSomeIP Setup (RPi 4B)
+## Target Device Setup
 
-https://github.com/SEA-ME/Team-Pilot/tree/Moon/Project-2/CommonAPI-vSomeIP
+CommonAPI vSomeIP Setup
 
-- Step 1: Install Dependencies 
+### Install Dependencies
 Java 8, Boost-dev, libdbus and ascii are required. 
 See Some/IP documentations for more informations. 
 ```bash
@@ -113,7 +131,7 @@ Install piracer-py package globally (not recommended).
 pip install piracer-py
 ```
 
-- Step 3: Build & Install the CommonAPI Core Runtime Library
+### Build & Install the CommonAPI Core Runtime Library
 ```bash
 cd ~
 git clone https://github.com/GENIVI/capicxx-core-runtime.git
@@ -125,7 +143,7 @@ make
 sudo make install
 ```
 
-- Step 4: Build & Install the vSomeIP Library
+### Build & Install the vSomeIP Library
 ```bash
 cd ~
 git clone https://github.com/COVESA/vsomeip.git
@@ -137,7 +155,7 @@ make
 sudo make install
 ```
 
-- Step 5: Build the CommonAPI SOME/IP Runtime Library
+### Build the CommonAPI SOME/IP Runtime Library
 ```bash
 git clone https://github.com/GENIVI/capicxx-someip-runtime.git
 cd capicxx-someip-runtime
@@ -148,16 +166,14 @@ make
 sudo make install
 ```
 
-- Step 6: Write the Franca file 
-- Step 7: Generate Code with the CommonAPI Generator
-Unfortunately, code generator [doesn’t support arm architecture.]((https://github.com/COVESA/capicxx-core-tools/issues/19)). 
-So if you want to use this generator, I recommend that you use the code generator on your own machine or use github actions to generated code. 
-The code generator automatically generates codes according to fidl and fdepl files. In the case of vsomeip binding, you have to run it twice with core-generator and some-generator to complete it.
+### Write the Franca file 
 
-CORE TOOL:  https://github.com/COVESA/capicxx-core-tools
-VSOME TOOL: https://github.com/COVESA/capicxx-someip-tools
-SEE: https://github.com/SEA-ME-COSS/DES-Head-Unit/tree/main/setting
-Unfornauteley, the generator does not run on the target system (Raspberry Pi). Therefore, the teams laptop or ci automation (github action) can be used.
+### Generate Code with the CommonAPI Generator
+Unfortunately, code generator [doesn’t support arm architecture.]((https://github.com/COVESA/capicxx-core-tools/issues/19)). 
+So if you want to use the generator, we recommend to use your own non-aarm machine. A more comfortable approach would be github actions. For this we developed a tool called [capicxx-tools-CI-CD] that is available in the SEA:ME's GitHub.
+The code generator automatically generates codes according to fidl and fdepl files. 
+
+
 
 ```bash
 /home/seame02/generator/core-generator/commonapi-core-generator-linux-x86_64 -sk ./fidl/carinfo.fidl -d ./src-gen-carinfo/core
@@ -174,13 +190,23 @@ file (in the following order):
 The configuration file has 4 possible sections; all sections are optional.
 The default default binding is "dbus". This can be changed by setting the "binding" variable in the "default"-section of the CommonAPI configuration file or by setting the environment variable "COMMONAPI_DEFAULT_BINDING". The environment variable overwrites the setting provided by the configuration file.
 Write CommonAPI Configuration Files
+ 
+--- 
 
 ## Reference
 - [CommonAPI SomeIP in 10-minutes](https://github.com/COVESA/capicxx-someip-tools/wiki/CommonAPI-C---SomeIP-in-10-minutes)
 - [How to Install Java on Raspberry Pi](https://phoenixnap.com/kb/install-java-raspberry-pi#ftoc-heading-4)
 - [How to install latest Boost library on Raspberry Pi](http://osdevlab.blogspot.com/2016/02/how-to-install-latest-boost-library-on.html)
-- [CommonAPI C++ User Guide (most helpful)](https://usermanual.wiki/Document/CommonAPICppUserGuide.113855339.pdf)
----
-[**commonapi user guide**](https://usermanual.wiki/Document/CommonAPICppUserGuide.113855339.pdf) If you do not know something, it is recommended to find it here first.
+- [CommonAPI C++ User Guide](https://usermanual.wiki/Document/CommonAPICppUserGuide.113855339.pdf)
+
+- [CommonAPI user guide](https://usermanual.wiki/Document/CommonAPICppUserGuide.113855339.pdf)
 
 https://github.com/Pelagicore/common-api-tools/tree/master/CommonAPI-Examples/E02Attributes
+
+https://github.com/SEA-ME/Team-Pilot/tree/Moon/Project-2/CommonAPI-vSomeIP
+
+- [CommonAPI core tool](https://github.com/COVESA/capicxx-core-tools)
+
+- [CommonAPI vSOME/IP tool](https://github.com/COVESA/capicxx-someip-tools)
+
+- [capicxx-tools-CI-CD](https://github.com/SEA-ME/capicxx-tools-CI-CD)
