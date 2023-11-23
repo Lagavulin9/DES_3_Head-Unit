@@ -46,10 +46,6 @@ The LCD Display is connected on the Raspberry Pi using the **DSI** connector. <b
 The Power (5V) is supplied via the GPIO pins. <br>
 **I2C** is used to get the touchscreen input. <br>
 
-## Set Up 
-### Raspberry Pi 4
-### 
-
 
 
 

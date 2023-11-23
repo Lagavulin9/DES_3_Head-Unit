@@ -65,7 +65,7 @@ The car's gear is selected by the X (Neutral), A (Drive), B (Park), and Y (Rever
 If the car is in Drive ("D"), the car will drive forward - In Reverse ("R"), the car will drive backwards. 
 The right joystick needs to be pushed in the corresponding direction to accelerate. Hence, the car will not move if the Joystick is pushed backwards while "D is selected. The same rule apply for the gear selection reverse ("R") just in reverse. Last but not least, in Park ("P") & Neutral ("N"), the car will not move at all. <br>
 
-<img src="./images/gamepad.png" width=50%>|
+<img src="./images/gamepad.png" width=50%>
 
 | Button | Action |
 | ------ | ------ |
