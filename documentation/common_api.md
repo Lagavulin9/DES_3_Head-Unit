@@ -7,7 +7,6 @@
 - [Fundamentals](##Fundamentals)
 - [Project Notation](##Project-Notation)
 
-
 ## Introduction
 CommonAPI is a middleware developed by the GENIVI Alliance. It is a framework that allows the development of in-vehicle infotainment (IVI) applications. It is based on the concept of service-oriented architecture (SOA) and provides a service-oriented middleware (SOM) that allows the development of applications independently of the underlying communication technology. 
 If you have no knowledge about CommonAPI, vSOME/IP and Franca, we recommend to read the following [CommonAPI user guide] first.
@@ -56,26 +55,29 @@ In this project, the following (light weighted) notation is used: <br>
             - 1 = Unreliable
 
 #### 1) Head_Unit Application
+
 ```yaml
     test
 ```
 
 #### 2) Dashboard Application
+
 ```yaml
     test
 ```
 
 #### 3) Can Receiver Application
+
 ```yaml
-interface Can_Receiver.Speed_Sensor:
-    SomeIpServiceID = 0x3000
-    attribute speed {
+interface Speed_Sensor:
+SomeIpServiceID = 0x3000
+    attribute speed 
         SomeIpGetterID              = 0x3101
         SomeIpSetterID              = 0x3102
         SomeIpNotifierID            = 33104
         SomeIpAttributeReliable     = false
         SomeIpNotifierEventGroups   = 33104
-    attribute rpm {
+    attribute rpm 
         SomeIpGetterID              = 0x3201
         SomeIpSetterID              = 0x3202
         SomeIpNotifierID            = 33204
@@ -88,22 +90,23 @@ Service:
 #### 4) Car Control Application
 
 ```yaml
+Service commonapi.CarControl: 
 SomeIpServiceID = 4000
     attribute indicator:
         SomeIpNotifierEventGroups   = 4100
         SomeIpNotifierID            = 41000
         SomeIpGetterID              = 4101
         SomeIpAttributeReliable     = true
-    attribute gear 
+    attribute gear:
         SomeIpNotifierEventGroups   = 4200 
         SomeIpNotifierID            = 42000
         SomeIpGetterID              = 4201
-    method gearSelectionHeadUnit 
+    method gearSelectionHeadUnit:
         SomeIpMethodID              = 4200
 Service: 
-        InstanceId                  = "commonapi.CarControl"
+        InstanceId                  = commonapi.CarControl
         SomeIpInstanceID            = 4001
-        SomeIpUnicastAddress        = "192.168.0.2"
+        SomeIpUnicastAddress        = 192.168.0.2
         SomeIpReliableUnicastPort   = 40010
         SomeIpUnreliableUnicastPort = 40011
 ```
@@ -112,24 +115,23 @@ Service:
 
 ```yaml
 interface commonapi.CarInfo:
-    SomeIpServiceID = 5000
+SomeIpServiceID = 5000
     attribute battery
         SomeIpNotifierEventGroups   = 5100
         SomeIpNotifierID            = 51000
         SomeIpGetterID              = 5101
         SomeIpAttributeReliable     = true
-
 Service:
-    InstanceId                      = "commonapi.CarInfo"
+    InstanceId                      = commonapi.CarInfo
     SomeIpInstanceID                = 5001
-    SomeIpUnicastAddress            = "192.168.0.2"
+    SomeIpUnicastAddress            = 192.168.0.2
     SomeIpReliableUnicastPort       = 50010
     SomeIpUnreliableUnicastPort     = 50011
 ```
 
 ## Target Device Setup
 
-To make CommonAPI with the vSomeIP bindig make work on the ECU (Raspberry Pi 4), the following steps are required.
+To make CommonAPI with the vSomeIP bindig work on the single ECU setup, the following steps are required.
 
 ### Install Dependencies
 Java 8, Boost-dev, libdbus and ascii are required. 
@@ -186,12 +188,12 @@ sudo make install
 Time to start building your application by define your interface. 
 
 ### Generate Code with the CommonAPI Generator
-Unfortunately, code generator [doesn’t support arm architecture.]((https://github.com/COVESA/capicxx-core-tools/issues/19)). 
+Unfortunately, code generator [doesn’t support arm architecture.]((https://github.com/COVESA/capicxx-core-tools/issues/19)). <br>
 So if you want to use the generator, we recommend to use your own non-aarm machine. A more comfortable approach would be github actions. <br>
 For this we developed a tool called [capicxx-tools-CI-CD] which is available in the SEA:ME's GitHub. <br>
 The code generator automatically generates codes according to fidl and fdepl files. <br>
 
-However, here is an example on how to generate the code on a non-arm machine. <br>
+The generators itself are relatily easy to use. Just download from Github, unzip and run the executable like in the example below. <br>
 ```bash
 /home/seame02/generator/core-generator/commonapi-core-generator-linux-x86_64 -sk ./fidl/carinfo.fidl -d ./src-gen-carinfo/core
 /home/seame02/generator/someip-generator/commonapi-someip-generator-linux-x86_64  ./fidl/carinfo.fdepl -d ./src-gen-carinfo/someip
