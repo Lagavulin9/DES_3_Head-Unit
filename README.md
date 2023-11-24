@@ -14,7 +14,7 @@ This project is part of the embedded software development course at [SEA-ME](htt
 The Head Unit application will provide additional features like **ambient lighting, gear selection, and a media app**. <br> 
 Furthermore, the project will use **Scalable Service-Oriented Middleware(vSOME/IP)** for the in-vehicle communication and **Yocto as the build system** for the ECU. <br> 
 
-You can see the full subject of this project [here](subject.md) or at SEA:ME's [DES-Head-Unit](https://github.com/SEA-ME/DES_Head-Unit) repository.
+You can see the full subject of this project [here](subject.md) or in SEA:ME's [DES Head-Unit repository](https://github.com/SEA-ME/DES_Head-Unit).
 
 ## Collaborators
 If you find any kinds of bugs or issues, please contact us. <br>
