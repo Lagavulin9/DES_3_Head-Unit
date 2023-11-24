@@ -1,16 +1,14 @@
-# DES02-PiRacer-instrument
+# DES03 Project - Head Unit
 
 ## Table of contents
-- [DES02-PiRacer-instrument](#des02-piracer-instrument)
-  - [Table of contents](#table-of-contents)
-  - [:microphone:  Introduction](#microphone--introduction)
-  - [:question:  How to use](#question--how-to-use)
-  - [:memo:  Documentations](#memo--documentations)
-  - [:classical\_building:  Software Architecture](#classical_building--software-architecture)
-  - [:runner:  Demonstration Video](#runner--demonstration-video)
-  - [👷 Known Issues](#known-issues)
+  - [Introduction](#introduction)
+  - [Collaborators](#collaborators)
+  - [Documentations](#documentations)
+  - [Architecture](#architecture)
+  - [Demonstration Video](#demonstration-video)
+  - [Known Issues](#known-issues)
 
-## :microphone:  Introduction
+## Introduction
 This project is part of [SEA-ME Project](https://github.com/SEA-ME).
 > This project aims to develop a **Head Unit application** running on a Raspberry Pi (RPi) alongside the previously developed PiRacer **Instrument Cluster application**. <br> 
 The Head Unit application will provide additional features like ambient lighting, gear selection, and a media app. <br> 
@@ -18,16 +16,16 @@ Furthermore, the project will use **Scalable Service-Oriented Middlewareuse (SOM
 
 You can see the full subject in this link. [SEA-ME/DES-Head-Unit](https://github.com/SEA-ME/DES_Head-Unit)
 
-## :question:  How to use
+## How to use
 
-## :car:  Collaborators
+## Collaborators
 If you find any kinds of bugs or issues, please contact us.<br>
 Collaborators
 🦭 [Kian](https://github.com/kianwasabi)       <br>
 🐈 [Jinghong](https://github.com/Lagavulin9)   <br> 
 🦚 [Seungwoo](https://github.com/SeungWoo-L)   <br>
 
-## :memo:  Documentations
+## Documentations
 You can see all documentations in [`/documentation/`](/documentation/) folder. 
 
 - Planning:
@@ -46,11 +44,11 @@ You can see all documentations in [`/documentation/`](/documentation/) folder.
 - [workflows.md](/documentation/workflows.md)
 - [yocto.md](/documentation/yocto.md)
 
-## :classical_building:  Software Architecture
+## Architecture
 
-## :runner:  Demonstration Video
+## Demonstration Video
 <img src="./documentation/images/demonstration.gif" width="40%" margin="120%">
 
-## 👷 Known Issues 
+## Known Issues 
 Some issues we found while testing:
 
