@@ -1,6 +1,7 @@
 # Project Requirements
 
-The following are the requirements for the project. <br>
+The following are the requirements for the project extracted from this project's subject. [SEA-ME/DES-Head-Unit](https://github.com/SEA-ME/DES_Head-Unit). <br>
+
 There are two types of requirements: <br>
 - [User Requirements](#user-requirements)
 - [System Requirements](#system-requirements)
