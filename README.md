@@ -41,11 +41,16 @@ You can see all documentations in [`/documentation/`](/documentation/) folder.
   - [🤖 workflows.md](/documentation/workflows.md)
   - [🍪 yocto.md](/documentation/yocto.md)
 
-Project's KANBAN board: [📋 kanban.md](https://github.com/users/Lagavulin9/projects/2)
+- Project's KANBAN board: <br>
+  - [📋 kanban.md](https://github.com/users/Lagavulin9/projects/2)
 
 ## Architecture
 
+!! Add a diagram of the architecture here. !! <br>
+!! SAME AS THE ONE IN THE DOCUMENTATION that will be in software-strucutre.md !! <br>
+
 ## Demonstration Video
+!! UPLOAD A VIDEO OF THE DEMONSTRATION WITH THE FILENAME "demonstration.gif" !! <br>
 <img src="./documentation/images/demonstration.gif" width="40%" margin="120%">
 
 ## Known Issues 
