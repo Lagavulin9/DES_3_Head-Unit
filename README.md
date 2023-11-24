@@ -15,10 +15,19 @@
   - [References](#references)
 
 ## Introduction
+This project aims to develop a **Head Unit (Qt) application** running on a Raspberry Pi (RPi) alongside the previously developed PiRacer **Instrument Cluster (Qt) application**. <br> 
+The Head Unit application will provide additional features like ambient lighting, gear selection, and a media app. <br> 
+Furthermore, the project will use **Scalable Service-Oriented Middlewareuse (SOME/IP)** to connect the applications and **Yocto as the build system** for the RPi. <br> 
 
-This project aims to develop a Head Unit Qt application running on a Raspberry Pi (RPi) alongside the previously developed PiRacer Instrument Cluster Qt application. The Head Unit application will provide additional features like ambient lighting, gear selection, and a media app. The project will use Yocto as the build system for the RPi.  
-</br>
+This project is part of the embedded software development course at SEA:ME. <br>
 
+Shoutout to the awesome contributers of team "SEAME02" who made this project possible. <br>
+🦭 [Kian](https://github.com/kianwasabi)       <br>
+🐈 [Jinghong](https://github.com/Lagavulin9)   <br> 
+🦚 [Seungwoo](https://github.com/SeungWoo-L)   <br>
+
+The following paragraphs are a general project description from the course cirriculum.      <br>
+[If you are interessed in a more detailed project documentation, please click here.](LINK)  <br>
 
 ## Background Information
 
