@@ -23,7 +23,7 @@ If you find any kinds of bugs or issues, please contact us. <br>
 🦚 [Seungwoo](https://github.com/SeungWoo-L)   <br>
 
 ## Documentations
-You can see all documentations in [`/documentation/`](/documentation/) folder. 
+You can see all documentations in the [`/documentation/`](/documentation/) folder. 
 
 - Planning:
   - [🧑🏽‍🎨 design.md](/documentation/design.md)
@@ -42,7 +42,7 @@ You can see all documentations in [`/documentation/`](/documentation/) folder.
   - [🍪 yocto.md](/documentation/yocto.md)
 
 - Project's KANBAN board: <br>
-  - [📋 kanban.md](https://github.com/users/Lagavulin9/projects/2)
+  - [📋 Kanban on GitHub ](https://github.com/users/Lagavulin9/projects/2)
 
 ## Architecture
 
