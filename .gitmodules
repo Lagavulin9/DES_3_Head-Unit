@@ -7,3 +7,6 @@
 [submodule "Flutter_Dashboard"]
 	path = Flutter_Dashboard
 	url = https://github.com/Lagavulin9/Flutter_Dashboard.git
+[submodule "meta-car_info"]
+	path = meta-car_info
+	url = https://github.com/kianwasabi/meta-car_info.git
