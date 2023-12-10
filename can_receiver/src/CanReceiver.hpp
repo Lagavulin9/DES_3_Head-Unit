@@ -1,8 +1,8 @@
 #ifndef CAN_RECEIVER_HPP
 #define CAN_RECEIVER_HPP
 
-#include "Can_Moving_Average_Filter.hpp"
-#include "Can_Data_Register.hpp"
+#include "MovingAverageFilter.hpp"
+#include "CanDataRegister.hpp"
 
 #include <iostream>
 #include <cstring>

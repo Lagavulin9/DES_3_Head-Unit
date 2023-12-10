@@ -1,4 +1,4 @@
-#include "Can_Receiver.hpp"
+#include "CanReceiver.hpp"
 
 CanReceiver::CanReceiver() : raw_rpm(0), running(false) {}
 

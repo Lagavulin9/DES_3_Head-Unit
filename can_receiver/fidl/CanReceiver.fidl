@@ -1,0 +1,8 @@
+package commonapi
+
+interface SpeedSensor {
+    version { major 0 minor 1 }
+
+    attribute UInt32 speed 
+    attribute UInt32 rpm 
+}
