@@ -3,10 +3,10 @@
 
 #include <iostream>
 #include <CommonAPI/CommonAPI.hpp>
-#include "Speed_SensorStubImpl.hpp" 
+#include "SpeedSensorStubImpl.hpp" 
 
 
-using namespace v1_0::Can_Receiver;
+using namespace v0_1::commonapi;
 
 class CanDataRegister {
 public:
@@ -17,9 +17,9 @@ public:
 
 private:
     std::shared_ptr<CommonAPI::Runtime> runtime;
-    std::shared_ptr<Speed_SensorStubImpl> SpeedRpmService;
+    std::shared_ptr<SpeedSensorStubImpl> SpeedRpmService;
 
-    void Speed_Sensor_Init();
+    void SpeedSensor_Init();
     
 };
 

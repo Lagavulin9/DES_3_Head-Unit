@@ -1,15 +1,14 @@
 import "platform:/plugin/org.genivi.commonapi.someip/deployment/CommonAPI-4-SOMEIP_deployment_spec.fdepl"
-import "Can_Receiver.fidl"
+import "CanReceiver.fidl"
 
-define org.genivi.commonapi.someip.deployment for interface Can_Receiver.Speed_Sensor {
+define org.genivi.commonapi.someip.deployment for interface commonapi.SpeedSensor {
     SomeIpServiceID = 0x3000
-    
 
     attribute speed {
         SomeIpGetterID = 0x3101
         SomeIpSetterID = 0x3102
         SomeIpNotifierID = 33104
-        SomeIpAttributeReliable = false
+        SomeIpAttributeReliable = true
         SomeIpNotifierEventGroups = { 33104 }
     }
 
@@ -17,14 +16,14 @@ define org.genivi.commonapi.someip.deployment for interface Can_Receiver.Speed_S
         SomeIpGetterID = 0x3201
         SomeIpSetterID = 0x3202
         SomeIpNotifierID = 33204
-        SomeIpAttributeReliable = false
+        SomeIpAttributeReliable = true
         SomeIpNotifierEventGroups = { 33204 }
     }
 }
 
 define org.genivi.commonapi.someip.deployment for provider as Service {
-    instance Can_Receiver.Speed_Sensor {
-        InstanceId = "Speed_Sensor"
+    instance commonapi.SpeedSensor {
+        InstanceId = "SpeedSensor"
 
         SomeIpInstanceID = 22000
     }

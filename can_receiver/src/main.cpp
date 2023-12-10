@@ -1,4 +1,4 @@
-#include "Can_Receiver.hpp"
+#include "CanReceiver.hpp"
 
 int main() {
     CanReceiver receiver;
