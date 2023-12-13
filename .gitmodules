@@ -1,9 +1,3 @@
-[submodule "meta-piracer"]
-	path = meta-piracer
-	url = https://github.com/Lagavulin9/meta-piracer
-[submodule "Flutter_Head-Unit"]
-	path = Flutter_Head-Unit
-	url = https://github.com/Lagavulin9/Flutter_Head-Unit
-[submodule "Flutter_Dashboard"]
-	path = Flutter_Dashboard
-	url = https://github.com/Lagavulin9/Flutter_Dashboard.git
+[submodule "meta-can_receiver"]
+	path = meta-can_receiver
+	url = https://github.com/SeungWoo-L/meta-can_receiver.git
