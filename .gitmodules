@@ -10,3 +10,6 @@
 [submodule "meta-car_info"]
 	path = meta-car_info
 	url = https://github.com/kianwasabi/meta-car_info.git
+[submodule "meta-car_control"]
+	path = meta-car_control
+	url = https://github.com/kianwasabi/meta-car_control.git
