@@ -1,0 +1,12 @@
+[submodule "meta-piracer"]
+	path = meta-piracer
+	url = https://github.com/Lagavulin9/meta-piracer
+[submodule "Flutter_Head-Unit"]
+	path = Flutter_Head-Unit
+	url = https://github.com/Lagavulin9/Flutter_Head-Unit
+[submodule "Flutter_Dashboard"]
+	path = Flutter_Dashboard
+	url = https://github.com/Lagavulin9/Flutter_Dashboard.git
+[submodule "meta-car_info"]
+	path = meta-car_info
+	url = https://github.com/kianwasabi/meta-car_info.git
