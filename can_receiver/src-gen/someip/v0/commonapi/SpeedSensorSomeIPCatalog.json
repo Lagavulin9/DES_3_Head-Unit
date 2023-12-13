@@ -1,8 +1,0 @@
-{
-    "commonapi.SpeedSensor" : {
-        "service_id": 12288,
-        "instances" : {
-            "SpeedSensor": 22000
-        }
-    }
-}

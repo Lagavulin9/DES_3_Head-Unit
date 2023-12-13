@@ -1,6 +1,5 @@
 build/
 *.user
 .vscode/
-build-commonapi/
-generator/
 .exe/
+.DS_Store

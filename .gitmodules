@@ -1,3 +1,0 @@
-[submodule "meta-can_receiver"]
-	path = meta-can_receiver
-	url = https://github.com/SeungWoo-L/meta-can_receiver.git
