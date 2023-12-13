@@ -13,3 +13,6 @@
 [submodule "meta-car_control"]
 	path = meta-car_control
 	url = https://github.com/kianwasabi/meta-car_control.git
+[submodule "meta-can_receiver"]
+	path = meta-can_receiver
+	url = https://github.com/SeungWoo-L/meta-can_receiver.git
