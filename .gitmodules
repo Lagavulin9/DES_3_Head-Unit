@@ -1,9 +1,3 @@
-[submodule "Flutter_Head-Unit"]
-	path = Flutter_Head-Unit
-	url = https://github.com/Lagavulin9/Flutter_Head-Unit.git
-[submodule "Flutter_Dashboard"]
-	path = Flutter_Dashboard
-	url = https://github.com/Lagavulin9/Flutter_Dashboard.git
 [submodule "car_control"]
 	path = car_control
 	url = https://github.com/kianwasabi/car_control.git
@@ -13,3 +7,9 @@
 [submodule "can_receiver"]
 	path = can_receiver
 	url = https://github.com/SeungWoo-L/can_receiver.git
+[submodule "Flutter_Head-Unit"]
+	path = Flutter_Head-Unit
+	url = https://github.com/Lagavulin9/Flutter_Head-Unit.git
+[submodule "Flutter_Dashboard"]
+	path = Flutter_Dashboard
+	url = https://github.com/Lagavulin9/Flutter_Dashboard.git
