@@ -6,7 +6,7 @@ The following tables displays all components and its datasheets that are used fo
 | Car | Gamepad | Dashboard | Head Unit | Raspberry Pi | CAN Hat | CAN Hat | Arduino Uno | Speed Sensor |
 |:-------:|:-------:|:-------:|:-------:|:-------:|:-------------------:|:-------:|:-----------:|:------------------:|
 |<img src="./images/piracer.jpg" >|<img src="./images/gamepad.png" >|<img src="./images/waveshare-9inch-DSI-LCD.png" >|<img src="./images/waveshare-7inch-HDMI-LCD.jpg" >|<img src="./images/raspberry-pi-4-modell-b.jpg">|<img src="./images/2ch-can-fd-hat.jpg">|<img src="./images/can_bus_shield_Ardunio.png">|<img src="./images/arduino_uno.png">|<img src="./images/speedsensor.png">|
-| [PiRacer Base](https://www.waveshare.com/piracer-ai-kit.htm)| [ShanWan Wireless Gamepad]() |[Waveshare 9inch DSI LCD](https://www.waveshare.com/wiki/7.9inch_DSI_LCD)|[Waveshare 7inch HDMI LCD](https://www.waveshare.com/wiki/7inch_HDMI_LCD_(C))|[Raspberry Pi 4](LINK)|[RPI 2CH CAN HAT](LINK)|[Arduino Uno 1CH CAN HAT](LINK)|[Arduino Uno](LINK)|[LM393](LINK)|
+| [PiRacer Base](https://www.waveshare.com/piracer-ai-kit.htm)| [ShanWan Wireless Gamepad]() |[Waveshare 9inch DSI LCD](https://www.waveshare.com/wiki/7.9inch_DSI_LCD)|[Waveshare 7inch HDMI LCD](https://www.waveshare.com/wiki/7inch_HDMI_LCD_(C))|[Raspberry Pi 4](LINK)|[RPI 2CH CAN HAT](https://www.waveshare.com/wiki/2-CH_CAN_HAT)|[Arduino Uno 1CH CAN HAT](LINK)|[Arduino Uno](LINK)|[LM393](LINK)|
 
 ## Assembly
 This is how the assembled PiRacer looks like:
@@ -45,10 +45,6 @@ The drivetrain of the PiRacer is connected via **I2C** with the Raspberry Pi 4.
 The LCD Display is connected on the Raspberry Pi using the **DSI** connector. <br>
 The Power (5V) is supplied via the GPIO pins. <br>
 **I2C** is used to get the touchscreen input. <br>
-
-## Set Up 
-### Raspberry Pi 4
-### 
 
 
 
