@@ -16,3 +16,6 @@
 [submodule "car_info"]
 	path = car_info
 	url = https://github.com/kianwasabi/car_info.git
+[submodule "can_receiver"]
+	path = can_receiver
+	url = https://github.com/SeungWoo-L/can_receiver.git
