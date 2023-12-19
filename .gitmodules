@@ -4,9 +4,6 @@
 [submodule "Flutter_Dashboard"]
 	path = Flutter_Dashboard
 	url = https://github.com/Lagavulin9/Flutter_Dashboard.git
-[submodule "meta-can_receiver"]
-	path = meta-can_receiver
-	url = https://github.com/SeungWoo-L/meta-can_receiver.git
 [submodule "car_control"]
 	path = car_control
 	url = https://github.com/kianwasabi/car_control.git
