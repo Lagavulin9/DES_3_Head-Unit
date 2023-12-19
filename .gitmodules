@@ -1,6 +1,6 @@
 [submodule "Flutter_Head-Unit"]
 	path = Flutter_Head-Unit
-	url = https://github.com/Lagavulin9/Flutter_Head-Unit
+	url = https://github.com/Lagavulin9/Flutter_Head-Unit.git
 [submodule "Flutter_Dashboard"]
 	path = Flutter_Dashboard
 	url = https://github.com/Lagavulin9/Flutter_Dashboard.git
