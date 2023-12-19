@@ -1,6 +1,3 @@
-[submodule "meta-piracer"]
-	path = meta-piracer
-	url = https://github.com/Lagavulin9/meta-piracer
 [submodule "Flutter_Head-Unit"]
 	path = Flutter_Head-Unit
 	url = https://github.com/Lagavulin9/Flutter_Head-Unit
@@ -16,6 +13,3 @@
 [submodule "car_info"]
 	path = car_info
 	url = https://github.com/kianwasabi/car_info.git
-[submodule "can_receiver"]
-	path = can_receiver
-	url = https://github.com/SeungWoo-L/can_receiver.git
