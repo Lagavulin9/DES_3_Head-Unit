@@ -16,3 +16,6 @@
 [submodule "sensors/rpm_sensor"]
 	path = sensors/rpm_sensor
 	url = https://github.com/kianwasabi/rpm_sensor.git
+[submodule "image/DES_3_yocto"]
+	path = image/DES_3_yocto
+	url = https://github.com/SeungWoo-L/DES_3_yocto.git
