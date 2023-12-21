@@ -9,24 +9,36 @@
   - [Known Issues](#known-issues)
 
 ## Introduction
-This project is part of the [embedded software development cirriculum at SEA-ME](https://github.com/SEA-ME/DES_Head-Unit).
-> This project aims to develop a **Head Unit application** running on a Raspberry Pi (RPi as ECU) alongside the previously developed PiRacer **Instrument Cluster application**.
-The Head Unit application will provide additional features like **ambient lighting, gear selection, and a media app**.
-Furthermore, the project will use **Scalable Service-Oriented Middleware(vSOME/IP)** for the in-vehicle communication and **Yocto as the build system** for the ECU. <br> 
+This project is part of the [embedded software development cirriculum at SEA-ME](https://github.com/SEA-ME/DES_Head-Unit). <br>
 
-## Collaborators
-If you find any kinds of bugs or issues, please contact the contributes [Kian](https://github.com/kianwasabi), [Jinghong](https://github.com/Lagavulin9) or [Seungwoo](https://github.com/SeungWoo-L). 👍  <br>
-
-## Architecture
-!! Add a diagram of the architecture here. !! <br>
-!! SAME AS THE ONE IN THE DOCUMENTATION that will be in software-strucutre.md !! <br>
+This project aims to develop a **Head Unit application** running on a Raspberry Pi (RPi as ECU) alongside the previously developed PiRacer **Instrument Cluster application**. <br> 
+The Head Unit application will provide additional features like **ambient lighting, gear selection, and a media app**. Furthermore, the project will use **Scalable Service-Oriented Middleware(vSOME/IP)** for the in-vehicle communication and **Yocto as the build system** for the ECU. <br> 
 
 ## Demonstration Video
-!! UPLOAD A VIDEO OF THE DEMONSTRATION WITH THE FILENAME that shows a FEATURE FROM PROJECT REQ. !! <br>
-<img src="./documentation/images/media_player.gif" width="40%" margin="120%">
-<img src="./documentation/images/gear_selection.gif" width="40%" margin="120%">
-<img src="./documentation/images/instrument_cluster.gif" width="40%" margin="120%">
-<img src="./documentation/images/car_info.gif" width="40%" margin="120%">
+The following video demonstrates the features of the project. <br>
+
+Head-Units' Media Player : <br>
+<img src="./documentation/images/media_player.gif" width="40%" margin="120%"> <br>
+Ambient Lighting Control via Head-Unit: <br>
+<img src="./documentation/images/gear_selection.gif" width="40%" margin="120%"> <br>
+Gear Selection by Head-Unit: <br>
+<img src="./documentation/images/instrument_cluster.gif" width="40%" margin="120%"> <br>
+Essential Car Information on Dashboard: <br>
+<img src="./documentation/images/car_info.gif" width="40%" margin="120%"> <br>
+ 
+## Project Structure
+This repository summarizes the entire "DES_03_Head-Unit" project that is devided into the following folders: <br>
+- `apps`: Contains the submodules of each application running on the car. <br>
+- `sensors`: Contains the submodules for all sensors that feed the CAN BUS. <br>
+- `image`: Contains the submodule for the yocto image. <br>
+- `documentation`: Contains all the documentation for the project. <br>
+
+<img src="./documentation/images/project_structure.png"> <br>
+
+## Architecture
+! Insert a diagram of the architecture here. ! <br>
+
+For a more detailed explanantion, see: [software architecture](/documentation/software_structure.md). <br>
 
 ## Documentation
 - Requirements Gathering: 
@@ -56,8 +68,13 @@ If you find any kinds of bugs or issues, please contact the contributes [Kian](h
   - [📝 test requirments](/documentation/project-requirments.md)
 
 ## Known Issues 
-Some issues we found while testing. <br>
+Issues we found while testing. <br>
 | Issue | Description |
 | --- | --- |
 
+## Collaborators
+If you find any kinds of bugs or issues, please contact the contributes: <br>
+[Kian](https://github.com/kianwasabi) <br>
+[Jinghong](https://github.com/Lagavulin9) <br>
+[Seungwoo](https://github.com/SeungWoo-L) <br>
 
