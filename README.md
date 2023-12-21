@@ -37,24 +37,30 @@ Essential Car Information on Dashboard: <br>
  
 ## Project Structure
 
-This repository contains all the submodules that were used in this project. <br>
-The following image shows the "DES_03_Head-Unit" projects' structure and workflow. <br>
+The following image shows the project structure and roll-out workflows. <br> 
 This repository is devided into these folders: <br>
 - `apps`: Contains submodules that hold the source code to run the car. <br> 
 - `sensors`: Contains submodules for the sensors' controller that feed the cars' CAN bus. <br>
 - `image`: Contains a submodule that holds everything needed to bitbake the cars' ECU yocto image. <br>
 - `documentation`: Contains all the documentations. <br>
+Additionally, it will provide a brief overview about the Release/Roll-out workflow. 
 The workflow is as follows: <br>
-Sensors: <br>
-1. Clone DES_3_Head-Unit repository. <br>
-2. Flash the sensors' controller (via Arduino IDE).<br>
-Yocto Image: <br>
-1. Clone DES_3_yocto repository. <br>
-2. Build the yocto image. The recipes are directly fetching the applications source code from the submodules repos. <br>
-3. Push the yocto image to repository. <br>
-4. Flash the yocto image on the ECU (by loading the image on a SD-Card and plug it in the Raspberry Pi). <br>
+
+Note: 
+The development in each submodule is done individually by the assigned developer.
+Once a feature is ready, the developer publishs a new releases following the teams' release [conventions](/documentation/project_conventions.md). <br>
+
+- `sensors`: <br>
+    1. Clone DES_3_Head-Unit repository to an industial PC. <br>
+    2. Flash the sensors' controller (via Arduino IDE).<br>
+- `image`: <br>
+    1. Clone DES_3_yocto repository to an industial PC. <br>
+    2. Build the yocto image. The recipes are directly fetching the applications source code from the submodules repos, **NOT** from the `apps` folder in this repo. <br>
+    3. Push the yocto image to repository. <br>
+    4. Flash the yocto image on the ECU (by loading the image on a SD-Card and plug it in the Raspberry Pi). <br>
 
 <img src="./documentation/images/project_structure.png"> <br>
+<br>
 
 ## Architecture
 ! Insert a diagram of the architecture here. ! <br>
