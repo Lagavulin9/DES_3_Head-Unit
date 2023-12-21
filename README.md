@@ -4,11 +4,11 @@
 
 ## Table of contents
   - [Introduction](#introduction)
-  - [Demonstration Video](#demonstration-video)
-  - [Architecture](#architecture)
-  - [Project Structure](#project-structure)
-  - [Documentation](#documentation)
   - [Collaborators](#collaborators)
+  - [Demonstration Video](#demonstration-video)
+  - [Project Structure](#project-structure)
+  - [Architecture](#architecture)
+  - [Documentation](#documentation)
   <!-- - [Known Issues](#known-issues) -->
 
 ## Introduction
@@ -43,19 +43,16 @@ This repository is devided into these folders: <br>
 - `sensors`: Contains submodules for the sensors' controller that feed the cars' CAN bus. <br>
 - `image`: Contains a submodule that holds everything needed to bitbake the cars' ECU yocto image. <br>
 - `documentation`: Contains all the documentations. <br>
-Additionally, it will provide a brief overview about the Release/Roll-out workflow. 
-The workflow is as follows: <br>
 
-Note: 
 The development in each submodule is done individually by the assigned developer.
 Once a feature is ready, the developer publishs a new releases following the teams' release [conventions](/documentation/project_conventions.md). <br>
-
+Roll-out workflow is defined like this: <br> 
 - `sensors`: <br>
-    1. Clone DES_3_Head-Unit repository to an industial PC. <br>
+    1. Clone DES_3_Head-Unit repository to an industial PC. (Or use sensors' submodule straight away, actually it doesn't matter due to the teams' release [conventions](/documentation/project_conventions.md)) <br>
     2. Flash the sensors' controller (via Arduino IDE).<br>
 - `image`: <br>
     1. Clone DES_3_yocto repository to an industial PC. <br>
-    2. Build the yocto image. The recipes are directly fetching the applications source code from the submodules repos, **NOT** from the `apps` folder in this repo. <br>
+    2. Build the yocto image. The recipes are directly fetched the applications source code from the submodules repos, **NOT** from the `apps` folder in this repo. <br>
     3. Push the yocto image to repository. <br>
     4. Flash the yocto image on the ECU (by loading the image on a SD-Card and plug it in the Raspberry Pi). <br>
 
@@ -69,28 +66,29 @@ For a more detailed explanantion, see: [software architecture](/documentation/so
 
 ## Documentation
 - Requirements Gathering: 
-  - [🧑🏽‍🏫 subject](/documentation/subject.md)
+  - [🧑🏽‍🏫 subject](/documentation/subject.md) 
   - [📝 project requirments](/documentation/project-requirments.md)
 - Planning Design, System & Software:
   - [🧑🏽‍🎨 frontend design](/documentation/design.md)
   - [🏎 system strucutre](/documentation/system-structure.md)
   - [👨🏽‍💻 software strucutre](/documentation/software_structure.md)
+- Team Collaboration:
   - [🔓 conventions](/documentation/project_conventions.md)
   - [📋 project kanban ](https://github.com/users/Lagavulin9/projects/2)
 - Integration:
+  - Technologies:
+    - [⬅️ CAN bus](/documentation/can_bus.md)
+    - [🔛 vSOME/IP & CommonAPI](/documentation/common_api.md)
+    - [🤖 CI/CD workflows](/documentation/workflows.md)
+    - [🍪 Yocto](/documentation/yocto.md)
   - Applications: 
-    - [1️⃣ head unit](/documentation/headunit.md)
+    - [1️⃣ head-unit](/documentation/headunit.md)
     - [2️⃣ dashboard](/documentation/dashboard.md)
     - [3️⃣ can bus receiver](/documentation/can_receiver.md)
     - [4️⃣ car control](/documentation/car_control.md)
     - [5️⃣ car information](/documentation/car_info.md)
   - Sensors: 
     - [6️⃣ rpm speed sensor](/documentation/rpm_speedsensor.md)
-  - Technologies:
-    - [🔛 can bus](/documentation/common_api.md)
-    - [🔛 vSOME/IP & CommonAPI](/documentation/common_api.md)
-    - [🤖 CI/CD workflows](/documentation/workflows.md)
-    - [🍪 Yocto](/documentation/yocto.md)
 - Testing: 
   - [📝 test requirments](/documentation/project-requirments.md)
 
