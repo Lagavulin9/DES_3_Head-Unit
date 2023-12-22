@@ -10,7 +10,9 @@
 ## Introduction
 CommonAPI is a middleware developed by the GENIVI Alliance. <br>
 It is a framework that allows the development of in-vehicle infotainment (IVI) applications. It is based on the concept of service-oriented architecture (SOA) and provides a service-oriented middleware (SOM) that allows the development of applications independently of the underlying communication technology. 
-If you have no knowledge about CommonAPI, vSOME/IP and Franca, we recommend to read the following [CommonAPI user guide] first.
+CommonAPI is an abstraction layer over Inter-Process communication (IPC) protocols,specifically, SOME/IP and DBus. In this project the SOME/IP protocol was used.
+
+_Note: If you have no knowledge about CommonAPI, vSOME/IP and Franca, we recommend to read the following [CommonAPI user guide] first._
 
 ## Fundamentals
 ### SOME/IP

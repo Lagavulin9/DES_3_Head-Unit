@@ -38,44 +38,50 @@ Essential Car Information on Dashboard: <br>
 ## Project Structure
 
 The following image shows the project structure and roll-out workflows. <br> 
-This repository is devided into these folders: <br>
-- `apps`: Contains submodules that hold the source code to run the car. <br> 
-- `sensors`: Contains submodules for the sensors' controller that feed the cars' CAN bus. <br>
-- `image`: Contains a submodule that holds everything needed to bitbake the cars' ECU yocto image. <br>
-- `documentation`: Contains all the documentations. <br>
+This repository is devided into four folders. <br>
+First, the `apps` folder contains submodules which hold the source code that  run the car. <br> 
+Second, the `sensors` folder which contains submodules for the sensors' controller that feed the cars' CAN bus. <br>
+Third, the `image` folder. It contains a submodule that provides  everything needed to bitbake the cars' ECU yocto image. <br>
+Last but not least, the `documentation` folder that summarizes all the projects' documentation. <br>
 
-The development in each submodule is done individually by the assigned developer.
-Once a feature is ready, the developer publishs a new releases following the teams' release [conventions](/documentation/project_conventions.md). <br>
-Roll-out workflow is defined like this: <br> 
-- `sensors`: <br>
-    1. Clone DES_3_Head-Unit repository to an industial PC. (Or use sensors' submodule straight away, actually it doesn't matter due to the teams' release [conventions](/documentation/project_conventions.md)) <br>
-    2. Flash the sensors' controller (via Arduino IDE).<br>
-- `image`: <br>
-    1. Clone DES_3_yocto repository to an industial PC. <br>
-    2. Build the yocto image. The recipes are directly fetched the applications source code from the submodules repos, **NOT** from the `apps` folder in this repo. <br>
-    3. Push the yocto image to repository. <br>
-    4. Flash the yocto image on the ECU (by loading the image on a SD-Card and plug it in the Raspberry Pi). <br>
+The development in each submodule is done individually by the assigned developer. <br>
+Once a feature is ready, a new release following the teams' [conventions](/documentation/project_conventions.md) is published. <br>
+
+To get the car rollin' the sensors' controller and the ECU needs to be flashed. <br> 
+`sensors` 
+- Clone DES_3_Head-Unit or sensors' submodule repository to a PC.<br>
+- Flash the sensors' controller using the Arduino IDE.<br>
+
+`image`
+- Clone DES_3_yocto repository to a PC. <br>
+- Bitbake the yocto image. <br>
+        _(Note: The recipes are fetching the apps source code from the submodules repos, not from the DES_3_Head-Unit repo.)_<br>
+- Flash the yocto image on the ECU by loading the it on the RPis' SD-Card. <br>
 
 <img src="./documentation/images/project_structure.png"> <br>
-<br>
 
 ## Architecture
+The following image gives a brief overview about the [software structure](/documentation/software_structure.md) that runs on the cars' [system structure](/documentation/system_structure.md). <br>
+All applications [head-unit](/documentation/headunit.md), [dashboard](/documentation/dashboard.md), [can_receiver](/documentation/can_receiver.md), [car_control](/documentation/car_control.md), and [car_info](/documentation/car_info.md) communicate with each other using [CommonAPI with SOME/IP IPC binding](/documentation/common_api.md). <br> 
+In the current setup, the [speed sensor](/documentation/rpm_speedsensor.md) is the only sensor that feeds the cars' [CAN bus](/documentation/can_bus.md). <br>
+The project can seamlessly be extended by adding more sensors to the CAN bus. <br>
+
 ! Insert a diagram of the architecture here. ! <br>
 
-For a more detailed explanantion, see: [software architecture](/documentation/software_structure.md). <br>
-
 ## Documentation
-- Requirements Gathering: 
+As mentioned above, the `documentation` folder contains all the projects' documentation. The files are distinguished by the phases the project went through. If you seek for more informations, don't hesitate to read through the following docs.  
+<br>
+1) Requirements Gathering: 
   - [🧑🏽‍🏫 subject](/documentation/subject.md) 
-  - [📝 project requirments](/documentation/project-requirments.md)
-- Planning Design, System & Software:
+  - [📝 project requirments](/documentation/project_requirments.md)
+2) Planning Design, System & Software:
   - [🧑🏽‍🎨 frontend design](/documentation/design.md)
-  - [🏎 system strucutre](/documentation/system-structure.md)
-  - [👨🏽‍💻 software strucutre](/documentation/software_structure.md)
-- Team Collaboration:
+  - [🏎 system structure](/documentation/system_structure.md)
+  - [👨🏽‍💻 software structure](/documentation/software_structure.md)
+3) Team Collaboration:
   - [🔓 conventions](/documentation/project_conventions.md)
-  - [📋 project kanban ](https://github.com/users/Lagavulin9/projects/2)
-- Integration:
+  - [📋 kanban board](https://github.com/users/Lagavulin9/projects/2)
+4) Integration:
   - Technologies:
     - [⬅️ CAN bus](/documentation/can_bus.md)
     - [🔛 vSOME/IP & CommonAPI](/documentation/common_api.md)
@@ -89,7 +95,7 @@ For a more detailed explanantion, see: [software architecture](/documentation/so
     - [5️⃣ car information](/documentation/car_info.md)
   - Sensors: 
     - [6️⃣ rpm speed sensor](/documentation/rpm_speedsensor.md)
-- Testing: 
+5) Testing: 
   - [📝 test requirments](/documentation/project-requirments.md)
 
 <!-- ## Known Issues 
