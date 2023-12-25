@@ -14,8 +14,6 @@ This is how the assembled PiRacer looks like:
 <img src="./images/Assembled_PiRacer_1.JPG" width="20%" height="auto">
 <img src="./images/Assembled_PiRacer_2.JPG" width="20%" height="auto">
 
-Note : The Camera is mounted to at the rear of the PiRacer.
-
 ## Wiring
 The following tables are showing the wiring & connection of all Componentens.
 
