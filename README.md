@@ -37,9 +37,9 @@ Essential Car Information on Dashboard: <br>
  
 ## Project Structure
 
-The following image shows the project structure and roll-out workflows. <br> 
+The following image shows the project structure and roll-out workflows contained in this repository. <br> 
 This repository is devided into four folders. <br>
-First, the `apps` folder contains submodules which hold the source code that  run the car. <br> 
+First, the `apps` folder that contains submodules which hold the source code to run the car. <br> 
 Second, the `sensors` folder which contains submodules for the sensors' controller that feed the cars' CAN bus. <br>
 Third, the `image` folder. It contains a submodule that provides  everything needed to bitbake the cars' ECU yocto image. <br>
 Last but not least, the `documentation` folder that summarizes all the projects' documentation. <br>
