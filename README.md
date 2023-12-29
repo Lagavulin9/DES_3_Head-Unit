@@ -14,14 +14,15 @@
 ## Introduction
 This project is part of the [embedded software development cirriculum at SEA-ME](https://github.com/SEA-ME/DES_Head-Unit). <br>
 
-This project aims to develop a **Head Unit application** running on a Raspberry Pi (RPi as ECU) alongside the previously developed PiRacer **Instrument Cluster application**. <br> 
-The Head Unit application will provide additional features like **ambient lighting, gear selection, and a media app**. Furthermore, the project will use **Scalable Service-Oriented Middleware(vSOME/IP)** for the in-vehicle communication and **Yocto as the build system** for the ECU. <br> 
+It aims to develop a **Head Unit application** running on a Raspberry Pi (RPi as ECU) alongside the previously developed PiRacer **Instrument Cluster application**. <br> 
+The Head Unit application will provide additional features like **ambient lighting, gear selection, and a media app**. <br> 
+Furthermore, the project uses **Scalable Service-Oriented Middleware(vSOME/IP)** for the in-vehicle communication and **Yocto as the build system** for the ECU. <br> 
 
 ## Collaborators
 If you find any kinds of bugs or issues, please contact 
 [Kian](https://github.com/kianwasabi), 
 [Jinghong](https://github.com/Lagavulin9) or 
-[Seungwoo](https://github.com/SeungWoo-L). 
+[Seungwoo](https://github.com/SeungWoo-L). 👌🏽
 
 ## Demonstration Video
 The following videos demonstrate the features of the project. <br>
@@ -34,6 +35,8 @@ Gear Selection by Head-Unit: <br>
 <img src="./documentation/images/instrument_cluster.gif" width="40%" margin="120%"> <br>
 Essential Car Information on Dashboard: <br>
 <img src="./documentation/images/car_info.gif" width="40%" margin="120%"> <br>
+PiRacer drives around: <br>
+<img src="./documentation/images/car_remote.gif" width="40%" margin="120%"> <br>
  
 ## Project Structure
 
