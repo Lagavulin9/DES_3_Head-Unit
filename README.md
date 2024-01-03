@@ -45,7 +45,7 @@ The following image shows the project structure and roll-out workflows for this 
 **DES_3_Head-Unit** is devided into four folders. <br>
 - `apps`: contains submodules which hold the source code to run the car. <br> 
 - `sensors`: contains submodules for the sensors' controllers that feed vehicle CAN bus. <br>
-- `image`: contains a submodule that provides config files and recipes to bitbake the vehicles' ECU yocto image. <br>
+- `image`: contains a [submodule](https://github.com/SeungWoo-L/DES_3_yocto) that provides config files and recipes to bitbake the vehicles' ECU yocto image]. <br>
    _(Note: The recipes are fetching the apps' source code from the submodules' repositories, not from the DES_3_Head-Unit repository.)_<br>
 - `documentation`: summarizes all the projects' documentation. <br>
 
