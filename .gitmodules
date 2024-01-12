@@ -10,3 +10,12 @@
 [submodule "image/DES_3_yocto"]
 	path = image/DES_3_yocto
 	url = https://github.com/SeungWoo-L/DES_3_yocto.git
+[submodule "apps/car_info"]
+	path = apps/car_info
+	url = https://github.com/kianwasabi/car_info.git
+[submodule "apps/car_control"]
+	path = apps/car_control
+	url = https://github.com/kianwasabi/car_control.git
+[submodule "apps/can_receiver"]
+	path = apps/can_receiver
+	url = https://github.com/SeungWoo-L/can_receiver.git
