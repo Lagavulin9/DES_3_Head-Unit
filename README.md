@@ -40,16 +40,14 @@ PiRacer drives around: <br>
  
 ## Project Structure
 
-The following image shows the project structure and roll-out workflows for this project. <br>
-
-**DES_3_Head-Unit** is devided into four folders. <br>
+The following image shows the project structure and roll-out workflows for the DES3 Head-Unit project. <br>
+It is devided into four folders. <br>
 - `apps`: contains submodules which hold the source code to run the car. <br> 
 - `sensors`: contains submodules for the sensors' controllers that feed vehicle CAN bus. <br>
-- `image`: contains a [submodule](https://github.com/SeungWoo-L/DES_3_yocto) that provides config files and recipes to bitbake the vehicles' ECU yocto image]. <br>
-   _(Note: The recipes are fetching the apps' source code from the submodules' repositories, not from the DES_3_Head-Unit repository.)_<br>
+- `image`: contains a submodule that provides config files and recipes to bitbake the vehicles' ECU yocto image. _(Note: The bitbake recipes are fetching the apps' source code from the submodules' repositories.)_<br>
 - `documentation`: summarizes all the projects' documentation. <br>
 
-> _Note: The development in each submodule is done individually by the assigned developer. <br>
+> _The development in each submodule is done individually by the assigned developer. <br>
 Once a feature is ready, a new release following the teams' [conventions](/documentation/project_conventions.md) is published._ <br>
 
 Next, the sensors' controller and the ECU needs to be flashed. <br> 
@@ -68,11 +66,11 @@ Next, the sensors' controller and the ECU needs to be flashed. <br>
 
 ## Architecture
 The following image gives a brief overview about the [software structure](/documentation/software_structure.md) that runs on the cars' [system structure](/documentation/system_structure.md). <br>
-All apps ([head-unit](/documentation/headunit.md), [dashboard](/documentation/dashboard.md), [can_receiver](/documentation/can_receiver.md), [car_control](/documentation/car_control.md), and [car_info](/documentation/car_info.md)) communicate with each other using [CommonAPI with SOME/IP IPC binding](/documentation/common_api.md). <br> 
-In the current setup, the [speed sensor](/documentation/rpm_speedsensor.md) is the only sensor that feeds the cars' [CAN bus](/documentation/can_bus.md). <br>
-The project can seamlessly be extended by adding more sensors to the CAN bus. <br>
+Each application like [head-unit](/documentation/headunit.md), [dashboard](/documentation/dashboard.md), [can_receiver](/documentation/can_receiver.md), [car_control](/documentation/car_control.md), and [car_info](/documentation/car_info.md) serves a different purpose and uses different peripheral interfaces and devices. <br> 
+BMWs' [CommonAPI](/documentation/common_api.md) ensure the communication between the applications via Scalable Service-Oriented Middleware over IP (SOME/IP). It is easy to add more apps to the system by using the [CI/CD workflows for CommonAPI](/documentation/workflows.md) we build. <br>
+In the current setup, the [speed sensor](/documentation/rpm_speedsensor.md) is the only sensor that feeds the cars' [CAN bus](/documentation/can_bus.md) but it can seamlessly be extended by adding more sensors to the CAN bus. <br>
 
-! Insert a diagram of the architecture here. ! <br>
+<img src="./documentation/images/head_unit_structure.png" width="75%" margin="120%"> <br>
 
 ## Documentation
 As mentioned above, the `documentation` folder contains all the projects' documentation. The files are distinguished by the phases the project went through. If you seek for more informations, don't hesitate to read through the following docs.  
@@ -87,20 +85,20 @@ As mentioned above, the `documentation` folder contains all the projects' docume
 3) Team Collaboration:
   - [🔓 conventions](/documentation/project_conventions.md)
   - [📋 kanban board](https://github.com/users/Lagavulin9/projects/2)
-4) Integration:
-  - Technologies:
-    - [⬅️ CAN bus](/documentation/can_bus.md)
-    - [🔛 vSOME/IP & CommonAPI](/documentation/common_api.md)
-    - [🤖 CI/CD workflows](/documentation/workflows.md)
-    - [🍪 Yocto](/documentation/yocto.md)
-  - Applications: 
-    - [1️⃣ head-unit](/documentation/headunit.md)
-    - [2️⃣ dashboard](/documentation/dashboard.md)
-    - [3️⃣ can bus receiver](/documentation/can_receiver.md)
-    - [4️⃣ car control](/documentation/car_control.md)
-    - [5️⃣ car information](/documentation/car_info.md)
-  - Sensors: 
-    - [6️⃣ rpm speed sensor](/documentation/rpm_speedsensor.md)
+4) Integration: <br>
+    - Technologies:
+      - [⬅️ CAN bus](/documentation/can_bus.md)
+      - [🔛 vSOME/IP & CommonAPI](/documentation/common_api.md)
+      - [🤖 CI/CD workflow](/documentation/workflows.md)
+      - [🍪 Yocto](/documentation/yocto.md)
+    - Applications: 
+      - [1️⃣ head-unit](/documentation/headunit.md)
+      - [2️⃣ dashboard](/documentation/dashboard.md)
+      - [3️⃣ can bus receiver](/documentation/can_receiver.md)
+      - [4️⃣ car control](/documentation/car_control.md)
+      - [5️⃣ car information](/documentation/car_info.md)
+    - Sensors: <br>
+      - [6️⃣ rpm speed sensor](/documentation/rpm_speedsensor.md)
 5) Testing: 
   - [📝 test requirments](/documentation/project-requirments.md)
 
