@@ -14,9 +14,9 @@
 ## Introduction
 This project is part of the [embedded software development cirriculum at SEA-ME](https://github.com/SEA-ME/DES_Head-Unit). <br>
 
-It aims to develop a **Head Unit application** running on a Raspberry Pi (RPi as ECU) alongside the previously developed PiRacer **Instrument Cluster application**. <br> 
-The Head Unit application will provide additional features like **ambient lighting, gear selection, and a media app**. <br> 
-Furthermore, the project uses **Scalable Service-Oriented Middleware(vSOME/IP)** for the in-vehicle communication and **Yocto as the build system** for the ECU. <br> 
+It aims to develop a **Head Unit application** running on a ECU alongside the a **Instrument Cluster application** in Flutter. <br> 
+The Head Unit application will provide features like **ambient lighting, gear selection, and a media app**. <br> 
+Furthermore, the project uses **Scalable Service-Oriented Middleware (vSOME/IP)** for the in-vehicle communication and **Yocto as the build system** for the ECU. <br> 
 
 ## Collaborators
 If you find any kinds of bugs or issues, please contact 
@@ -40,17 +40,13 @@ PiRacer drives around: <br>
  
 ## Project Structure
 
-The following image shows the project structure and roll-out workflows for the DES3 Head-Unit project. <br>
-It is devided into four folders. <br>
+The following image shows the project structure for the DES3 Head-Unit project. <br>
 - `apps`: contains submodules which hold the source code to run the car. <br> 
 - `sensors`: contains submodules for the sensors' controllers that feed vehicle CAN bus. <br>
 - `image`: contains a submodule that provides config files and recipes to bitbake the vehicles' ECU yocto image. _(Note: The bitbake recipes are fetching the apps' source code from the submodules' repositories.)_<br>
 - `documentation`: summarizes all the projects' documentation. <br>
 
-> _The development in each submodule is done individually by the assigned developer. <br>
-Once a feature is ready, a new release following the teams' [conventions](/documentation/project_conventions.md) is published._ <br>
-
-Next, the sensors' controller and the ECU needs to be flashed. <br> 
+To roll out the software, the sensors' controller and the ECU needs to be flashed. <br> 
 
 - `sensors` 
   - Clone DES_3_Head-Unit repository. <br>
@@ -64,11 +60,15 @@ Next, the sensors' controller and the ECU needs to be flashed. <br>
 
 <img src="./documentation/images/project_structure.png"> <br>
 
+> _The development in each submodule is done individually by the assigned developer. <br>
+Once a feature is ready, a new release following the teams' [conventions](/documentation/project_conventions.md) is published._ <br>
+
 ## Architecture
 The following image gives a brief overview about the [software structure](/documentation/software_structure.md) that runs on the cars' [system structure](/documentation/system_structure.md). <br>
 Each application like [head-unit](/documentation/headunit.md), [dashboard](/documentation/dashboard.md), [can_receiver](/documentation/can_receiver.md), [car_control](/documentation/car_control.md), and [car_info](/documentation/car_info.md) serves a different purpose and uses different peripheral interfaces and devices. <br> 
 BMWs' [CommonAPI](/documentation/common_api.md) ensure the communication between the applications via Scalable Service-Oriented Middleware over IP (SOME/IP). It is easy to add more apps to the system by using the [CI/CD workflows for CommonAPI](/documentation/workflows.md) we build. <br>
 In the current setup, the [speed sensor](/documentation/rpm_speedsensor.md) is the only sensor that feeds the cars' [CAN bus](/documentation/can_bus.md) but it can seamlessly be extended by adding more sensors to the CAN bus. <br>
+The system operates with a custom-made [Yocto Image](/DES_3_Head-Unit/documentation/yocto.md) deployed on the Raspberry Pi ECUs. 
 
 <img src="./documentation/images/head_unit_structure.png" width="75%" margin="120%"> <br>
 
@@ -101,10 +101,5 @@ As mentioned above, the `documentation` folder contains all the projects' docume
       - [6️⃣ rpm speed sensor](/documentation/rpm_speedsensor.md)
 5) Testing: 
   - [📝 test requirments](/documentation/project-requirments.md)
-
-<!-- ## Known Issues 
-Issues we found while testing. <br>
-| Issue | Description |
-| --- | --- | -->
 
 
