@@ -37,7 +37,16 @@ Essential Car Information on Dashboard: <br>
 <img src="./documentation/images/car_info.gif" width="40%" margin="120%"> <br>
 PiRacer drives around: <br>
 <img src="./documentation/images/car_remote.gif" width="40%" margin="120%"> <br>
- 
+
+## Architecture
+The following image gives a brief overview about the [software structure](/documentation/software_structure.md) that runs on the cars' [system structure](/documentation/system_structure.md). <br>
+Each application like [head-unit](/documentation/headunit.md), [dashboard](/documentation/dashboard.md), [can_receiver](/documentation/can_receiver.md), [car_control](/documentation/car_control.md), and [car_info](/documentation/car_info.md) serves a different purpose and uses different peripheral interfaces and devices. <br> 
+BMWs' [CommonAPI](/documentation/common_api.md) ensure the communication between the applications via Scalable Service-Oriented Middleware over IP (SOME/IP). It is easy to add more apps to the system by using the [CI/CD workflows for CommonAPI](/documentation/workflows.md) we build. <br>
+In the current setup, the [speed sensor](/documentation/rpm_speedsensor.md) is the only sensor that feeds the cars' [CAN bus](/documentation/can_bus.md) but it can seamlessly be extended by adding more sensors to the CAN bus. <br>
+The system operates with a custom-made [Yocto Image](/DES_3_Head-Unit/documentation/yocto.md) deployed on the Raspberry Pi ECUs. 
+
+<img src="./documentation/images/head_unit_structure.png" width="75%" margin="120%"> <br>
+
 ## Project Structure
 
 The following image shows the project structure for the DES3 Head-Unit project. <br>
@@ -62,15 +71,6 @@ To roll out the software, the sensors' controller and the ECU needs to be flashe
 
 > _The development in each submodule is done individually by the assigned developer. <br>
 Once a feature is ready, a new release following the teams' [conventions](/documentation/project_conventions.md) is published._ <br>
-
-## Architecture
-The following image gives a brief overview about the [software structure](/documentation/software_structure.md) that runs on the cars' [system structure](/documentation/system_structure.md). <br>
-Each application like [head-unit](/documentation/headunit.md), [dashboard](/documentation/dashboard.md), [can_receiver](/documentation/can_receiver.md), [car_control](/documentation/car_control.md), and [car_info](/documentation/car_info.md) serves a different purpose and uses different peripheral interfaces and devices. <br> 
-BMWs' [CommonAPI](/documentation/common_api.md) ensure the communication between the applications via Scalable Service-Oriented Middleware over IP (SOME/IP). It is easy to add more apps to the system by using the [CI/CD workflows for CommonAPI](/documentation/workflows.md) we build. <br>
-In the current setup, the [speed sensor](/documentation/rpm_speedsensor.md) is the only sensor that feeds the cars' [CAN bus](/documentation/can_bus.md) but it can seamlessly be extended by adding more sensors to the CAN bus. <br>
-The system operates with a custom-made [Yocto Image](/DES_3_Head-Unit/documentation/yocto.md) deployed on the Raspberry Pi ECUs. 
-
-<img src="./documentation/images/head_unit_structure.png" width="75%" margin="120%"> <br>
 
 ## Documentation
 As mentioned above, the `documentation` folder contains all the projects' documentation. The files are distinguished by the phases the project went through. If you seek for more informations, don't hesitate to read through the following docs.  
