@@ -7,3 +7,9 @@
 [submodule "apps/car_info"]
 	path = apps/car_info
 	url = https://github.com/kianwasabi/car_info.git
+[submodule "apps/headunit"]
+	path = apps/headunit
+	url = https://github.com/Lagavulin9/Flutter_Head-Unit.git
+[submodule "apps/dashboard"]
+	path = apps/dashboard
+	url = https://github.com/Lagavulin9/Flutter_Dashboard.git
