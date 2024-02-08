@@ -13,3 +13,6 @@
 [submodule "apps/dashboard"]
 	path = apps/dashboard
 	url = https://github.com/Lagavulin9/Flutter_Dashboard.git
+[submodule "sensors/rpm_sensor"]
+	path = sensors/rpm_sensor
+	url = https://github.com/kianwasabi/rpm_sensor.git
