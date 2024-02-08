@@ -21,7 +21,7 @@ Furthermore, the project uses **Scalable Service-Oriented Middleware (vSOME/IP)*
 ## Collaborators
 If you find any kinds of bugs or issues, please contact 
 [Kian](https://github.com/kianwasabi), 
-[Jinghong](https://github.com/Lagavulin9) or 
+[Jinhong](https://github.com/Lagavulin9) or 
 [Seungwoo](https://github.com/SeungWoo-L). 👌🏽
 
 ## Demonstration Video
