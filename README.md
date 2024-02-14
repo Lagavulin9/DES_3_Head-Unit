@@ -1,15 +1,12 @@
 # DES03 Project - Head Unit
 
-!! UNDER CONSTRUCTION !! <br>
-
 ## Table of contents
   - [Introduction](#introduction)
   - [Collaborators](#collaborators)
-  - [Demonstration Video](#demonstration-video)
+  - [Demonstration](#demonstration)
   - [Project Structure](#project-structure)
   - [Architecture](#architecture)
   - [Documentation](#documentation)
-  <!-- - [Known Issues](#known-issues) -->
 
 ## Introduction
 This project is part of the [embedded software development cirriculum at SEA-ME](https://github.com/SEA-ME/DES_Head-Unit). <br>
@@ -18,25 +15,27 @@ It aims to develop a **Head Unit application** running on a ECU alongside the a 
 The Head Unit application will provide features like **ambient lighting, gear selection, and a media app**. <br> 
 Furthermore, the project uses **Scalable Service-Oriented Middleware (vSOME/IP)** for the in-vehicle communication and **Yocto as the build system** for the ECU. <br> 
 
+<img src="./documentation/images/assembled_piracer.jpg" width="30%" margin="120%"> <br>
+
 ## Collaborators
 If you find any kinds of bugs or issues, please contact 
 [Kian](https://github.com/kianwasabi), 
 [Jinhong](https://github.com/Lagavulin9) or 
 [Seungwoo](https://github.com/SeungWoo-L). 👌🏽
 
-## Demonstration Video
+## Demonstration
+
 The following videos demonstrate the features of the project. <br>
 
-Head-Units' Media Player : <br>
-<img src="./documentation/images/media_player.gif" width="40%" margin="120%"> <br>
-Ambient Lighting Control via Head-Unit: <br>
-<img src="./documentation/images/gear_selection.gif" width="40%" margin="120%"> <br>
-Gear Selection by Head-Unit: <br>
-<img src="./documentation/images/instrument_cluster.gif" width="40%" margin="120%"> <br>
-Essential Car Information on Dashboard: <br>
-<img src="./documentation/images/car_info.gif" width="40%" margin="120%"> <br>
-PiRacer drives around: <br>
-<img src="./documentation/images/car_remote.gif" width="40%" margin="120%"> <br>
+A Media Player, that plays various media resources like musik or video from a USB storage. <br>
+The played media meta data is also displayed on the dashboard. <br>
+<img src="./documentation/images/media_player_1.gif" width="25%" margin="120%">
+<img src="./documentation/images/media_player_0.gif" width="25%" margin="120%"> <br>
+Ambient Lighting Control: <br>
+<img src="./documentation/images/ambient_lighting_control.gif" width="25%" margin="120%"> <br>
+Gear Selection through the gamepad or the Head-Unit.: <br>
+<img src="./documentation/images/gear_selection_0.gif" width="25%" margin="120%">
+<img src="./documentation/images/gear_selection_1.gif" width="25%" margin="120%"> <br>
 
 ## Architecture
 The following image gives a brief overview about the [software structure](/documentation/software_structure.md) that runs on the cars' [system structure](/documentation/system_structure.md). <br>
@@ -45,9 +44,9 @@ BMWs' [CommonAPI](/documentation/common_api.md) ensure the communication between
 In the current setup, the [speed sensor](/documentation/rpm_speedsensor.md) is the only sensor that feeds the cars' [CAN bus](/documentation/can_bus.md) but it can seamlessly be extended by adding more sensors to the CAN bus. <br>
 The system operates with a custom-made [Yocto Image](/DES_3_Head-Unit/documentation/yocto.md) deployed on the Raspberry Pi ECUs. 
 
-<img src="./documentation/images/head_unit_structure.png" width="75%" margin="120%"> <br>
+<img src="./documentation/images/software_structure.png" width="50%" margin="120%"> <br>
 
-## Project Structure
+## Project Structure & CI/CD
 
 The following image shows the project structure for the DES3 Head-Unit project. <br>
 - `apps`: contains submodules which hold the source code to run the car. <br> 
@@ -55,19 +54,19 @@ The following image shows the project structure for the DES3 Head-Unit project. 
 - `image`: contains a submodule that provides config files and recipes to bitbake the vehicles' ECU yocto image. _(Note: The bitbake recipes are fetching the apps' source code from the submodules' repositories.)_<br>
 - `documentation`: summarizes all the projects' documentation. <br>
 
-To roll out the software, the sensors' controller and the ECU needs to be flashed. <br> 
+**Continuous Integration**: Happens in the apps'and sensors' submodules. <br>
 
+**Continous Delivery**: To roll out the software, the sensors' controller and the ECU needs to be flashed. <br> 
 - `sensors` 
   - Clone DES_3_Head-Unit repository. <br>
   - Choose the sensors' directory from the sensors folder. <br>
   - Flash the sensors' controller using the Arduino IDE. <br>
-
 - `image`
   - Clone DES_3_yocto repository. <br>
   - Bitbake the yocto image. <br>
   - Flash the yocto image on the ECU by loading the it on the RPis' SD-Card. <br>
 
-<img src="./documentation/images/project_structure.png"> <br>
+<img src="./documentation/images/project_structure.png" width="75%" margin="120%"> <br>
 
 > _The development in each submodule is done individually by the assigned developer. <br>
 Once a feature is ready, a new release following the teams' [conventions](/documentation/project_conventions.md) is published._ <br>
@@ -89,7 +88,7 @@ As mentioned above, the `documentation` folder contains all the projects' docume
     - Technologies:
       - [⬅️ CAN bus](/documentation/can_bus.md)
       - [🔛 vSOME/IP & CommonAPI](/documentation/common_api.md)
-      - [🤖 CI/CD workflow](/documentation/workflows.md)
+      - [🤖 Github workflow](/documentation/workflows.md)
       - [🍪 Yocto](/documentation/yocto.md)
     - Applications: 
       - [1️⃣ head-unit](/documentation/headunit.md)
@@ -101,5 +100,3 @@ As mentioned above, the `documentation` folder contains all the projects' docume
       - [6️⃣ rpm speed sensor](/documentation/rpm_speedsensor.md)
 5) Testing: 
   - [📝 test requirments](/documentation/project-requirments.md)
-
-
