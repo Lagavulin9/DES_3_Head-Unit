@@ -39,10 +39,10 @@ Gear Selection through the gamepad or the Head-Unit.: <br>
 
 ## Architecture
 The following image gives a brief overview about the [software structure](/documentation/software_structure.md) that runs on the cars' [system structure](/documentation/system_structure.md). <br>
-Each application like [head-unit](/documentation/headunit.md), [dashboard](/documentation/dashboard.md), [can_receiver](/documentation/can_receiver.md), [car_control](/documentation/car_control.md), and [car_info](/documentation/car_info.md) serves a different purpose and uses different peripheral interfaces and devices. <br> 
+Each application like head-unit, dashboard, can_receiver, car_control, and car_info serves a different purpose and uses different peripheral interfaces and devices. <br> 
 BMWs' [CommonAPI](/documentation/common_api.md) ensure the communication between the applications via Scalable Service-Oriented Middleware over IP (SOME/IP). It is easy to add more apps to the system by using the [CI/CD workflows for CommonAPI](/documentation/workflows.md) we build. <br>
 In the current setup, the [speed sensor](/documentation/rpm_speedsensor.md) is the only sensor that feeds the cars' [CAN bus](/documentation/can_bus.md) but it can seamlessly be extended by adding more sensors to the CAN bus. <br>
-The system operates with a custom-made [Yocto Image](/DES_3_Head-Unit/documentation/yocto.md) deployed on the Raspberry Pi ECUs. 
+The system operates with a custom-made Yocto Image deployed on the Raspberry Pi ECUs. 
 
 <img src="./documentation/images/software_structure.png" width="50%" margin="120%"> <br>
 
@@ -91,12 +91,12 @@ As mentioned above, the `documentation` folder contains all the projects' docume
       - [🤖 Github workflow](/documentation/workflows.md)
       - [🍪 Yocto](/documentation/yocto.md)
     - Applications: 
-      - [1️⃣ headunit](https://github.com/Lagavulin9/Flutter_Head-Unit/blob/ed77898863735f600a42c81f6de45130858950b2/README.md))
+      - [1️⃣ headunit](https://github.com/Lagavulin9/Flutter_Head-Unit/blob/ed77898863735f600a42c81f6de45130858950b2/README.md)
       - [2️⃣ dashboard](https://github.com/Lagavulin9/Flutter_Dashboard/blob/adaeac6cd07b3fc907f53d9e795a4e1962c6683c/README.md)
       - [3️⃣ can_bus receiver](https://github.com/SeungWoo-L/can_receiver/blob/63a2b949d78a1b416df0a685942f927e3a261262/README.md)
       - [4️⃣ car control](https://github.com/kianwasabi/car_control/blob/5758c1ca57c1065f2996c0ed6cb1e277471c6838/README.md)
       - [5️⃣ battery information](https://github.com/kianwasabi/car_info/blob/46cf197c9abdbb2bb29a31db5f104c5aca2507c4/README.md)
     - Sensors: <br>
-      - [6️⃣ rpm speed sensor](/documentation/rpm_speedsensor.md)
+      - [6️⃣ rpm speed sensor](https://github.com/kianwasabi/rpm_sensor/blob/15d63ddbcfaa7330290a05cedc7fac5c75453a97/README.md)
 5) Testing: 
   - [📝 test requirments](/documentation/project-requirments.md)
