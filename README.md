@@ -89,7 +89,7 @@ As mentioned above, the `documentation` folder contains all the projects' docume
       - [⬅️ CAN bus](/documentation/can_bus.md)
       - [🔛 vSOME/IP & CommonAPI](/documentation/common_api.md)
       - [🤖 Github workflow](/documentation/workflows.md)
-      - [🍪 Yocto](/documentation/yocto.md)
+      - [🍪 Yocto](https://github.com/SeungWoo-L/meta-team2/blob/10f6a381aca39330a357a073f45482b3da4e4f52/README.md)
     - Applications: 
       - [1️⃣ headunit](https://github.com/Lagavulin9/Flutter_Head-Unit/blob/ed77898863735f600a42c81f6de45130858950b2/README.md)
       - [2️⃣ dashboard](https://github.com/Lagavulin9/Flutter_Dashboard/blob/adaeac6cd07b3fc907f53d9e795a4e1962c6683c/README.md)
