@@ -93,7 +93,7 @@ As mentioned above, the `documentation` folder contains all the projects' docume
     - Applications: 
       - [1️⃣ headunit](https://github.com/Lagavulin9/Flutter_Head-Unit/blob/ed77898863735f600a42c81f6de45130858950b2/README.md))
       - [2️⃣ dashboard](https://github.com/Lagavulin9/Flutter_Dashboard/blob/adaeac6cd07b3fc907f53d9e795a4e1962c6683c/README.md)
-      - [3️⃣ can_bus receiver](https://github.com/SeungWoo-L/can_receiver/blob/1d47575d84b3023c5190bcdae8932c2cd66b7fd9/README.md)
+      - [3️⃣ can_bus receiver](https://github.com/SeungWoo-L/can_receiver/blob/63a2b949d78a1b416df0a685942f927e3a261262/README.md)
       - [4️⃣ car control](https://github.com/kianwasabi/car_control/blob/5758c1ca57c1065f2996c0ed6cb1e277471c6838/README.md)
       - [5️⃣ battery information](https://github.com/kianwasabi/car_info/blob/46cf197c9abdbb2bb29a31db5f104c5aca2507c4/README.md)
     - Sensors: <br>
