@@ -15,7 +15,7 @@ It aims to develop a **Head Unit application** running on a ECU alongside the a 
 The Head Unit application will provide features like **ambient lighting, gear selection, and a media app**. <br> 
 Furthermore, the project uses **Scalable Service-Oriented Middleware (vSOME/IP)** for the in-vehicle communication and **Yocto as the build system** for the ECU. <br> 
 
-<img src="./documentation/images/assembled_piracer.jpg" width="30%" margin="120%"> <br>
+<img src="./documentation/images/assembled_piracer.jpg" width="45%" margin="120%"> <br>
 
 ## Collaborators
 If you find any kinds of bugs or issues, please contact 
